@@ -133,6 +133,8 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] polyglot (v0.3.1, /usr/local/ruby-1.9.2-p136/lib/ruby/gems/1.9.1/gems/polyglot-0.3.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.9, /usr/local/ruby-1.9.2-p136/lib/ruby/gems/1.9.1/gems/arel-2.0.9)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] tzinfo (v0.3.24, /usr/local/ruby-1.9.2-p136/lib/ruby/gems/1.9.1/gems/tzinfo-0.3.24)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] database_cleaner (v0.6.3, /usr/local/ruby-1.9.2-p136/lib/ruby/gems/1.9.1/gems/database_cleaner-0.6.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.8, /usr/local/ruby-1.9.2-p136/lib/ruby/gems/1.9.1/gems/arel-2.0.8)" level="application" />
   </component>
 </module>
 
