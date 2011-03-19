@@ -8,6 +8,7 @@ gem 'rails', '3.0.4'
 gem 'sqlite3'
 
 gem 'haml'
+
 #gem 'ruby-debug19'
 
 # Use unicorn as the web server
