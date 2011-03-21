@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem 'haml'
 
+gem 'devise'
+
 #gem 'ruby-debug19'
 
 # Use unicorn as the web server

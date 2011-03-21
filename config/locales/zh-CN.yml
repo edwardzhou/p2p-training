@@ -1,0 +1,13 @@
+zh-CN:
+  label:
+    login: 登录
+    logout: 登出
+    login_as: 欢迎 <u>%{username}</u>
+    signup: 注册
+    email: 邮件
+    password: 密码
+
+    application:
+      title: 专业人员对专业人员的培训网 - Professional to Professional Training
+
+
