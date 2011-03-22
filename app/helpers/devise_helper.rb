@@ -7,7 +7,8 @@ module DeviseHelper
 
     html = <<-HTML
     <div id="error_explanation" class="error">
-      <h2>#{sentence}</h2>
+
+      <h2>#{image_tag "icons/cross.png"} #{sentence}</h2>
       <ul>#{messages}</ul>
     </div>
     HTML

@@ -1,7 +1,6 @@
 %h2= t('label.sign_in')
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  - if flash[:alert] then
-    #notice.error= flash[:alert]
+  = show_msg
 
   %p
     = f.label :email, t('label.email')

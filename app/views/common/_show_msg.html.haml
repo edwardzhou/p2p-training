@@ -1,0 +1,11 @@
+- if flash[:notice] then
+  #notice.success
+    %h2
+      = image_tag("icons/tick.png")
+      = flash[:notice]
+
+- elsif flash[:alert] then
+  #notice.notice
+    %h2
+      = image_tag("icons/information.png")
+      = flash[:alert]

@@ -13,5 +13,13 @@
     = f.label :password_confirmation, t('label.password_confirmation')
     %br/
     = f.password_field :password_confirmation
+  %p
+    = f.label :nick_name, t("label.nick_name")
+    %br/
+    = f.text_field :nick_name, :max_length => 20
+  %p
+    = f.label :gender, t("label.gender")
+    %br/
+    = f.select :gender, ['male', 'female']
   %p= f.submit t('label.sign_up')
 = render :partial => "devise/shared/links"
