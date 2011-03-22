@@ -8,6 +8,8 @@ gem 'rails', '3.0.4'
 gem 'sqlite3'
 
 gem 'haml'
+gem 'hpricot'
+gem 'ruby_parser'
 
 gem 'devise'
 

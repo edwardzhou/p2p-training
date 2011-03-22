@@ -1,8 +1,8 @@
 #user_nav
-  - if current_user.nil? then
+  - if ! user_signed_in? then
     = link_to t('label.login'), new_user_session_path
     %span &nbsp;&nbsp;
-    = link_to t('label.signup'), new_user_registration_path
+    = link_to t('label.sign_up'), new_user_registration_path
   - else
     .span
       != t('label.login_as', :username => current_user.email)

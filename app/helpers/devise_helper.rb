@@ -6,7 +6,7 @@ module DeviseHelper
     sentence = "#{pluralize(resource.errors.count, "error")} prohibited this #{resource_name} from being saved:"
 
     html = <<-HTML
-    <div id="error_explanation">
+    <div id="error_explanation" class="error">
       <h2>#{sentence}</h2>
       <ul>#{messages}</ul>
     </div>
