@@ -15,7 +15,11 @@
 -           #
 -           #
 ***************************************/
+body {
+    background: url("/images/bg.png") repeat-x scroll left top transparent;
+    font: 12px/20px Helvetica,Arial,sans-serif;
 
+}
 
 /**************************************/
 /*              GLOBALS               */

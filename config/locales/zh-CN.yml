@@ -10,7 +10,7 @@ zh-CN:
     password: 密码
     password_confirmation: 密码确认
     remember_me: 记住我
-
+    new_user_sign_up: 新用户注册
     nick_name: 昵称
     gender: 性别
 

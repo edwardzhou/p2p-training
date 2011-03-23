@@ -1,7 +1,7 @@
 class CreateUserDetails < ActiveRecord::Migration
   def self.up
     create_table :user_details do |t|
-      t.int :user_id
+      t.references :user
       t.string :true_name
       t.string :company
       t.string :contact_phone
