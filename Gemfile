@@ -12,6 +12,7 @@ gem 'hpricot'
 gem 'ruby_parser'
 
 gem 'devise'
+gem 'jquery-rails'
 
 #gem 'ruby-debug19'
 

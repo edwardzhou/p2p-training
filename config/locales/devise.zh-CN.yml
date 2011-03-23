@@ -5,7 +5,6 @@ zh-CN:
       already_confirmed: "已经确认"
       not_locked: "没有锁定"
   devise:
-    email: 邮件
     failure:
       unauthenticated: '继续操作前请注册或者登录.'
       unconfirmed: '请先激活您的帐号'
