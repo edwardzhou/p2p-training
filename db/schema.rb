@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110322090146) do
+ActiveRecord::Schema.define(:version => 20110323151309) do
+
+  create_table "user_details", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "true_name",     :limit => 20
+    t.string   "id_card",       :limit => 20
+    t.date     "birthday"
+    t.string   "company",       :limit => 100
+    t.string   "company_size",  :limit => 50
+    t.string   "contact_phone", :limit => 50
+    t.string   "address",       :limit => 200
+    t.string   "zip",           :limit => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

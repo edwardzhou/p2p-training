@@ -18,5 +18,11 @@
       .span-2= f.label :gender, t("label.gender")
       = f.select :gender, {t('label.male') => :male, t('label.female') => :female}
     %hr/
+    = f.fields_for :user_detail do |ud|
+      %p
+        .span-2= ud.label :true_name, t('label.true_name')
+        = ud.text_field :true_name
+
+
     %p(style="text-align:center;")= f.submit t('label.sign_up') , :class => 'span-2'
 = render :partial => "devise/shared/links"
