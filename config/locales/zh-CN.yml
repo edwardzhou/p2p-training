@@ -6,13 +6,16 @@ zh-CN:
     login_as: 欢迎 <u>%{username}</u>
     sign_in: 登录
     sign_up: 注册
-    email: 电子邮件
+    email: 邮箱
     password: 密码
     password_confirmation: 密码确认
     remember_me: 记住我
     new_user_sign_up: 新用户注册
     nick_name: 昵称
     gender: 性别
+    male: 男
+    female: 女
+
 
     application:
       title: 专业人员对专业人员的培训网 - Professional to Professional Training

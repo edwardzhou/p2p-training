@@ -3,7 +3,9 @@ class CreateUserDetails < ActiveRecord::Migration
     create_table :user_details do |t|
       t.references :user
       t.string :true_name
+      t.string :id_card
       t.string :company
+      t.string :company_size
       t.string :contact_phone
       t.string :address
       t.string :zip
