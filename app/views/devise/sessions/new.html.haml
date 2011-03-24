@@ -1,13 +1,23 @@
+- content_for :page_include_scripts do
+  = javascript_include_tag 'jquery.validate', 'messages_cn'
+
+- content_for :page_inline_scripts do
+  :javascript
+    $(document).ready(function(){
+      $("form").validate();
+    })
+
+
 %h2= t('label.sign_in')
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   = show_msg
   %fieldset
     %p
       .span-2= f.label :email, t('label.email')
-      = f.text_field :email
+      = f.text_field :email, :class => 'required email'
     %p
       .span-2= f.label :password, t('label.password')
-      = f.password_field :password
+      = f.password_field :password, :class => 'required', :minlength => 6
     - if devise_mapping.rememberable?
       %p
         = f.check_box :remember_me
