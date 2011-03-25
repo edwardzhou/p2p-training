@@ -6,18 +6,36 @@ zh-CN:
     login_as: 欢迎 <u>%{username}</u>
     sign_in: 登录
     sign_up: 注册
-    email: 邮箱
-    password: 密码
-    password_confirmation: 密码确认
-    remember_me: 记住我
+
     new_user_sign_up: 新用户注册
-    nick_name: 昵称
-    gender: 性别
-    male: 男
-    female: 女
+
+    gender:
+      male: 男
+      female: 女
 
 
     application:
       title: 专业人员对专业人员的培训网 - Professional to Professional Training
 
+
+  attributes:
+    email: 邮箱
+    password: 密码
+    gender: 性别
+    password_confirmation: 密码确认
+    remember_me: 记住我
+    nick_name: 昵称
+    true_name: 真实姓名
+    birthday: 生日
+    id_card: 身份证号
+    contact_phone: 联系电话
+    address: 地址
+
+  activerecord:
+    models:
+      user: 用户
+    attributes:
+      user_detail:
+        company: 公司
+        company_size: 公司规模
 

@@ -10,13 +10,21 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :nick_name, :gender, :user_detail
+                  :nick_name, :gender, :user_detail_attributes
 
+  accepts_nested_attributes_for :user_detail
+
+=begin
   def initialize(attributes=nil)
-    super
+    super(attributes)
 
-    user_detail_attrs = (attributes.nil?) ? nil : ( (attributes[:user_detail].nil?) ? nil : attributes[:user_detail] )
-    self.build_user_detail user_detail_attrs
+
+    if self.user_detail.nil? then
+      self.logger.debug("Init user_detail")
+      user_detail_attrs = (attributes.nil?) ? nil : ( (attributes[:user_detail].nil?) ? nil : attributes[:user_detail] )
+      self.build_user_detail user_detail_attrs
+    end
   end
+=end
 
 end

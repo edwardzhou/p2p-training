@@ -6,7 +6,9 @@
    Thanks to Priss Print Framework
  http://github.com/mikecrittenden/priss
 ***************************************/
+
 /*** BODY ***/
+
 body {
   width: 100% !important;
   margin: 0 !important;
@@ -20,6 +22,7 @@ body {
   font-size: 12pt; }
 
 /*** HEADINGS ***/
+
 h1, h2, h3, h4, h5, h6 {
   font-family: Helvetica, Arial, sans-serif; }
 
@@ -36,6 +39,7 @@ h4, h5, h6 {
   font-size: 12pt; }
 
 /*** ELEMENTS ***/
+
 code {
   font: 10px monospace; }
 
@@ -48,28 +52,32 @@ hr {
   background-color: #ccc; }
 
 /*** IMAGES ***/
+
 img {
   float: left;
   margin: 1em 1.5em 1.5em 0; }
 
-a img {
-  border: none; }
-a:link, a:visited {
-  background: transparent;
-  font-weight: 700;
-  text-decoration: underline;
-  color: #333; }
-a:link[href^="http://"]:after {
-  content: " (" attr(href) ") ";
-  font-size: 90%; }
-a[href^="http://"] {
-  color: #000; }
-  a[href^="http://"]:visited:after {
+a {
+  img {
+    border: none; }
+  &:link, &:visited {
+    background: transparent;
+    font-weight: 700;
+    text-decoration: underline;
+    color: #333; }
+  &:link[href^="http://"]:after {
     content: " (" attr(href) ") ";
     font-size: 90%; }
+  &[href^="http://"] {
+    &:visited:after {
+      content: " (" attr(href) ") ";
+      font-size: 90%; }
+    color: #000; } }
 
 /*** LINKS ***/
+
 /*** TABLES ***/
+
 table {
   margin: 1px;
   text-align: left; }
@@ -99,5 +107,6 @@ tr {
   page-break-inside: avoid; }
 
 /*** Add sections here to hide various parts of the site when printing ***/
+
 #header, #footer, #navigation, #sidebar, button {
   display: none; }

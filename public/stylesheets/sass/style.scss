@@ -1,0 +1,73 @@
+/*************************************
+   WELCOME TO THE CUSTOM STYLESHEET
+--------------------------------------
+              style.css
+        BlueTrip CSS Framework
+    Put your custom styles in here.
+***************************************/
+@import "screen";
+
+/**************************************/
+/*           COLOR SCHEME             */
+/**************************************
+- black		#000
+- white		#fff
+-           #
+-           #
+-           #
+***************************************/
+
+/**************************************/
+/*              GLOBALS               */
+/**************************************/
+
+body {
+  background: url("../images/bg.png") repeat-x scroll left top transparent; }
+
+.align_right {
+  text-align: right; }
+
+.align_left {
+  text-align: left; }
+
+.align_center {
+  text-align: center; }
+
+
+/**************************************/
+/*              HEADER                */
+/**************************************/
+
+/**************************************/
+/*             NAVIGATION             */
+/**************************************/
+
+div#user_nav {
+  text-align: right; }
+
+/**************************************/
+/*            MAIN CONTENT            */
+/**************************************/
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+  width: inherit; }
+
+.error_msg {
+  color: red; }
+
+.field_label {
+    @extend .span-2;
+    @extend .align_right;
+}
+
+.required_field_label {
+    @extend .field_label;
+    color: PURPLE;
+}
+
+/**************************************/
+/*               FOOTER               */
+/**************************************/

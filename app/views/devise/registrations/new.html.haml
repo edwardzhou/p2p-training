@@ -1,27 +1,43 @@
+- content_for :page_include_scripts do
+  = javascript_include_tag 'jquery.validate'
+  = javascript_include_tag 'i18n/messages-zh-CN'
+  = javascript_include_tag 'i18n/jquery.ui.datepicker-zh-CN'
+
+- content_for :page_inline_scripts do
+  :javascript
+    $(document).ready(function(){
+      $("form").validate({errorClass: 'error_msg'});
+      $('input[date=true]').datepicker({
+        showButtonPanel: true,
+        changeYear: true
+        })
+    })
+
+- content_for :page_include_css do
+  = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom"
+
 %h2= t('label.sign_up')
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+= form_for(setup_user(resource), :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
   %fieldset
     %p
-      .span-2= f.label :email, t('label.email')
-      = f.text_field :email
+      .required_field_label= f.label :email
+      = f.text_field :email, :class => "required email"
     %p
-      .span-2= f.label :password, t('label.password')
-      = f.password_field :password
+      .required_field_label= f.label :password
+      = f.password_field :password, :class => "required", :minlength => 6
     %p
-      .span-2= f.label :password_confirmation, t('label.password_confirmation')
-      = f.password_field :password_confirmation
+      .required_field_label= f.label :password_confirmation
+      = f.password_field :password_confirmation, :class => "required", :equalto => '#user_password', :minlength => 6
     %p
-      .span-2= f.label :nick_name, t("label.nick_name")
-      = f.text_field :nick_name, :max_length => 20
+      .required_field_label= f.label :nick_name
+      = f.text_field :nick_name, :class => "required", :maxlength => 20, :size => 30
     %p
-      .span-2= f.label :gender, t("label.gender")
-      = f.select :gender, {t('label.male') => :male, t('label.female') => :female}
+      .field_label= f.label :gender
+      = f.select :gender, {t('label.gender.male') => :male, t('label.gender.female') => :female}
     %hr/
     = f.fields_for :user_detail do |ud|
-      %p
-        .span-2= ud.label :true_name, t('label.true_name')
-        = ud.text_field :true_name
+      = render "user/user_detail_form", :ud_form => ud
 
 
     %p(style="text-align:center;")= f.submit t('label.sign_up') , :class => 'span-2'

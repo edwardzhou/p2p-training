@@ -1,0 +1,25 @@
+%p
+  .required_field_label= ud_form.label :true_name
+  = ud_form.text_field :true_name, :class => "required"
+%p
+  .required_field_label= ud_form.label :contact_phone
+  = ud_form.text_field :contact_phone, :class => "required"
+%p
+  .field_label= ud_form.label :id_card
+  = ud_form.text_field :id_card
+%p
+  .field_label= ud_form.label :birthday
+  = ud_form.text_field :birthday, :class => "date" , :date => "true"
+%p
+  .field_label= ud_form.label :company
+  = ud_form.text_field :company
+%p
+  .field_label= ud_form.label :company_size
+  = ud_form.text_field :company_size
+%p
+  .field_label= ud_form.label :address
+  = ud_form.text_field :address
+%p
+  .field_label= ud_form.label :zip
+  = ud_form.text_field :zip
+
