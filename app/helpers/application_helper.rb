@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def setup_user(user)
-    returning(user) do |u|
+    user.tap do |u|
       u.build_user_detail if u.user_detail.nil?
     end
   end

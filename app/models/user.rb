@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :nick_name
+  validates_uniqueness_of :nick_name
 
   has_one :user_detail
 
