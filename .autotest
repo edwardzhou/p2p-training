@@ -1,5 +1,7 @@
+#require 'active_support'
+require 'active_support/inflector'
 require 'autotest/timestamp'
-require 'active_support'
+
 
 module Autotest::GnomeNotify
 
@@ -38,14 +40,16 @@ module Autotest::GnomeNotify
     #p icon[stock_icon]
     options = "-t #{EXPIRATION_IN_SECONDS * 1000} -i #{icon[stock_icon]}"
     cmd = "notify-send #{options} '#{title} test result' '#{message}'"
-    #p cmd
     system cmd
   end
 
   def self.parse_results(at)
     ran_results_re = /\d+ example(s?), \d+ failure(s?)(?:, \d+ pending)?/
     completed = at.results[ran_results_re]
-    ran_results = completed.scan(/(\d+) (\w+)/).map {|v, k| [k.singularize, v.to_i]}
+    ran_results = completed.scan(/(\d+) (\w+)/).map do |v, k|
+      sk = ActiveSupport::Inflector.singularize(k).to_sym
+      [sk, v.to_i]
+    end
     results = Hash[*ran_results.flatten]
   end
 
@@ -57,15 +61,18 @@ module Autotest::GnomeNotify
 
   Autotest.add_hook :red do |at|
     result = parse_results(at)
-    notify :red, APP_TITLE, "#{at.files_to_test.size} tests failed, #{result['pending']} pending."
+    msg = "#{result[:example]} executed, #{result[:failure]} failure(s)"
+    msg << ", #{result[:pending]} pending." if result[:pending]
+    notify :red, APP_TITLE, msg
   end
 
   Autotest.add_hook :green do |at|
     result = parse_results(at)
-    if (!result["pending"].nil?) && (result["pending"] > 0) then
-      notify :info, APP_TITLE, "#{result['example']} executed, #{result['pending']} pending."
+    p result
+    if (!result[:pending].nil?) && (result[:pending] > 0) then
+      notify :info, APP_TITLE, "#{result[:example]} executed, #{result[:pending]} pending."
     else
-      notify :green, APP_TITLE, "#{result['example']} executed."
+      notify :green, APP_TITLE, "#{result[:example]} executed."
     end
 
   end
