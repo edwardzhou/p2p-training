@@ -49,3 +49,7 @@ group :development, :test do
   gem 'capybara'
   gem 'ZenTest'
 end
+
+group :test do
+  gem 'factory_girl_rails'
+end

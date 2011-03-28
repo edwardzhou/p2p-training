@@ -20,19 +20,20 @@
 = form_for(setup_user(resource), :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
   %fieldset
-    %p
+    %p/
+    .field
       .required_field_label= f.label :email
       = f.text_field :email, :class => "required email"
-    %p
+    .field
       .required_field_label= f.label :password
       = f.password_field :password, :class => "required", :minlength => 6
-    %p
+    .field
       .required_field_label= f.label :password_confirmation
       = f.password_field :password_confirmation, :class => "required", :equalto => '#user_password', :minlength => 6
-    %p
+    .field
       .required_field_label= f.label :nick_name
       = f.text_field :nick_name, :class => "required", :maxlength => 20, :size => 30
-    %p
+    .field
       .field_label= f.label :gender
       = f.select :gender, {t('label.gender.male') => :male, t('label.gender.female') => :female}
     %hr/

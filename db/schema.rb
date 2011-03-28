@@ -10,7 +10,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323151309) do
+ActiveRecord::Schema.define(:version => 20110328034302) do
+
+  create_table "catalogs", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "enabled",           :default => true
+    t.integer  "parent_catalog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "course_name"
+    t.string   "version"
+    t.string   "status"
+    t.text     "short_description"
+    t.text     "long_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses_catalogs", :id => false, :force => true do |t|
+    t.integer "course_id",  :null => false
+    t.integer "catalog_id", :null => false
+  end
 
   create_table "user_details", :force => true do |t|
     t.integer  "user_id"

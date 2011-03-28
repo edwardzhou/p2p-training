@@ -4,7 +4,6 @@ class CreateCourses < ActiveRecord::Migration
       t.string :course_name
       t.string :version
       t.string :status
-      t.belongs_to :catalog
       t.text :short_description
       t.text :long_description
 
