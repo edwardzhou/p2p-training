@@ -7,7 +7,7 @@ module Autotest::GnomeNotify
 
   # Time notification will be displayed before disappearing automatically
   APP_TITLE = "p2p-training"
-  EXPIRATION_IN_SECONDS = 8
+  EXPIRATION_IN_SECONDS = 10
   ERROR_STOCK_ICON = "gtk-cancel"
   SUCCESS_STOCK_ICON = "gtk-apply"
   WARNING_STOCK_ICON = "gtk-info"
@@ -43,11 +43,11 @@ module Autotest::GnomeNotify
     system cmd
   end
 
-  def self.parse_results(at)
-    ran_results_re = /\d+ example(s?), \d+ failure(s?)(?:, \d+ pending)?/
+  def self.parse_rspec_results(at)
+    ran_results_re = /\d+ example(s?), \d+ failure(s?)(?:, \d+ pending)?/mi
     completed = at.results[ran_results_re]
     ran_results = completed.scan(/(\d+) (\w+)/).map do |v, k|
-      sk = ActiveSupport::Inflector.singularize(k).to_sym
+      sk = ActiveSupport::Inflector.singularize(k.downcase).to_sym
       [sk, v.to_i]
     end
     results = Hash[*ran_results.flatten]
@@ -60,21 +60,45 @@ module Autotest::GnomeNotify
   end
 
   Autotest.add_hook :red do |at|
-    result = parse_results(at)
+    result = parse_rspec_results(at)
     msg = "#{result[:example]} executed, #{result[:failure]} failure(s)"
     msg << ", #{result[:pending]} pending." if result[:pending]
     notify :red, APP_TITLE, msg
   end
 
   Autotest.add_hook :green do |at|
-    result = parse_results(at)
-    p result
+    result = parse_rspec_results(at)
     if (!result[:pending].nil?) && (result[:pending] > 0) then
       notify :info, APP_TITLE, "#{result[:example]} executed, #{result[:pending]} pending."
     else
       notify :green, APP_TITLE, "#{result[:example]} executed."
     end
-
   end
+
+  Autotest.add_hook :ran_features do |at|
+    results = at.results.select{ |line| line =~ /\d+ \w+/
+              }.collect{|line|
+                line.gsub(/\e\[\d*m/, '')}.join
+
+    if results =~ /failed|undefined/m then
+      results << at.features_to_run
+      notify :red, "#{APP_TITLE} - Cucumber", results
+    elsif results =~ /pending/m then
+      results << at.features_to_run
+      notify :info,"#{APP_TITLE} - Cucumber", results
+    else
+      notify :green,"#{APP_TITLE} - Cucumber", results
+    end
+
+
+#    result = parse_rspec_results(at)
+#    p result
+#    if (!result[:pending].nil?) && (result[:pending] > 0) then
+#      notify :info, APP_TITLE, "#{result[:example]} executed, #{result[:pending]} pending."
+#    else
+#      notify :green, APP_TITLE, "#{result[:example]} executed."
+#    end
+  end
+
 
 end
