@@ -1,10 +1,8 @@
-Feature: Manage Cagalogs
+Feature: Manage Catalogs
 
   Scenario: Demo
-    Given I have catalogs named Programming, Project Management
 
 
   Scenario: X2
-    When I press "submit"
 
 
