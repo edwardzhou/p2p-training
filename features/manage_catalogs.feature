@@ -5,4 +5,7 @@ Feature: Manage Cagalogs
 
 
   Scenario: X2
+
     When I press "submit"
+
+
