@@ -36,7 +36,7 @@ describe Catalog do
     end
 
     it "should be programming" do
-      Catalog.root_catalogs.first.name.should != "programming"
+      Catalog.root_catalogs.first.name.should == "programming"
     end
   end
 
