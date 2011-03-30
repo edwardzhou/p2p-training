@@ -60,6 +60,9 @@ module Autotest::GnomeNotify
     at.add_exception(%r{^\./tmp})
     at.add_exception(%r{^\./Gemfile\.lock})
     at.add_exception(%r{^\./\.idea})
+    at.add_exception(%r{^\./.*\.log})
+    at.add_exception(%r{^\./rerun\.txt})
+
   end
 
   Autotest.add_hook :red do |at|
@@ -79,7 +82,7 @@ module Autotest::GnomeNotify
   end
 
   Autotest.add_hook :ran_features do |at|
-    results = at.results.select{ |line| line =~ /\d+ \w+/
+    results = at.results.select{ |line| line =~ /^\d+ \w+/
               }.collect{|line|
                 line.gsub(/\e\[\d*m/, '')}.join
 

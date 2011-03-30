@@ -49,6 +49,7 @@ group :development, :test do
   gem 'capybara'
   gem 'ZenTest'
   gem 'spork', '~> 0.9.0.rc'
+  gem 'akephalos'
 end
 
 group :test do

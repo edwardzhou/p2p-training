@@ -1,6 +1,6 @@
 Feature: Manage Catalogs
 
-  Scenario: Demo
+  Scenario: Show
 
 
   Scenario: X2

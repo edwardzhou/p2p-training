@@ -12,14 +12,15 @@
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   = show_msg
   %fieldset
-    %p
+    #field_email.field
       .field_label= f.label :email
       = f.text_field :email, :class => 'required email'
-    %p
+      myemail
+    #field_password.field
       .field_label= f.label :password
       = f.password_field :password, :class => 'required', :minlength => 6
     - if devise_mapping.rememberable?
-      %p
+      #field_remember_me.field
         = f.check_box :remember_me
         = f.label :remember_me
     %p(style="text-align:center;")= f.submit t('label.sign_in'), :class => 'span-2'

@@ -41,7 +41,10 @@ describe Catalog do
   end
 
   describe "parent_catalog" do
-    it "should "
+    it "java.parent_catalog should be programming" do
+      Catalog.where(:name => 'java').first \
+        .parent_catalog.name.should == "programming"
+    end
 
   end
 
