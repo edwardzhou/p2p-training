@@ -27,6 +27,7 @@ describe Catalog do
         Catalog.where(:name => 'programming').first
       }.call.should have(1).active_sub_catalogs
     end
+
   end
 
   describe "root_catalogs" do
@@ -35,8 +36,13 @@ describe Catalog do
     end
 
     it "should be programming" do
-      Catalog.root_catalogs.first.name.should == "programming"
+      Catalog.root_catalogs.first.name.should != "programming"
     end
+  end
+
+  describe "parent_catalog" do
+    it "should "
+
   end
 
 end
