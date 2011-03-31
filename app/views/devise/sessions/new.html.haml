@@ -12,6 +12,7 @@
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   = show_msg
   %fieldset
+    %p/
     #field_email.field
       .field_label= f.label :email
       = f.text_field :email, :class => 'required email'

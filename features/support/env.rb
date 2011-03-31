@@ -17,7 +17,9 @@ Spork.prefork do
   require 'cucumber/rails/active_record'
   require 'cucumber/web/tableish'
 
-  require 'akephalos'
+  Dir["#{Rails.root}/spec/factories/*.rb"].each {|f| require f}
+
+  #require 'akephalos'
   require 'capybara/rails'
   require 'capybara/cucumber'
   require 'capybara/session'
@@ -27,7 +29,12 @@ Spork.prefork do
   # prefer to use XPath just remove this line and adjust any selectors in your
   # steps to use the XPath syntax.
   Capybara.default_selector = :css
-  Capybara.javascript_driver = :akephalos
+  #Capybara.default_driver= :selenium
+  #Capybara.javascript_driver = :akephalos
+  #Capybara.default_wait_time = 5
+
+  #Capybara.javascript_driver = :culerity
+
 
 
 

@@ -25,17 +25,21 @@ zh-CN:
     password_confirmation: 密码确认
     remember_me: 记住我
     nick_name: 昵称
-    true_name: 真实姓名
-    birthday: 生日
-    id_card: 身份证号
-    contact_phone: 联系电话
-    address: 地址
 
   activerecord:
     models:
       user: 用户
+
     attributes:
-      user_detail:
+      user_detail: &ud_attrs
+        true_name: 真实姓名
+        birthday: 生日
+        id_card: 身份证号
+        contact_phone: 联系电话
+        address: 地址
         company: 公司
         company_size: 公司规模
 
+      user:
+        user_detail:
+          <<: *ud_attrs
