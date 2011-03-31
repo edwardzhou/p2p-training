@@ -10,7 +10,7 @@ Feature: Manage Catalogs
       |UML            |true       |
     When I am on the home page
     Then I should see "programming" within "div#catalog_nav"
-    And I should see "UML" within "div#catalog_nav"
+    And I should see a link "UML" within "div#catalog_nav"
 
 
 
