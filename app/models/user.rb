@@ -15,17 +15,11 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :user_detail
 
-=begin
-  def initialize(attributes=nil)
-    super(attributes)
+  after_initialize :initialize_user_detail
 
-
-    if self.user_detail.nil? then
-      self.logger.debug("Init user_detail")
-      user_detail_attrs = (attributes.nil?) ? nil : ( (attributes[:user_detail].nil?) ? nil : attributes[:user_detail] )
-      self.build_user_detail user_detail_attrs
-    end
+  private
+  def initialize_user_detail
+    self.build_user_detail unless user_detail
   end
-=end
 
 end

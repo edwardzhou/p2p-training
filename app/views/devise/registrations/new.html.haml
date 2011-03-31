@@ -17,10 +17,10 @@
   = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom"
 
 %h2= t('label.sign_up')
-= form_for(setup_user(resource), :as => resource_name, :url => registration_path(resource_name)) do |f|
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
   %fieldset
-    %p/
+    %p 登录信息
     #field_email.field
       .required_field_label= f.label :email
       = f.text_field :email, :class => "required email"
@@ -37,6 +37,7 @@
       .field_label= f.label :gender
       = f.select :gender, {t('label.gender.male') => :male, t('label.gender.female') => :female}
     %hr/
+    %p 个人信息
     = f.fields_for :user_detail do |ud|
       = render "user/user_detail_form", :ud_form => ud
     %p/
