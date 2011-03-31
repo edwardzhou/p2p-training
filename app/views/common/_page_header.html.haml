@@ -2,3 +2,6 @@
   .span-12 top 1
   .span-12.last
     = render "common/user_nav"
+
+  .span-24.last
+    = render "common/catalog_nav_bar", :catalogs => Catalog.root_catalogs
