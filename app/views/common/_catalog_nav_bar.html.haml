@@ -1,4 +1,5 @@
-#catalog_nav
-  - catalogs.each do |catalog|
-    #catalog.span-2
-      = catalog.name
+#inner-header
+  %ul
+    - catalogs.each do |catalog|
+      %li
+        = link_to catalog.name, '/'

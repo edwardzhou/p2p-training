@@ -20,24 +20,10 @@
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
   %fieldset
-    %p 登录信息
-    #field_email.field
-      .required_field_label= f.label :email
-      = f.text_field :email, :class => "required email"
-    #field_password.field
-      .required_field_label= f.label :password
-      = f.password_field :password, :class => "required", :minlength => 6
-    #field_password_confirmation.field
-      .required_field_label= f.label :password_confirmation
-      = f.password_field :password_confirmation, :class => "required", :equalto => '#user_password', :minlength => 6
-    #field_nick_name.field
-      .required_field_label= f.label :nick_name
-      = f.text_field :nick_name, :class => "required", :maxlength => 20, :size => 30
-    #field_gender.field
-      .field_label= f.label :gender
-      = f.select :gender, {t('label.gender.male') => :male, t('label.gender.female') => :female}
+    %h6 登录信息
+    = render "user/new_user_form", :f => f
     %hr/
-    %p 个人信息
+    %h6 个人信息
     = f.fields_for :user_detail do |ud|
       = render "user/user_detail_form", :ud_form => ud
     %p/
