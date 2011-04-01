@@ -1,3 +1,4 @@
+# encoding: utf-8
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -16,7 +17,7 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-      when /login page/
+      when /(login page)|(登录页面)/
         new_user_session_path
 
     else

@@ -16,38 +16,36 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "pat
 #end
 #World(WithinHelpers)
 
-Given /^我位于(.+)$/ do |page_name|
+Given /^(?:|我)位于\s*(.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^我打开(.+)$/ do |page_name|
+When /^(?:|我)打开\s*(.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^(?:|我)(?:在\<([^\>]*)\>里面)?按下按钮\s*"([^\"]*)"$/ do |selector, button|
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?按下按钮\s*"([^\"]*)"$/ do |selector, button|
   with_scope(selector) do
     click_button(button)
   end
 end
 
-When /^我点击链接"([^\"]*)"$/ do |link|
-  click_link(link)
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?点击链接\s*"([^\"]*)"$/ do |selector, link|
+  with_scope(selector) do
+    click_link(link)
+  end
 end
 
-When /^我在"([^\"]*)"里面点击链接"([^\"]*)"$/ do |parent, link|
-  click_link_within(parent, link)
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?填入\s*"([^\"]*)"\s*到\s*"([^\"]*)"$/ do |selector, value, field|
+  with_scope(selector) do
+    fill_in(field, :with => value)
+  end
 end
 
-When /^我点击"([^\"]*)"的链接"([^\"]*)"$/ do |title, link|
-  pending
-end
-
-When /^我在"([^\"]*)"填入"([^\"]*)"$/ do |field, value|
-  fill_in(field, :with => value)
-end
-
-When /^我填入"([^\"]*)"给"([^\"]*)"$/ do |value, field|
-  fill_in(field, :with => value)
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?给\s*"([^\"]*)"\s*填入\s*"([^\"]*)"$/ do |selector, field, value|
+  with_scope(selector) do
+    fill_in(field, :with => value)
+  end
 end
 
 # Use this to fill in an entire form with data from a table. Example:
@@ -61,19 +59,168 @@ end
 # TODO: Add support for checkbox, select og option
 # based on naming conventions.
 #
-When /^我填入下列:$/ do |fields|
-  fields.rows_hash.each do |name, value|
-    When %{我在"#{name}"填入"#{value}"}
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?填入下列:$/ do |selector, fields|
+  with_scope(selector) do
+    fields.rows_hash.each do |name, value|
+      When %{我g给<#{name}>填入<#{value}>}
+    end
   end
 end
 
-When /^我从"([^\"]*)"选取"([^\"]*)"$/ do |field, value|
-  select(value, :from => field)
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?从\s*"([^\"]*)"\s*选取\s*"([^\"]*)"$/ do |selector, field, value|
+  with_scope(selector) do
+    select(value, :from => field)
+  end
+end
+
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?勾上\s*"([^\"]*)"$/ do |selector, field|
+  with_scope(selector) do
+    check(field)
+  end
+end
+
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?取消勾上\s*"([^\"]*)"$/ do |selector, field|
+  with_scope(selector) do
+    uncheck(field)
+  end
+end
+
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?选择\s*"([^\"]*)"$/ do |selector, field|
+  with_scope(selector) do
+    choose(field)
+  end
+end
+
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?附加文件\s*"([^\"]*)"\s*给\s*"([^\"]*)"$/ do |selector, path, field|
+  with_scope(selector) do
+    attach_file(field, path)
+  end
+end
+
+Then /^(?:|我)应当看到\s*JSON:$/ do |expected_json|
+  require 'json'
+  expected = JSON.pretty_generate(JSON.parse(expected_json))
+  actual   = JSON.pretty_generate(JSON.parse(response.body))
+  expected.should == actual
+end
+
+Then /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?应当看到\s*"([^\"]*)"$/ do |selector, text|
+  with_scope(selector) do
+    if page.respond_to? :should
+      page.should have_content(text)
+    else
+      assert page.has_content?(text)
+    end
+  end
+end
+
+Then /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?应当看到\s*\/([^\/]*)\/$/ do |selector, regexp|
+  regexp = Regexp.new(regexp)
+  with_scope(selector) do
+    if page.respond_to? :should
+      page.should have_xpath('//*', :text => regexp)
+    else
+      assert page.has_xpath?('//*', :text => regexp)
+    end
+  end
+end
+
+Then /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?应当看不到\s*"([^\"]*)"$/ do |selector, text|
+  with_scope(selector) do
+    if page.respond_to? :should
+      page.should have_no_content(text)
+    else
+      assert page.has_no_content?(text)
+    end
+  end
+end
+
+Then /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?应当看不到\s*\/([^\/]*)\/$/ do |selector, regexp|
+  regexp = Regexp.new(regexp)
+  with_scope(selector) do
+    if page.respond_to? :should
+      page.should have_no_xpath('//*', :text => regexp)
+    else
+      assert page.has_no_xpath?('//*', :text => regexp)
+    end
+  end
+end
+
+Then /^(?:在\s*"([^\"]*)"\s*里面)?字段\s*"([^\"]*)"\s*应当包含\s*"([^\"]*)"$/ do |selector, field, value|
+  with_scope(selector) do
+    field = find_field(field)
+    field_value = (field.tag_name == 'textarea') ? field.text : field.value
+    if field_value.respond_to? :should
+      field_value.should =~ /#{value}/
+    else
+      assert_match(/#{value}/, field_value)
+    end
+  end
+end
+
+Then /^(?:在\s*"([^\"]*)"\s*里面)?字段\s*"([^\"]*)"\s*应当不包含\s*"([^\"]*)"$/ do |selector, field, value|
+  with_scope(selector) do
+    field = find_field(field)
+    field_value = (field.tag_name == 'textarea') ? field.text : field.value
+    if field_value.respond_to? :should_not
+      field_value.should_not =~ /#{value}/
+    else
+      assert_no_match(/#{value}/, field_value)
+    end
+  end
+end
+
+Then /^(?:在\s*"([^\"]*)"\s*里面)?复选框\s*"([^\"]*)"\s*应当是勾上的$/ do |selector, label|
+  with_scope(selector) do
+    field_checked = find_field(label)['checked']
+    if field_checked.respond_to? :should
+      field_checked.should be_true
+    else
+      assert field_checked
+    end
+  end
+end
+
+Then /^(?:在\s*"([^\"]*)"\s*里面)?复选框\s*"([^\"]*)"\s*应当不是勾上的$/ do |selector, label|
+  with_scope(selector) do
+    field_checked = find_field(label)['checked']
+    if field_checked.respond_to? :should
+      field_checked.should be_false
+    else
+      assert !field_checked
+    end
+  end
+end
+
+Then /^(?:|我)应当在页面\s*(.+)$/ do |page_name|
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :should
+    current_path.should == path_to(page_name)
+  else
+    assert_equal path_to(page_name), current_path
+  end
+end
+
+Then /^(?:|我)应当有如下查询字符串:$/ do |expected_pairs|
+  query = URI.parse(current_url).query
+  actual_params = query ? CGI.parse(query) : {}
+  expected_params = {}
+  expected_pairs.rows_hash.each_pair{|k,v| expected_params[k] = v.split(',')}
+
+  if actual_params.respond_to? :should
+    actual_params.should == expected_params
+  else
+    assert_equal expected_params, actual_params
+  end
+end
+
+Then /^显示页面$/ do
+  save_and_open_page
 end
 
 # Use this step in conjunction with Rail's datetime_select helper. For example:
 # When I select "December 25, 2008 10:00" as the date and time
-When /^我选取"([^\"]*)"为日期时间$/ do |time|
+When /^(?:|我)选取\s*"([^\"]*)"为日期时间$/ do |time|
   select_datetime(time)
 end
 
@@ -86,7 +233,7 @@ end
 # The following steps would fill out the form:
 # When I select "November 23, 2004 11:20" as the "Preferred" date and time
 # And I select "November 25, 2004 10:30" as the "Alternative" date and time
-When /^我选取"([^\"]*)"作为"([^\"]*)"的日期时间$/ do |datetime, datetime_label|
+When /^(?:|我)选取"([^\"]*)"作为\s*"([^\"]*)"\s*的日期时间$/ do |datetime, datetime_label|
   select_datetime(datetime, :from => datetime_label)
 end
 
@@ -94,90 +241,27 @@ end
 # When I select "2:20PM" as the time
 # Note: Rail's default time helper provides 24-hour time-- not 12 hour time. Webrat
 # will convert the 2:20PM to 14:20 and then select it.
-When /^我选取"([^\"]*)"作为时间$/ do |time|
+When /^(?:|我)选取\s*"([^\"]*)"\s*作为时间$/ do |time|
   select_time(time)
 end
 
 # Use this step when using multiple time_select helpers on a page or you want to
 # specify the name of the time on the form.  For example:
 # When I select "7:30AM" as the "Gym" time
-When /^我选取"([^\"]*)"作为"([^\"]*)"的时间$/ do |time, time_label|
+When /^(?:|我)选取"([^\"]*)"作为\s*"([^\"]*)"\s*的时间$/ do |time, time_label|
   select_time(time, :from => time_label)
 end
 
 # Use this step in conjunction with Rail's date_select helper.  For example:
 # When I select "February 20, 1981" as the date
-When /^我选取"([^\"]*)"作为日期$/ do |date|
+When /^(?:|我)选取\s*"([^\"]*)"\s*作为日期$/ do |date|
   select_date(date)
 end
 
 # Use this step when using multiple date_select helpers on one page or
 # you want to specify the name of the date on the form. For example:
 # When I select "April 26, 1982" as the "Date of Birth" date
-When /^我选取"([^\"]*)"作为"([^\"]*)"的日期$/ do |date, date_label|
+When /^(?:|我)选取"([^\"]*)"作为\s*"([^\"]*)"\s*的日期$/ do |date, date_label|
   select_date(date, :from => date_label)
 end
 
-When /^我勾上"([^\"]*)"$/ do |field|
-  check(field)
-end
-
-When /^我取消勾上"([^\"]*)"$/ do |field|
-  uncheck(field)
-end
-
-When /^我选择"([^\"]*)"$/ do |field|
-  choose(field)
-end
-
-When /^我附加文件"([^\"]*)"给"([^\"]*)"$/ do |path, field|
-  attach_file(field, path)
-end
-
-Then /^(?:|我)应当见到\s*"([^\"]*)"$/ do |text|
-  with_scope(nil) do
-    if page.respond_to? :should
-      page.should have_content(text)
-    else
-      assert page.has_content?(text)
-    end
-  end
-end
-
-Then /^我应当见到\/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
-  response.should contain(regexp)
-end
-
-Then /^我不应当见到"([^\"]*)"$/ do |text|
-  response.should_not contain(text)
-end
-
-Then /^我不应当见到\/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
-  response.should_not contain(regexp)
-end
-
-Then /^字段"([^\"]*)"应当包含"([^\"]*)"$/ do |field, value|
-  field_labeled(field).value.should =~ /#{value}/
-end
-
-Then /^字段"([^\"]*)"应当不包含"([^\"]*)"$/ do |field, value|
-  field_labeled(field).value.should_not =~ /#{value}/
-end
-
-Then /^复选框"([^\"]*)"应当是勾上的$/ do |label|
-  field_labeled(label).should be_checked
-end
-
-Then /^复选框"([^\"]*)"应当不是勾上的$/ do |label|
-  field_labeled(label).should_not be_checked
-end
-
-Then /^我应当在页面(.+)$/ do |page_name|
-  URI.parse(current_url).path.should == path_to(page_name)
-end
-
-Then /^显示页面$/ do
-  save_and_open_page
-end
