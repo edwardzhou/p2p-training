@@ -7,3 +7,7 @@ When /^I should see a link "([^\"]*)"(?: within "([^"]*)")?$/ do |locator, selec
     end
   end
 end
+
+When /^I dump page content$/ do
+  p page.source
+end

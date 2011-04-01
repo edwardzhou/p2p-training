@@ -25,7 +25,7 @@
     %hr/
     %h6 个人信息
     = f.fields_for :user_detail do |ud|
-      = render "user/user_detail_form", :ud_form => ud
+      = render "user/user_detail_form", :f => ud
     %p/
 
     .align_center= f.submit t('label.sign_up') , :class => 'span-2'

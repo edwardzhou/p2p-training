@@ -1,0 +1,26 @@
+zh-CN:
+  attributes:
+    email: 邮箱
+    password: 密码
+    gender: 性别
+    password_confirmation: 密码确认
+    remember_me: 记住我
+    nick_name: 昵称
+    true_name: 真实姓名
+    contact_phone: 联系电话
+
+  activerecord:
+    models:
+      user: 用户
+
+    attributes:
+      user_detail: &ud_attrs
+        birthday: 生日
+        id_card: 身份证号
+        address: 地址
+        company: 公司
+        company_size: 公司规模
+
+      user:
+        user_detail:
+          <<: *ud_attrs

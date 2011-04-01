@@ -10,6 +10,12 @@
 #field_nick_name.field
   .required_field_label= f.label :nick_name
   = f.text_field :nick_name, :class => "required", :maxlength => 20, :size => 30
+#field_true_name.field
+  .required_field_label= f.label :true_name
+  = f.text_field :true_name, :class => "required"
+#field_contact_phone.field
+  .required_field_label= f.label :contact_phone
+  = f.text_field :contact_phone, :class => "required"
 #field_gender.field
   .field_label= f.label :gender
   = f.select :gender, {t('label.gender.male') => :male, t('label.gender.female') => :female}

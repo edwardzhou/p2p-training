@@ -38,22 +38,20 @@ ActiveRecord::Schema.define(:version => 20110328034302) do
 
   create_table "user_details", :force => true do |t|
     t.integer  "user_id"
-    t.string   "true_name",     :limit => 20
-    t.string   "id_card",       :limit => 20
+    t.string   "id_card",      :limit => 20
     t.date     "birthday"
-    t.string   "company",       :limit => 100
-    t.string   "company_size",  :limit => 50
-    t.string   "contact_phone", :limit => 50
-    t.string   "address",       :limit => 200
-    t.string   "zip",           :limit => 10
+    t.string   "company",      :limit => 100
+    t.string   "company_size", :limit => 50
+    t.string   "address",      :limit => 200
+    t.string   "zip",          :limit => 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                               :default => "",     :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",     :null => false
+    t.string   "password_salt",                       :default => "",     :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -62,13 +60,20 @@ ActiveRecord::Schema.define(:version => 20110328034302) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "nick_name",            :limit => 20
+    t.string   "gender",               :limit => 20,  :default => "male"
+    t.string   "true_name",            :limit => 20
+    t.string   "contact_phone",        :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "nick_name"
-    t.string   "gender"
   end
 
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["nick_name"], :name => "index_users_on_nick_name", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

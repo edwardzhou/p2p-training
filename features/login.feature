@@ -27,28 +27,38 @@ Feature: Login
     Then I should be on login page
     And I should see "邮箱或密码错误" within "div#notice"
 
-  Scenario: Login with wrong password
+  Scenario: Login with wrong password before confirmation
     Given I have following user records
-      |email         |password      |password_confirmation|nick_name    |gender   |
-      |abc@abc.com   |abc123        |abc123               |ABC user     |male     |
+      |email         |password      |password_confirmation|nick_name    |gender   |true_name    |contact_phone   |
+      |abc@abc.com   |abc123        |abc123               |ABC user     |male     |张三         |88884444        |
     When I go to login page
     And I fill in "abc@abc.com" for "邮箱"
     And I fill in "123456" for "密码"
     And I press "登录"
     Then I should be on login page
-    And I should see "邮箱或密码错误" within "div#notice"
+    And I should see "请先激活您的帐号" within "div#notice"
 
-  Scenario: Login with correct email and password
+  Scenario: Login with correct email and password before confirmation
     Given I have following user records
-      |email         |password      |password_confirmation|nick_name    |gender   |
-      |abc@abc.com   |abc123        |abc123               |ABC user     |male     |
+      |email         |password      |password_confirmation|nick_name    |gender   |true_name    |contact_phone   |
+      |abc@abc.com   |abc123        |abc123               |ABC user     |male     |张三         |88884444        |
     When I go to login page
     And I fill in "abc@abc.com" for "邮箱"
     And I fill in "abc123" for "密码"
     And I press "登录"
-    Then I should be on the root page
-    And I should see "登录成功" within "div#notice"
+    Then I should be on login page
+    And I should see "请先激活您的帐号" within "div#notice"
 
+  Scenario: Login with confirmation
+    Given I have following user records
+      |email         |password      |password_confirmation|nick_name    |gender   |true_name    |contact_phone   |confirmed|
+      |abc@abc.com   |abc123        |abc123               |ABC user     |male     |张三         |88884444        | true    |
+    When I go to login page
+    And I fill in "abc@abc.com" for "邮箱"
+    And I fill in "abc123" for "密码"
+    And I press "登录"
+    Then I should be on the home page
+    And I should see "登录成功" within "div#notice"
 
 
 
