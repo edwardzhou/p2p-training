@@ -1,3 +1,4 @@
+@disabled
 Feature: Login
   Check login function.
 

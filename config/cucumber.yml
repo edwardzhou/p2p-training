@@ -2,8 +2,9 @@
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
 rerun_opts = rerun.to_s.strip.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
 #std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} --strict --tags ~@wip"
-std_opts = " --strict --tags ~@javascript --tags ~@wip"
+std_opts = " --strict --tags ~@javascript --tags ~@disabled --tags ~@wip"
 %>
 default: --drb <%= std_opts %>  --color features
 wip: --tags @wip:3 --wip features
-rerun: --drb <%= std_opts> --format progress --format rerun  --color --out rerun.txt
+rerun: --drb <%= std_opts %> --format progress --format rerun  --color --out rerun.txt
+html_report: --drb <%= std_opts %> --format html --out test_report/cucumber_report.html
