@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(:version => 20110328034302) do
     t.datetime "updated_at"
   end
 
+  create_table "catalogs_courses", :id => false, :force => true do |t|
+    t.integer "catalog_id", :null => false
+    t.integer "course_id",  :null => false
+  end
+
   create_table "courses", :force => true do |t|
     t.string   "course_name"
     t.string   "version"
@@ -29,11 +34,6 @@ ActiveRecord::Schema.define(:version => 20110328034302) do
     t.text     "long_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "courses_catalogs", :id => false, :force => true do |t|
-    t.integer "course_id",  :null => false
-    t.integer "catalog_id", :null => false
   end
 
   create_table "user_details", :force => true do |t|
