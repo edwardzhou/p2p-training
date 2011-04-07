@@ -1,3 +1,18 @@
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# Catalog
+#
+# Name                           SQL Type             Null    Default Primary
+# ------------------------------ -------------------- ------- ------- -------
+# id                             INTEGER              false           true   
+# name                           varchar(255)         true                   
+# description                    varchar(255)         true                   
+# enabled                        boolean              true    true           
+# parent_catalog_id              integer              true                   
+# created_at                     datetime             true                   
+# updated_at                     datetime             true                   
+#
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 class Catalog < ActiveRecord::Base
 
   belongs_to :parent_catalog, :class_name => "Catalog", :foreign_key => "parent_catalog_id"

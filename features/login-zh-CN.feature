@@ -19,7 +19,7 @@
     而且 我在 "div#field_password" 里面应当看到 "必选字段"
 
 
-  场景: 用不存在的邮箱登录
+  场景: 用户尚未注册
     假如 我位于 登录页面
     当 填入 "test@test.com" 到 "邮箱"
     而且 填入 "123456" 到 "密码"
@@ -27,7 +27,7 @@
     那么 我应当在页面 登录页面
     而且 我在 "div#notice" 里面应当看到 "邮箱或密码错误"
 
-  场景: 用无效密码来登录未确认的用户
+  场景: 用户已注册但尚未激活，且密码不正确
     假如 我有如下用户记录
       |email         |password      |password_confirmation|nick_name    |gender   |true_name    |contact_phone   |
       |abc@abc.com   |abc123        |abc123               |ABC user     |male     |张三         |88884444        |
@@ -38,7 +38,7 @@
     那么 我应当在页面 登录页面
     而且 我在 "div#notice" 里面应当看到 "请先激活您的帐号"
 
-  场景: 用正确的邮箱和密码来登录未确认的用户
+  场景: 用户已注册但尚未激活
     假如 我有如下用户记录
       |email         |password      |password_confirmation|nick_name    |gender   |true_name    |contact_phone   |
       |abc@abc.com   |abc123        |abc123               |ABC user     |male     |张三         |88884444        |
@@ -49,7 +49,7 @@
     那么 我应当在页面 登录页面
     而且 我在 "div#notice" 里面应当看到 "请先激活您的帐号"
 
-  场景: 登录已确认的用户
+  场景: 用户已激活
     假如 我有如下用户记录
       |email         |password      |password_confirmation|nick_name    |gender   |true_name    |contact_phone   |confirmed|
       |abc@abc.com   |abc123        |abc123               |ABC user     |male     |张三         |88884444        | true    |
