@@ -30,7 +30,7 @@ When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?按下按钮\s*"([^\"]*)"$/ do |sel
   end
 end
 
-When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?点击链接\s*"([^\"]*)"$/ do |selector, link|
+When /^(?:|我)(?:在\s*"([^\"]*)"\s*里面)?点击[链,连]接\s*"([^\"]*)"$/ do |selector, link|
   with_scope(selector) do
     click_link(link)
   end

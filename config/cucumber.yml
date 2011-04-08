@@ -6,5 +6,5 @@ std_opts = " --strict --tags ~@javascript --tags ~@disabled --tags ~@wip"
 %>
 default: --drb <%= std_opts %>  --color features
 wip: --tags @wip:3 --wip features
-rerun: --drb <%= std_opts %> --format progress --format rerun  --color --out rerun.txt
+rerun: --drb <%= rerun_opts %> --format progress --format rerun  --color --out rerun.txt
 html_report: --drb <%= std_opts %> --format html --out test_report/cucumber_report.html

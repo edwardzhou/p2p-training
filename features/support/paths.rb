@@ -1,5 +1,11 @@
 # encoding: utf-8
 module NavigationHelpers
+
+  def get_catalog_path_by_name(catalog_name)
+    catalog = Catalog.find_by_name(catalog_name)
+    catalog_path(catalog)
+  end
+
   # Maps a name to a path. Used by the
   #
   #   When /^I go to (.+)$/ do |page_name|
@@ -17,8 +23,14 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+      when /(主页|首页)/
+        '/'
+
       when /(login page)|(登录页面)/
         new_user_session_path
+
+      when /目录\(([^\)]*)\)/
+        get_catalog_path_by_name($1)
 
     else
       begin

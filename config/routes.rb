@@ -1,7 +1,11 @@
 P2pTraining::Application.routes.draw do
+  get "catalog/view"
+
   devise_for :users
 
   get "home/index"
+
+  match 'catalog/:id' => "catalog#view", :as => :catalog
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

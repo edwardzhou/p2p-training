@@ -19,11 +19,16 @@ class Catalog < ActiveRecord::Base
 
   has_many :sub_catalogs, :class_name => "Catalog", :foreign_key => "parent_catalog_id"
   has_and_belongs_to_many :courses
+  has_and_belongs_to_many :active_courses,
+                            :class_name => 'Course',
+                            :join_table => 'catalogs_courses',
+                            :conditions => {:status => 'open'}
 
   validates_presence_of :name
   validates_uniqueness_of :name
 
   scope :root_catalogs, where( { :parent_catalog_id => nil, :enabled => true} )
+  scope :ordered_root_catalogs, root_catalogs.order(:name)
 
   def active_sub_catalogs
     self.sub_catalogs.where(:enabled => true)

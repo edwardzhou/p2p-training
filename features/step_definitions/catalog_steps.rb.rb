@@ -20,7 +20,6 @@ When /^我有如下课程:$/ do |table|
     catalog = Catalog.find_by_name(catalog_name) if catalog_name
 
     course = Factory(:course, row)
-
-
+    course.catalogs << catalog if catalog
   end
 end

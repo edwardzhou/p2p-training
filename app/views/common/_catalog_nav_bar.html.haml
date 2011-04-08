@@ -2,4 +2,4 @@
   %ul
     - catalogs.each do |catalog|
       %li
-        = link_to catalog.name, '/'
+        = link_to catalog.name, catalog_path(catalog)

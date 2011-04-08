@@ -4,6 +4,10 @@ require 'rubygems'
 require 'spork'
 
 Spork.prefork do
+
+$:.unshift '/home/edward/develop/RubyMine-3.1/rb/testing/patch/bdd/'
+$:.unshift '/home/edward/develop/RubyMine-3.1/rb/testing/patch/common/'
+
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
