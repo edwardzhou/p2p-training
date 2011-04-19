@@ -19,10 +19,6 @@ class Catalog < ActiveRecord::Base
 
   has_many :sub_catalogs, :class_name => "Catalog", :foreign_key => "parent_catalog_id"
   has_and_belongs_to_many :courses
-  has_and_belongs_to_many :active_courses,
-                            :class_name => 'Course',
-                            :join_table => 'catalogs_courses',
-                            :conditions => {:status => 'open'}
 
   validates_presence_of :name
   validates_uniqueness_of :name
@@ -32,6 +28,10 @@ class Catalog < ActiveRecord::Base
 
   def active_sub_catalogs
     self.sub_catalogs.where(:enabled => true)
+  end
+
+  def active_courses
+    self.courses.where(:status.ne => 'closed')
   end
 
 end

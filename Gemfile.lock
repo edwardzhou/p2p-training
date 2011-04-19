@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/ernie/meta_where.git
+  revision: af28154231c56c02f4961babc5489b9649b08356
+  specs:
+    meta_where (1.0.4)
+      activerecord (~> 3.0.0)
+      activesupport (~> 3.0.0)
+      arel (~> 2.0.7)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -160,6 +169,7 @@ DEPENDENCIES
   haml
   hpricot
   jquery-rails
+  meta_where!
   rails (= 3.0.4)
   rspec (~> 2.5.0)
   rspec-rails (~> 2.5.0)

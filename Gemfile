@@ -13,6 +13,7 @@ gem 'ruby_parser'
 
 gem 'devise'
 gem 'jquery-rails'
+gem "meta_where", :git => "git://github.com/ernie/meta_where.git"
 
 #gem 'ruby-debug19'
 
