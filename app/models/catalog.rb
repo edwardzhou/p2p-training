@@ -23,8 +23,8 @@ class Catalog < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  scope :root_catalogs, where( { :parent_catalog_id => nil, :enabled => true} )
-  scope :ordered_root_catalogs, root_catalogs.order(:name)
+  scope :root_catalogs, where( { :parent_catalog_id => nil } ).order(:name)
+  scope :active_root_catalogs, root_catalogs.where(:enabled => true)
 
   def active_sub_catalogs
     self.sub_catalogs.where(:enabled => true)

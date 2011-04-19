@@ -4,4 +4,4 @@
     = render "common/user_nav"
 
   #catalog_nav.header.span-24.last
-    = render "common/catalog_nav_bar", :catalogs => Catalog.ordered_root_catalogs
+    = render "common/catalog_nav_bar", :catalogs => Catalog.active_root_catalogs
