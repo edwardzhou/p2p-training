@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.4'
+gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,7 +11,7 @@ gem 'haml'
 gem 'hpricot'
 gem 'ruby_parser'
 
-gem 'devise'
+gem 'devise', '1.3.1'
 gem 'jquery-rails'
 gem "meta_where", :git => "git://github.com/ernie/meta_where.git"
 
