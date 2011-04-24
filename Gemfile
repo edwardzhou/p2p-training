@@ -2,6 +2,9 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
 
+gem "builder", "~> 2.1.2"
+
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -13,7 +16,7 @@ gem 'ruby_parser'
 
 gem 'devise', '1.3.1'
 gem 'jquery-rails'
-gem "meta_where", :git => "git://github.com/ernie/meta_where.git"
+gem "meta_where"
 
 #gem 'ruby-debug19'
 
@@ -43,8 +46,8 @@ gem "meta_where", :git => "git://github.com/ernie/meta_where.git"
 group :development, :test do
   gem 'rspec', '~> 2.5.0'
   gem 'rspec-rails', '~> 2.5.0'
-  gem 'cucumber', '~> 0.10.0'
-  gem 'cucumber-rails', '~> 0.3.2'
+  gem 'cucumber', '~> 0.10.2'
+  gem 'cucumber-rails', '~> 0.4.1'
   gem 'database_cleaner', '~> 0.6.3'
   gem 'webrat'
   gem 'capybara'
