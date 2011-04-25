@@ -1,0 +1,10 @@
+= form_for [:admin, catalog] do |f|
+  = show_msg
+
+  %fieldset
+    %br
+    #field_name.field
+      .required_field_label= f.label :name
+      = f.text_field :name
+
+    = f.submit "保存"

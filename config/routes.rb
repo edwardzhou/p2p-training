@@ -1,4 +1,6 @@
 P2pTraining::Application.routes.draw do
+  get "catalogs/index"
+
   get "catalog/view"
 
   devise_for :users
@@ -6,6 +8,10 @@ P2pTraining::Application.routes.draw do
   get "home/index"
 
   match 'catalog/:id' => "catalog#view", :as => :catalog
+
+  namespace :admin do
+    resources :catalogs
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

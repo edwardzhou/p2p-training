@@ -1,0 +1,10 @@
+%h1 目录管理
+
+= show_msg
+
+.buttons
+  = link_to "新建目录", new_admin_catalog_path
+
+#catalog_list
+  - @catalogs.each do |c|
+    = render 'catalog_item', :catalog => c

@@ -62,7 +62,7 @@ When /^(?:|我)填入\s*"([^"]*)"\s*到\s*"([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
-When /^(?:|我)给\s*"([^"]*)"\s*填入\s*"([^"]*)"$/ do |field, value|
+When /^(?:|我)[给在为]\s*"([^"]*)"\s*填[入|上|写]\s*"([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
