@@ -36,6 +36,9 @@ module NavigationHelpers
       when /目录管理页面/
         admin_catalogs_path
 
+      when /新增目录页面/
+        new_admin_catalog_path
+
       else
         begin
           page_name =~ /the (.*) page/

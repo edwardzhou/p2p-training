@@ -1,0 +1,5 @@
+#error_explanation.error
+  %h2= "无法保存, #{errors.count}处错误:"
+  %ul
+    - errors.full_messages.each do |msg|
+      %li= msg

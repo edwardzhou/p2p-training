@@ -32,7 +32,6 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "sel
 
 
 # Single-line step scoper
-#(?:在\s*"([^"]*)"\s*里面)
 When /^(?:|我)在\s*("[^"]+")\s*里面\s*(.*)$/ do |parent, step|
   with_scope(parent) { When step }
 end
