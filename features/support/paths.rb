@@ -33,6 +33,9 @@ module NavigationHelpers
       when /目录\(([^\)]*)\)/
         get_catalog_path_by_name($1)
 
+      when /目录管理页面/
+        admin_catalogs_path
+
       else
         begin
           page_name =~ /the (.*) page/
