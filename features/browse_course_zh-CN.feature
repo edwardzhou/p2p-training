@@ -17,7 +17,7 @@
     假如 我位于 主页
     而且 我在 "div#catalog_nav" 里面点击连接 "编程"
     那么 我应当在页面 目录(编程)
-    而且 I dump page content
+    #而且 I dump page content
     而且 我应当看到 "设计模式"
 
 

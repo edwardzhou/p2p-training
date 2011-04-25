@@ -8,3 +8,4 @@ default: --drb <%= std_opts %> --color features
 wip: --tags @wip:3 --wip features
 rerun: --drb <%= rerun_opts %> --format progress --format rerun --color --out rerun.txt
 html_report: --drb <%= std_opts %> --format html --out test_report/cucumber_report.html
+html_out: --drb <%= std_opts %> --format html
