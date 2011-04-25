@@ -38,10 +38,10 @@ begin
       t.profile = 'html_report'
     end
 
-    Cucumber::Rake::Task.new({:html_out => 'db:test:prepare'}, 'Run features and generate HTML report') do |t|
+    Cucumber::Rake::Task.new({:ci_out => 'db:test:prepare'}, 'Run features and generate HTML report') do |t|
        t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
        t.fork = true # You may get faster startup if you set this to false
-       t.profile = 'html_out'
+       t.profile = 'ci_out'
     end
 
 
