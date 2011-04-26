@@ -5,7 +5,14 @@
       = flash[:notice]
 
 - elsif flash[:alert] then
+  #notice.error
+    %h2
+      = image_tag("icons/cross.png")
+      = flash[:alert]
+
+- elsif flash[:info] then
   #notice.notice
     %h2
       = image_tag("icons/information.png")
-      = flash[:alert]
+      = flash[:info]
+

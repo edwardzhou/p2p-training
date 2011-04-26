@@ -3,4 +3,7 @@
     = catalog.name
   .span
     = link_to '修改', edit_admin_catalog_path(catalog)
+    |
+    = generate_enable_link(catalog)
+    |
     = link_to '删除', [:admin, catalog], :confirm => "是否删除 <#{catalog.name}>?", :method => :delete

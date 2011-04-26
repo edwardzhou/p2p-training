@@ -102,14 +102,14 @@ When /^(?:|我)附加文件\s*"([^"]*)"\s*给\s*"([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
-Then /^(?:|我)应当看到\s*JSON:$/ do |expected_json|
+Then /^(?:|我)应当看[到|见]\s*JSON:$/ do |expected_json|
   require 'json'
   expected = JSON.pretty_generate(JSON.parse(expected_json))
   actual   = JSON.pretty_generate(JSON.parse(response.body))
   expected.should == actual
 end
 
-Then /^(?:|我)应当看到\s*"([^"]*)"$/ do |text|
+Then /^(?:|我)应当看[到|见]\s*"([^"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)
   else
@@ -117,7 +117,7 @@ Then /^(?:|我)应当看到\s*"([^"]*)"$/ do |text|
   end
 end
 
-Then /^(?:|我)应当看到\s*\/([^\/]*)\/$/ do |regexp|
+Then /^(?:|我)应当看[到|见]\s*\/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
 
   if page.respond_to? :should
@@ -127,7 +127,7 @@ Then /^(?:|我)应当看到\s*\/([^\/]*)\/$/ do |regexp|
   end
 end
 
-Then /^(?:|我)应当看不到\s*"([^"]*)"$/ do |text|
+Then /^(?:|我)应当看不[到|见]\s*"([^"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_no_content(text)
   else
@@ -135,7 +135,7 @@ Then /^(?:|我)应当看不到\s*"([^"]*)"$/ do |text|
   end
 end
 
-Then /^(?:|我)应当看不到\s*\/([^\/]*)\/$/ do |regexp|
+Then /^(?:|我)应当看不[到|见]\s*\/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
 
   if page.respond_to? :should

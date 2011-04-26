@@ -9,6 +9,10 @@ class Admin::CatalogsController < ApplicationController
     @catalog ||= Catalog.new
   end
 
+  def edit
+    @catalog = Catalog.find(params[:id])
+  end
+
   def create
     @catalog = Catalog.new( params[:catalog] )
     if @catalog.save then
@@ -18,10 +22,6 @@ class Admin::CatalogsController < ApplicationController
       #redirect_to :action => 'new'
       render 'new'
     end
-  end
-
-  def edit
-    @catalog = Catalog.find(params[:id])
   end
 
   def update
@@ -35,8 +35,31 @@ class Admin::CatalogsController < ApplicationController
 
   def destroy
     @catalog = Catalog.find(params[:id])
-    if @catalog.destroy
+
+    if @catalog.courses.size == 0 && @catalog.destroy
       redirect_to admin_catalogs_path, :notice => "删除成功"
+    else
+      redirect_to admin_catalogs_path, :alert => "删除失败: #{@catalog.name}存在课程"
+    end
+  end
+
+  def enable
+    @catalog = Catalog.find(params[:id])
+    @catalog.enabled = true
+
+    if @catalog.save
+      redirect_to admin_catalogs_path, :notice => "启用成功"
+    else
+      redirect_to admin_catalogs_path
+    end
+  end
+
+  def disable
+    @catalog = Catalog.find(params[:id])
+    @catalog.enabled = false
+
+    if @catalog.save
+      redirect_to admin_catalogs_path, :notice => "禁用成功"
     else
       redirect_to admin_catalogs_path
     end

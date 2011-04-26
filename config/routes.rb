@@ -10,7 +10,12 @@ P2pTraining::Application.routes.draw do
   match 'catalog/:id' => "catalog#view", :as => :catalog
 
   namespace :admin do
-    resources :catalogs
+    resources :catalogs do
+      member do
+        post :enable
+        post :disable
+      end
+    end
   end
 
   # The priority is based upon order of creation:
