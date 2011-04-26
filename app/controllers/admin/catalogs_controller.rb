@@ -33,4 +33,13 @@ class Admin::CatalogsController < ApplicationController
     end
   end
 
+  def destroy
+    @catalog = Catalog.find(params[:id])
+    if @catalog.destroy
+      redirect_to admin_catalogs_path, :notice => "删除成功"
+    else
+      redirect_to admin_catalogs_path
+    end
+  end
+
 end
