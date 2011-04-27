@@ -1,0 +1,10 @@
+#course
+  #course_title
+    %h2= course.course_name
+
+  #course_description
+    = course.short_description
+
+  = link_to '详细', [:admin, course]
+
+%hr
