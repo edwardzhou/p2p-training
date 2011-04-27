@@ -16,6 +16,8 @@ P2pTraining::Application.routes.draw do
         post :disable
       end
     end
+
+    resources :courses
   end
 
   # The priority is based upon order of creation:

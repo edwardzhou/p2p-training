@@ -39,6 +39,9 @@ module NavigationHelpers
       when /新增目录页面/
         new_admin_catalog_path
 
+      when /课程管理页面/
+        admin_courses_path
+
       else
         begin
           page_name =~ /the (.*) page/
