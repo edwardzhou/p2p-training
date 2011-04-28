@@ -36,6 +36,7 @@ When /^(?:|我)在\s*("[^"]+")\s*里面\s*(.*)$/ do |parent, step|
   with_scope(parent) { When step }
 end
 
+
 # Multi-line step scoper
 When /^(?:|我)在\s*("[^"]+")\s*里面\s*([^:]+):$/ do |parent, step, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }

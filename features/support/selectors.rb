@@ -29,11 +29,20 @@ module HtmlSelectorsHelpers
         catalog = Catalog.find_by_name($1)
         [:css, "div#catalog_#{catalog.id}"]
 
+
+      when /"课程项\(([^\)]+)\)"/
+        course = Course.find_by_course_name($1)
+        [:css, "div#course_#{course.id}"]
+
+
       # This allows you to provide a quoted selector as the scope
       # for "within" steps as was previously the default for the
       # web steps:
 
       when /"(.+)"/
+        $1
+
+      when /'(.+)'/
         $1
 
       else

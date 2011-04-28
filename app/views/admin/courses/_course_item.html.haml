@@ -1,4 +1,4 @@
-#course
+%div(id="course_#{course.id}")
   #course_title
     %h2= course.course_name
 
@@ -6,5 +6,7 @@
     != course.short_description
 
   = link_to '详细', [:admin, course]
+
+  = link_to t("label.edit"), edit_admin_course_path(course)
 
 %hr
