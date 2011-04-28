@@ -1,3 +1,6 @@
+#buttons
+  = link_to "新增课程", new_admin_course_path
+
 #course_list
   - @courses.each do |course|
     = render 'course_item', :course => course

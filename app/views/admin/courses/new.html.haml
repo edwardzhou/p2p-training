@@ -1,0 +1,15 @@
+- content_for :page_include_scripts do
+  = javascript_include_tag 'kindeditor-min'
+
+- content_for :page_include_css do
+  :css
+    textarea {
+        display: block;
+    }
+
+
+%h1 新增课程
+
+= show_msg @course.errors
+
+= render "course_form", :course => @course

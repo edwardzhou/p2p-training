@@ -6,5 +6,5 @@
       .required_field_label= f.label :name
       = f.text_field :name
 
-    = f.submit "保存"
-    = link_to '返回', admin_catalogs_path
+    = f.submit t("label.save")
+    = link_to t("label.back"), admin_catalogs_path

@@ -11,8 +11,9 @@ zh-CN:
 
   activerecord:
     models:
-      user: 用户
-      catalog: 目录
+      user:     用户
+      catalog:  目录
+      course:   课程
 
     attributes:
       user_detail: &ud_attrs
@@ -28,3 +29,8 @@ zh-CN:
 
       catalog:
         name: 名称
+
+      course:
+        course_name: 课程名称
+        short_description: 简短描述
+        long_description: 详细描述
