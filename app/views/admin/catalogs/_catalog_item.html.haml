@@ -2,8 +2,10 @@
   .span-4
     = catalog.name
   .span
-    = link_to '修改', edit_admin_catalog_path(catalog)
+    = link_to t("label.edit"), edit_admin_catalog_path(catalog)
     |
     = generate_enable_link(catalog)
     |
-    = link_to '删除', [:admin, catalog], :confirm => "是否删除 <#{catalog.name}>?", :method => :delete
+    = link_to t("label.delete"), [:admin, catalog],
+        :confirm => t("label.delete_confirm", :name => catalog.name),
+        :method => :delete

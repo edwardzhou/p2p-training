@@ -16,7 +16,7 @@ class Admin::CatalogsController < ApplicationController
   def create
     @catalog = Catalog.new( params[:catalog] )
     if @catalog.save then
-      redirect_to admin_catalogs_path, :notice => "保存成功"
+      redirect_to( {:action => 'index'}, :notice => t("label.save_success"))
     else
       #flash[:notice] = "保存失败: #{@catalog.name} 已经存在"
       #redirect_to :action => 'new'
@@ -27,7 +27,7 @@ class Admin::CatalogsController < ApplicationController
   def update
     @catalog = Catalog.find(params[:id])
     if @catalog.update_attributes(params[:catalog])
-      redirect_to admin_catalogs_path, :notice => "修改成功"
+      redirect_to( {:action => 'index'}, :notice => t("label.edit_success"))
     else
       render 'edit'
     end
@@ -37,9 +37,9 @@ class Admin::CatalogsController < ApplicationController
     @catalog = Catalog.find(params[:id])
 
     if @catalog.courses.size == 0 && @catalog.destroy
-      redirect_to admin_catalogs_path, :notice => "删除成功"
+      redirect_to( {:action => 'index'}, :notice => t("label.delete_success"))
     else
-      redirect_to admin_catalogs_path, :alert => "删除失败: #{@catalog.name}存在课程"
+      redirect_to( {:action => 'index'}, :alert => "删除失败: #{@catalog.name}存在课程")
     end
   end
 
@@ -48,9 +48,9 @@ class Admin::CatalogsController < ApplicationController
     @catalog.enabled = true
 
     if @catalog.save
-      redirect_to admin_catalogs_path, :notice => "启用成功"
+      redirect_to( {:action => 'index'}, :notice => t("label.enable_success"))
     else
-      redirect_to admin_catalogs_path
+      redirect_to( {:action => 'index'} )
     end
   end
 
@@ -59,9 +59,9 @@ class Admin::CatalogsController < ApplicationController
     @catalog.enabled = false
 
     if @catalog.save
-      redirect_to admin_catalogs_path, :notice => "禁用成功"
+      redirect_to( {:action => 'index'}, :notice => t("label.disable_success"))
     else
-      redirect_to admin_catalogs_path
+      redirect_to( {:action => 'index'} )
     end
   end
 

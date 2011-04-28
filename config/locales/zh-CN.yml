@@ -14,6 +14,12 @@ zh-CN:
     disable: 禁用
 
     save_success: 保存成功
+    edit_success: 修改成功
+    delete_success: 删除成功
+    delete_confirm: 是否删除 <%{name}>?
+
+    enable_success: 启用成功
+    disable_success: 禁用成功
 
     new_user_sign_up: 新用户注册
 
