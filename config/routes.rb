@@ -20,6 +20,12 @@ P2pTraining::Application.routes.draw do
     resources :courses
   end
 
+  resource :file_manager do
+    member do
+      post :upload_image
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

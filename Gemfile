@@ -17,6 +17,7 @@ gem 'ruby_parser'
 gem 'devise', '1.3.1'
 gem 'jquery-rails'
 gem "meta_where"
+gem 'carrierwave'
 
 #gem 'ruby-debug19'
 

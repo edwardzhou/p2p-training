@@ -1,6 +1,9 @@
 %div(id="course_#{course.id}")
   #course_title
     %h2= course.course_name
+    #catalogs
+      所属目录:
+      = course.catalogs.collect {|c| c.name}.join(", ")
 
   #course_description
     != course.short_description

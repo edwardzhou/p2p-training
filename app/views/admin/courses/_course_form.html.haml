@@ -14,6 +14,18 @@
       .required_field_label= f.label :long_description
       = f.text_area :long_description, :style => "width:535px;height:310px;visibility:hidden;"
 
+    #field_catalog.field
+      .required_field_label
+        所属目录:
+      #catalogs
+        - Catalog.root_catalogs.each do |catalog|
+          .span-3
+            //= f.check_box "catalog_ids", {:multiple => true, :checked => course.catalogs.include?(catalog)}, catalog.id, ''
+            = check_box_tag "course[catalog_ids][]", catalog.id, course.catalogs.include?(catalog), {:id => "course_catalog_ids_#{catalog.id}"}
+            = f.label "catalog_ids_#{catalog.id}", catalog.name
+
+    %br/
+
     = f.submit t("label.save")
     = link_to t("label.back"), admin_courses_path
 
@@ -34,6 +46,7 @@
           id : 'course_short_description',
           cssPath : './index.css',
           filterMode: true,
+          imageUploadJson: '/file_manager/upload_image.json',
           afterCreate : function(id) {
               KE.event.ctrl(document, 13, function() {
                   KE.sync(id);
