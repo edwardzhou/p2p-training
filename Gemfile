@@ -19,6 +19,11 @@ gem 'jquery-rails'
 gem "meta_where"
 gem 'carrierwave'
 
+gem 'client_side_validations'
+gem 'ancestry'
+
+
+
 #gem 'ruby-debug19'
 
 # Use unicorn as the web server
@@ -54,7 +59,6 @@ group :development, :test do
   gem 'capybara'
   gem 'ZenTest'
   gem 'spork', '~> 0.9.0.rc'
-  gem 'akephalos'
 end
 
 group :test do
