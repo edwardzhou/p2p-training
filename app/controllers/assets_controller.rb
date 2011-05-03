@@ -1,4 +1,4 @@
-class FileManagersController < ApplicationController
+class AssetsController < ApplicationController
 
   def upload_image
     imgUploader = ImageUploader.new
@@ -7,7 +7,5 @@ class FileManagersController < ApplicationController
 
     render :inline => {:error => 0, :url => imgUploader.url}.to_json
   end
-
-
 
 end

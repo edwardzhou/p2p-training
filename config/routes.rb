@@ -20,7 +20,7 @@ P2pTraining::Application.routes.draw do
     resources :courses
   end
 
-  resource :file_manager do
+  resource :assets do
     member do
       post :upload_image
     end

@@ -46,7 +46,7 @@
           id : 'course_short_description',
           cssPath : './index.css',
           filterMode: true,
-          imageUploadJson: '/file_manager/upload_image.json',
+          imageUploadJson: '/assets/upload_image.json',
           afterCreate : function(id) {
               KE.event.ctrl(document, 13, function() {
                   KE.sync(id);
@@ -62,6 +62,7 @@
            id : 'course_long_description',
            cssPath : './index.css',
            filterMode: true,
+           imageUploadJson: '/assets/upload_image.json',
            afterCreate : function(id) {
                KE.event.ctrl(document, 13, function() {
                    KE.sync(id);
