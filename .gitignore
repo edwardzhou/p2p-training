@@ -6,3 +6,4 @@ tmp/
 *.log
 rerun.txt
 test_report/
+public/uploads/*

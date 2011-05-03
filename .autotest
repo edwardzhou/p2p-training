@@ -63,6 +63,7 @@ module Autotest::GnomeNotify
     at.add_exception(%r{^\./.*\.log})
     at.add_exception(%r{^\./rerun\.txt})
     at.add_exception(%r{^\./test_report})
+    at.add_exception(%r{^\./public\/uploads})
 
   end
 
