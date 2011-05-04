@@ -23,6 +23,8 @@ P2pTraining::Application.routes.draw do
   resource :assets do
     member do
       post :upload_image
+      get :browse_images
+      post :browse_images
     end
   end
 

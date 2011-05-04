@@ -37,7 +37,7 @@
     }
 
 - content_for :page_include_scripts do
-  = javascript_include_tag 'kindeditor-min'
+  = javascript_include_tag 'kindeditor'
 
 - content_for :page_inline_scripts do
   :javascript
@@ -47,6 +47,9 @@
           cssPath : './index.css',
           filterMode: true,
           imageUploadJson: '/assets/upload_image.json',
+          fileManagerJson: '/assets/browse_images.json',
+          allowFileManager: true,
+          newlineTag: 'br',
           afterCreate : function(id) {
               KE.event.ctrl(document, 13, function() {
                   KE.sync(id);
@@ -63,6 +66,9 @@
            cssPath : './index.css',
            filterMode: true,
            imageUploadJson: '/assets/upload_image.json',
+           fileManagerJson: '/assets/browse_images.json',
+           allowFileManager: true,
+           newlineTag: 'br',
            afterCreate : function(id) {
                KE.event.ctrl(document, 13, function() {
                    KE.sync(id);
@@ -75,6 +81,3 @@
            }
        });
     })
-
-
-
