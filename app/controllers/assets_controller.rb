@@ -9,7 +9,7 @@ class AssetsController < ApplicationController
   end
 
   def browse_images
-    image_exts = ['gif', 'png', 'jpeg', 'jpg', 'bmp']
+    image_exts = ['gif', 'png', 'jpeg', 'jpg', 'bmp', 'png']
     root_path = Rails.root.join('public', 'uploads', 'images')
     root_url = "/uploads/images/"
 
