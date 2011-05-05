@@ -24,7 +24,7 @@ P2pTraining::Application.routes.draw do
     member do
       post :upload_image
       get :browse_images
-      post :browse_images
+      #post :browse_images
     end
   end
 

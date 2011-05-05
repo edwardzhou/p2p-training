@@ -15,7 +15,7 @@ class AssetsController < ApplicationController
 
     dirs, files = [], []
 
-    path = params[:path]
+    path = params[:path].to_s
     path = "/" if path.empty?
 
     current_path = File.join(root_path, path)
@@ -27,11 +27,14 @@ class AssetsController < ApplicationController
     if path =~ /(^\.\.\/)|(\.\.$)|(\/\.\.\/)/
       render :inline => 'Access is not allowed.'
       return
-    elsif !path.empty? && path !~ /\/$/
-      render :inline => 'parameter is invalid.'
+    elsif path !~ /\/$/
+      render :inline => 'Paramters is not valid.'
       return
     elsif !File.exists?(current_path) || !File.directory?(current_path)
-      render :inline => 'directory is not exists.'
+      render :inline => 'Directory is not exists.'
+      return
+    elsif !File.readable?(current_path)
+      render :inline => 'Access is not allowed.'
       return
     end
 
