@@ -1,11 +1,20 @@
+# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
+
 zh-CN:
   errors:
     messages:
+      expired: "已经过期, 请重新申请."
       not_found: "没有找到"
-      already_confirmed: "已经确认"
+      already_confirmed: "已经确认, 请尝试登录."
       not_locked: "没有锁定"
+      not_saved:
+        one: "有 1 个错误发生导致「%{resource}」无法被保存。"
+        other: "有 %{count} 个错误发生导致「%{resource}」无法被保存。"
+      unconfirmed: "未激活"
+
   devise:
     failure:
+      already_authenticated: 'You are already signed in.'
       unauthenticated: '继续操作前请注册或者登录.'
       unconfirmed: '请先激活您的帐号'
       locked: '您的帐号已被锁定.'
@@ -21,14 +30,18 @@ zh-CN:
       updated: '您的密码已修改成功，请重新登录.'
     confirmations:
       send_instructions: '几分钟后，您将收到帐号激活的电子邮件.'
-      confirmed: '您的帐号已经激活，请登录.'
+      confirmed: '您的帐号已经激活，您现在已经登录.'
     registrations:
-      signed_up: '您的帐号已注册成功，如无意外，您将地收到一封确认邮件.'
+      signed_up: '欢迎! 您的帐号已注册成功.'
+      inactive_signed_up: '您的帐号已注册成功. 由于您的帐号 %{reason}, 暂时不能登录.'
       updated: '帐号资料更新成功.'
       destroyed: '再见！您的帐户已成功注销。我们希望很快可以再见到您.'
     unlocks:
       send_instructions: '几分钟后，您将收到一封帐号解锁的邮件.'
-      unlocked: '您的帐号已成功解锁，请登录.'
+      unlocked: '您的帐号已成功解锁，您现在已经登录.'
+    omniauth_callbacks:
+       success: '已成功从 %{kind} 帐号认证.'
+       failure: '不能从 %{kind} 认证您, 因为 "%{reason}".'
     mailer:
       confirmation_instructions:
         subject: '确认信息'

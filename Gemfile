@@ -14,7 +14,7 @@ gem 'haml'
 gem 'hpricot'
 gem 'ruby_parser'
 
-gem 'devise', '1.3.1'
+gem 'devise', '>=1.3.4'
 gem 'jquery-rails'
 gem "meta_where"
 gem 'carrierwave'
@@ -24,7 +24,7 @@ gem 'ancestry'
 
 
 
-#gem 'ruby-debug19'
+gem 'ruby-debug19'
 
 # Use unicorn as the web server
 # gem 'unicorn'

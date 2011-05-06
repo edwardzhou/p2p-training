@@ -1,9 +1,11 @@
 zh-CN:
+  unconfirmed: 未激活
+
   label:
     login: 登录
     logout: 退出
     sign_out: 退出
-    login_as: 欢迎 <u>%{username}</u>
+    login_as: 欢迎
     sign_in: 登录
     sign_up: 注册
     save: 保存

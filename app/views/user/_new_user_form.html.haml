@@ -1,3 +1,6 @@
+#field_nick_name.field
+  .required_field_label= f.label :username
+  = f.text_field :username, :class => "required", :maxlength => 20, :size => 30
 #field_email.field
   .required_field_label= f.label :email
   = f.text_field :email, :class => "required email"
@@ -7,9 +10,6 @@
 #field_password_confirmation.field
   .required_field_label= f.label :password_confirmation
   = f.password_field :password_confirmation, :class => "required", :equalto => '#user_password', :minlength => 6
-#field_nick_name.field
-  .required_field_label= f.label :nick_name
-  = f.text_field :nick_name, :class => "required", :maxlength => 20, :size => 30
 #field_true_name.field
   .required_field_label= f.label :true_name
   = f.text_field :true_name, :class => "required"

@@ -5,6 +5,7 @@
     = link_to t('label.sign_up'), new_user_registration_path
   - else
     .span
-      != t('label.login_as', :username => current_user.email)
+      = t('label.login_as')
+      = link_to "#{current_user.username}", edit_profile_path
       ,
       = link_to t('label.logout'), destroy_user_session_path

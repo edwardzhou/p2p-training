@@ -9,6 +9,16 @@ P2pTraining::Application.routes.draw do
 
   match 'catalog/:id' => "catalog#view", :as => :catalog
 
+  resource :profile
+
+  resource :assets do
+    member do
+      post :upload_image
+      get :browse_images
+      #post :browse_images
+    end
+  end
+
   namespace :admin do
     resources :catalogs do
       member do
@@ -18,14 +28,6 @@ P2pTraining::Application.routes.draw do
     end
 
     resources :courses
-  end
-
-  resource :assets do
-    member do
-      post :upload_image
-      get :browse_images
-      #post :browse_images
-    end
   end
 
   # The priority is based upon order of creation:

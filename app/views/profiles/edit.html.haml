@@ -1,0 +1,14 @@
+= form_for(@user, :url => profile_path) do |f|
+  = show_msg @user.errors
+
+  %fieldset
+    %br/
+    %h6 登录信息
+    = render "user/edit_user_form", :f => f
+    %hr/
+    %h6 个人信息
+    = f.fields_for :user_detail do |ud|
+      = render "user/user_detail_form", :f => ud
+    %p/
+
+    .align_center= f.submit t('label.save') , :class => 'span-2'
