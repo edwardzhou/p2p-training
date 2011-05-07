@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20110328034302) do
     t.string   "id_card",      :limit => 20
     t.date     "birthday"
     t.string   "company",      :limit => 100
+    t.string   "title",        :limit => 20
     t.string   "company_size", :limit => 50
     t.string   "address",      :limit => 200
     t.string   "zip",          :limit => 10

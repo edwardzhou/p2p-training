@@ -53,10 +53,10 @@ class User < ActiveRecord::Base
 
   after_initialize :initialize_user_detail
 
-  # The message to be shown if the account is inactive.
-  def inactive_message
-    !confirmed? ? I18n.t(:unconfirmed) : super
-  end
+#  # The message to be shown if the account is inactive.
+#  def inactive_message
+#    !confirmed? ? :unconfirmed : super
+#  end
 
 
   protected

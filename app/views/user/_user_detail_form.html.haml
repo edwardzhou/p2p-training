@@ -7,9 +7,12 @@
 #field_company.field
   .field_label= f.label :company
   = f.text_field :company
+#field_company.field
+  .field_label= f.label :title
+  = f.text_field :title
 #field_company_size.field
   .field_label= f.label :company_size
-  = f.text_field :company_size
+  = f.select :company_size, company_size_options
 #field_address.field
   .field_label= f.label :address
   = f.text_field :address

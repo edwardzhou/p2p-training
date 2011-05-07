@@ -22,7 +22,9 @@ zh-CN:
         birthday: 生日
         id_card: 身份证号
         address: 地址
+        zip: 邮编
         company: 公司
+        title: 职位
         company_size: 公司规模
 
       user:

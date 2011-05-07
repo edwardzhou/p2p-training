@@ -33,3 +33,11 @@ zh-CN:
     application:
       title: 专业人员对专业人员的培训网 - Professional to Professional Training
 
+    company:
+      size:
+        less_50: 少于50人
+        less_100: 50到99人
+        less_200: 100到199人
+        less_300: 200到299人
+        more_than_300: 多于300人
+

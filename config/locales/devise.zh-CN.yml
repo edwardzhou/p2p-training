@@ -10,7 +10,6 @@ zh-CN:
       not_saved:
         one: "有 1 个错误发生导致「%{resource}」无法被保存。"
         other: "有 %{count} 个错误发生导致「%{resource}」无法被保存。"
-      unconfirmed: "未激活"
 
   devise:
     failure:
