@@ -8,6 +8,7 @@
 # id_card                        varchar(20)          true                   
 # birthday                       date                 true                   
 # company                        varchar(100)         true                   
+# title                          varchar(20)          true                   
 # company_size                   varchar(50)          true                   
 # address                        varchar(200)         true                   
 # zip                            varchar(10)          true                   
