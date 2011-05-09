@@ -15,9 +15,20 @@
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 class Course < ActiveRecord::Base
-  has_and_belongs_to_many :catalogs
-
   validates_presence_of :course_name
   validates_uniqueness_of :course_name
+
+  scope :active_courses, where(:status.not_eq => "closed")
+
+  has_and_belongs_to_many :catalogs
+  has_many :campaigns
+
+  def active_campaigns
+    campaigns.where(:status => "open")
+  end
+
+  def to_s
+    course_name
+  end
 
 end

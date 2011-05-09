@@ -13,14 +13,14 @@
 ActiveRecord::Schema.define(:version => 20110508080910) do
 
   create_table "campaigns", :force => true do |t|
-    t.string   "name"
+    t.string   "name",              :limit => 50
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "duration_in_hour"
     t.date     "register_due_date"
     t.integer  "course_id"
     t.integer  "trainer_id"
-    t.string   "status"
+    t.string   "status",            :limit => 50, :default => "open"
     t.integer  "price"
     t.integer  "original_price"
     t.integer  "training_room_id"
@@ -54,11 +54,11 @@ ActiveRecord::Schema.define(:version => 20110508080910) do
   end
 
   create_table "locations", :force => true do |t|
-    t.string   "city"
-    t.string   "address"
-    t.string   "zip"
-    t.string   "contact_phone"
-    t.string   "map_url"
+    t.string   "city",          :limit => 50
+    t.string   "address",       :limit => 200
+    t.string   "zip",           :limit => 20
+    t.string   "contact_phone", :limit => 50
+    t.string   "map_url",       :limit => 250
     t.datetime "created_at"
     t.datetime "updated_at"
   end
