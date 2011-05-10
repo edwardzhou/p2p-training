@@ -1,4 +1,4 @@
-= form_for [:admin, course] do |f|
+= form_for [:admin, course], :html => {:multipart => true} do |f|
   %fieldset
     %br/
 
@@ -6,16 +6,25 @@
       .required_field_label= f.label :course_name
       = f.text_field :course_name
 
+    #field_course_name.field
+      .field_label= f.label :avatar
+      = f.file_field :avatar
+      - if !course.avatar.blank?
+        %br/
+        = image_tag course.avatar_url(:thumb).to_s
+        = f.check_box :remove_avatar
+        = f.label :remove_avatar
+
     #field_short_description.field
-      .required_field_label= f.label :short_description
+      .field_label= f.label :short_description
       = f.text_area :short_description, :style => "width:535px;height:310px;visibility:hidden;"
 
     #field_long_description.field
-      .required_field_label= f.label :long_description
+      .field_label= f.label :long_description
       = f.text_area :long_description, :style => "width:535px;height:310px;visibility:hidden;"
 
     #field_catalog.field
-      .required_field_label
+      .field_label
         所属目录:
       #catalogs
         - Catalog.root_catalogs.each do |catalog|

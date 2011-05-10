@@ -17,6 +17,7 @@ gem 'ruby_parser'
 gem 'devise', '>=1.3.4'
 gem 'jquery-rails'
 gem "meta_where"
+gem 'mini_magick'
 gem 'carrierwave'
 
 gem 'client_side_validations'

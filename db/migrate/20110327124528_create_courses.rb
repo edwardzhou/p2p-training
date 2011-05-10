@@ -6,6 +6,11 @@ class CreateCourses < ActiveRecord::Migration
       t.string :status
       t.text :short_description
       t.text :long_description
+      t.integer :duration_in_hours
+      t.integer :total_rating
+      t.decimal :price, :scale => 2
+      t.decimal :discount_price, :scale => 2
+      t.string :avatar
 
       t.timestamps
     end

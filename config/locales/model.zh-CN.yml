@@ -16,6 +16,8 @@ zh-CN:
       user:     用户
       catalog:  目录
       course:   课程
+      location: 位置
+      campaign: 活动
 
     attributes:
       user_detail: &ud_attrs
@@ -38,3 +40,6 @@ zh-CN:
         course_name: 课程名称
         short_description: 简短描述
         long_description: 详细描述
+        avatar: 图片
+        remove_avatar: 删除图片
+

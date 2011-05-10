@@ -9,6 +9,10 @@
 # status                         varchar(255)         true                   
 # short_description              text                 true                   
 # long_description               text                 true                   
+# duration_in_hours              integer              true                   
+# total_rating                   integer              true                   
+# price                          decimal              true                   
+# discount_price                 decimal              true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
 #
@@ -22,6 +26,8 @@ class Course < ActiveRecord::Base
 
   has_and_belongs_to_many :catalogs
   has_many :campaigns
+
+  mount_uploader :avatar, AvatarUploader
 
   def active_campaigns
     campaigns.where(:status => "open")

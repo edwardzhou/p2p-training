@@ -4,9 +4,15 @@ require 'spec_helper'
 
 module CourseSpecHelper
   def setup_courses
-    @software_estimates = Factory(:course, {:course_name => '软件估算', :status => 'open'})
+    @software_estimates = Factory(:course, {:course_name => '软件估算',
+                                            :status => 'open',
+                                            :duration_in_hours => 4,
+    })
+
     @it_office_guideline = Factory(:course, {:course_name => 'IT职场指南', :status => 'open'})
+
     @tdd = Factory(:course, {:course_name => '测试驱动开发', :status => 'open'})
+
     @dos = Factory(:course, {:course_name => 'DOS', :status => 'closed'})
   end
 
@@ -33,11 +39,10 @@ module CourseSpecHelper
                         :start_date => Date.parse('2011-05-01'),
                         :end_date => Date.parse('2011-05-01'),
                         :register_due_date => Date.parse('2011-04-25'),
-                        :duration_in_hour => 4,
                         :course => @software_estimates,
                         :trainer => @edward,
-                        :price => 280,
-                        :original_price => 380,
+                        :price => 380,
+                        :discount_price => 280,
                         :training_room => @ru_jia_hotel
     })
 
@@ -46,11 +51,10 @@ module CourseSpecHelper
                         :start_date => Date.parse('2011-06-01'),
                         :end_date => Date.parse('2011-06-01'),
                         :register_due_date => Date.parse('2011-05-25'),
-                        :duration_in_hour => 4,
                         :course => @software_estimates,
                         :trainer => @edward,
-                        :price => 280,
-                        :original_price => 380,
+                        :price => 380,
+                        :discount_price => 280,
                         :training_room => @ru_jia_hotel
     })
 
