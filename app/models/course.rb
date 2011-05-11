@@ -22,12 +22,16 @@ class Course < ActiveRecord::Base
   validates_presence_of :course_name
   validates_uniqueness_of :course_name
 
-  scope :active_courses, where(:status.not_eq => "closed")
-
   has_and_belongs_to_many :catalogs
   has_many :campaigns
 
+  scope :active_courses, where(:status.not_eq => "close")
+
   mount_uploader :avatar, AvatarUploader
+
+  attr_accessible :course_name, :version, :status, :short_description,
+                  :long_description, :duration_in_hours, :total_rating, :price, :discount_price,
+                  :catalogs, :catalog_ids, :avatar, :avatar_cache
 
   def active_campaigns
     campaigns.where(:status => "open")

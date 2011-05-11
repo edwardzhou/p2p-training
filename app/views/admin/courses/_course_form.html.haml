@@ -8,12 +8,27 @@
 
     #field_course_name.field
       .field_label= f.label :avatar
-      = f.file_field :avatar
-      - if !course.avatar.blank?
-        %br/
-        = image_tag course.avatar_url(:thumb).to_s
-        = f.check_box :remove_avatar
-        = f.label :remove_avatar
+      .span-16.last
+        = f.file_field :avatar
+        = f.hidden_field :avatar_cache
+        - if course.avatar?
+          %br/
+          = image_tag course.avatar_url(:thumb).to_s
+          = f.check_box :remove_avatar
+          = f.label :remove_avatar
+
+    #field_catalog.field
+      .field_label
+        所属目录:
+      #catalogs.span-16.last
+        - Catalog.root_catalogs.each do |catalog|
+          .span-3
+            = check_box_tag "course[catalog_ids][]", catalog.id, course.catalogs.include?(catalog), {:id => "course_catalog_ids_#{catalog.id}"}
+            = f.label "catalog_ids_#{catalog.id}", catalog.name
+
+    #field_status.field
+      .field_label= f.label :status
+      = f.select :status, status_options
 
     #field_short_description.field
       .field_label= f.label :short_description
@@ -22,16 +37,6 @@
     #field_long_description.field
       .field_label= f.label :long_description
       = f.text_area :long_description, :style => "width:535px;height:310px;visibility:hidden;"
-
-    #field_catalog.field
-      .field_label
-        所属目录:
-      #catalogs
-        - Catalog.root_catalogs.each do |catalog|
-          .span-3
-            //= f.check_box "catalog_ids", {:multiple => true, :checked => course.catalogs.include?(catalog)}, catalog.id, ''
-            = check_box_tag "course[catalog_ids][]", catalog.id, course.catalogs.include?(catalog), {:id => "course_catalog_ids_#{catalog.id}"}
-            = f.label "catalog_ids_#{catalog.id}", catalog.name
 
     %br/
 

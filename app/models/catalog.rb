@@ -31,7 +31,7 @@ class Catalog < ActiveRecord::Base
   end
 
   def active_courses
-    self.courses.where(:status.ne => 'closed')
+    self.courses.where(:status.ne => 'close')
   end
 
 end

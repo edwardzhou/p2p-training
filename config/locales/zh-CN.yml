@@ -45,3 +45,10 @@ zh-CN:
         less_300: 200到299人
         more_than_300: 多于300人
 
+    status:
+      open: 开课
+      close: 停课
+      pending: 等待开课
+      suspend: 暂停
+
+

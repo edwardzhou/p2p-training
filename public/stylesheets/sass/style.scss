@@ -103,6 +103,10 @@ div#user_nav {
     @extend .align_right;
 }
 
+.field {
+    width: 100%;
+}
+
 .required_field_label {
     @extend .field_label;
     color: PURPLE;

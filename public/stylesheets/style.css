@@ -1043,6 +1043,9 @@ div#user_nav {
 .error_msg {
   color: red; }
 
+.field {
+  width: 100%; }
+
 .required_field_label {
   color: PURPLE; }
 
