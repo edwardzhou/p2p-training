@@ -1,4 +1,4 @@
-class Admin::CoursesController < ApplicationController
+class Admin::CoursesController < Admin::BaseController
 
   def index
     @courses = Course.all
@@ -25,7 +25,6 @@ class Admin::CoursesController < ApplicationController
     @course = Course.find(params[:id])
 
     params[:course][:catalog_ids] ||= []
-    params[:course][:catalog_ids].each { |cata_id| logger.debug "cata_id => #{cata_id}" }
 
     # remove previous avatar if upload new one.
     @course.remove_avatar! unless params[:course][:avatar].nil?

@@ -1,6 +1,6 @@
 #encoding: utf-8
 
-class Admin::CatalogsController < ApplicationController
+class Admin::CatalogsController < Admin::BaseController
   def index
     @catalogs = Catalog.root_catalogs
   end

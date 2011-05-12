@@ -75,7 +75,7 @@ describe Course do
   describe ".active_courses" do
 
     it '应该有3个活动的课程' do
-      Course.should have(3).active_courses
+      Course.should have(4).active_courses
     end
 
   end

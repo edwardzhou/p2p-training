@@ -16,6 +16,7 @@ $:.unshift '/home/edward/develop/RubyMine-3.1/rb/testing/patch/common/'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'database_cleaner'
+  require 'devise'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -30,6 +31,11 @@ $:.unshift '/home/edward/develop/RubyMine-3.1/rb/testing/patch/common/'
     # config.mock_with :flexmock
     # config.mock_with :rr
     config.mock_with :rspec
+
+    config.include Devise::TestHelpers, :type => :controller
+    config.extend ControllerMacros, :type => :controller
+
+    puts "RSpec.configure executed"
 
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
