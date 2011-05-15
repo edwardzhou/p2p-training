@@ -1,0 +1,12 @@
+zh-CN:
+
+  unauthorized:
+    manage:
+      all: "没有权限去 %{action} %{subject}."
+      user: "不允许管理其他用户帐号."
+    update:
+      project: "不允许修改本项目."
+
+    disable:
+      catalogs: "不允许禁用目录"
+
