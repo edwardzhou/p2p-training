@@ -18,6 +18,8 @@
       |course_name    |status     |catalog      |
       |设计模式        |open       |编程         |
       |软件估算        |open       |项目管理      |
+    而且 我已经登录为管理员"edward_zhou"
+
 
   场景: 查看课程列表
     假如 我打开 课程管理页面

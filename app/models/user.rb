@@ -58,6 +58,14 @@ class User < ActiveRecord::Base
 #    !confirmed? ? :unconfirmed : super
 #  end
 
+  def role?(role_name)
+    if self.role.nil? or role_name.nil?
+      false
+    else
+      self.role.downcase == role_name.downcase
+    end
+  end
+
 
   protected
   def self.find_for_database_authentication(warden_conditions)

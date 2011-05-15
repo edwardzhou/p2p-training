@@ -23,6 +23,8 @@ gem 'carrierwave'
 gem 'client_side_validations'
 gem 'ancestry'
 
+gem 'cancan'
+
 
 
 gem 'ruby-debug19'
