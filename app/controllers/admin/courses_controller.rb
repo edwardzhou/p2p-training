@@ -25,6 +25,9 @@ class Admin::CoursesController < Admin::BaseController
     @course = Course.find(params[:id])
 
     params[:course][:catalog_ids] ||= []
+    logger.debug "params[:course][:catalog_ids] ==> #{params[:course][:catalog_ids]}"
+    params[:course][:catalog_ids].flatten!
+    logger.debug "params[:course][:catalog_ids] ==> #{params[:course][:catalog_ids]}"
 
     # remove previous avatar if upload new one.
     @course.remove_avatar! unless params[:course][:avatar].nil?

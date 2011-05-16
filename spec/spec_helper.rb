@@ -34,8 +34,7 @@ $:.unshift '/home/edward/develop/RubyMine-3.1/rb/testing/patch/common/'
 
     config.include Devise::TestHelpers, :type => :controller
     config.extend ControllerMacros, :type => :controller
-
-    puts "RSpec.configure executed"
+    config.include CourseSpecHelper
 
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
