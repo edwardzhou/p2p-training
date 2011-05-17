@@ -17,7 +17,7 @@ describe Admin::CoursesController do
 
       it "should be success" do
         attrs = @software_estimates.attributes
-        attrs[:catalog_ids] = [[@project_management.id, @programming.id]]
+        attrs[:catalog_ids] = [@project_management.id, @programming.id]
         put :update, :id => @software_estimates.id, :course => attrs
         response.should redirect_to(admin_courses_path)
       end

@@ -28,6 +28,10 @@ P2pTraining::Application.routes.draw do
     end
 
     resources :courses
+
+    resource :dashboards
+
+    root :to => "dashboards#show"
   end
 
   # The priority is based upon order of creation:

