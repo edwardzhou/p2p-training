@@ -1,1 +1,1 @@
-/home/edward/config/setup_mail.rb
+../../../config/setup_mail.rb
