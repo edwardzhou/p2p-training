@@ -1,3 +1,24 @@
 - courses.each do |course|
-  #course
-    = course.course_name
+  %div(id="course_#{course.id}")
+    #course_avatar.span-5.suffix-1
+      = image_tag course.avatar_url(:thumb).to_s
+
+    #course_main.span-12
+      #course_title
+        %h2= course.course_name
+        #catalogs
+          所属目录:
+          = course.catalogs.collect {|c| c.name}.join(", ")
+
+      #course_description
+        != course.short_description
+
+      = link_to t("label.detail"), course
+      |
+      = link_to t("label.add_to_favorite"), edit_admin_course_path(course)
+      |
+      = link_to t("label.delete"), [:admin, course],
+          :confirm => t("label.delete_confirm", :name => course.course_name),
+          :method => :delete
+
+  %hr

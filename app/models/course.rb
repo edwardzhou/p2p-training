@@ -37,6 +37,10 @@ class Course < ActiveRecord::Base
     campaigns.where(:status => "open")
   end
 
+  def status_text
+    t("label.status.#{self.status}")
+  end
+
   def to_s
     course_name
   end

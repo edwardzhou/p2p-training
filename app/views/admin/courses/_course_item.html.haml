@@ -12,7 +12,7 @@
     #course_description
       != course.short_description
 
-    = link_to '详细', [:admin, course]
+    = link_to t("label.detail"), [:admin, course]
     |
     = link_to t("label.edit"), edit_admin_course_path(course)
     |
