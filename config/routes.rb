@@ -10,7 +10,13 @@ P2pTraining::Application.routes.draw do
   match 'catalog/:id' => "catalog#view", :as => :catalog
 
   resource :profile
-  resources :courses
+  resources :courses do
+    member do
+      post :add_to_favorite
+      get :register
+      post :register
+    end
+  end
 
   resource :assets do
     member do

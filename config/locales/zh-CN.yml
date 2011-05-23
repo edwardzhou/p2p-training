@@ -20,6 +20,8 @@ zh-CN:
     disable: 禁用
     detail: 详细
     add_to_favorite: 收藏
+    register: 报名
+    register_now: 立即报名
 
     save_success: 保存成功
     edit_success: 修改成功

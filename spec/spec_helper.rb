@@ -33,6 +33,7 @@ $:.unshift '/home/edward/develop/RubyMine-3.1/rb/testing/patch/common/'
     config.mock_with :rspec
 
     config.include Devise::TestHelpers, :type => :controller
+    config.include ControllerInstanceMacros, :type => :controller
     config.extend ControllerMacros, :type => :controller
     config.include CourseSpecHelper
 
