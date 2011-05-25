@@ -29,6 +29,9 @@
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 class User < ActiveRecord::Base
+
+  #include UserDeviseSupport
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
@@ -39,6 +42,10 @@ class User < ActiveRecord::Base
 
 
   has_one :user_detail
+
+  has_many :favorites, :order => 'created_at DESC', :dependent => :destroy, :uniq => true
+  has_many :interested_courses, :through => :favorites, :source => :course
+
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
@@ -53,10 +60,6 @@ class User < ActiveRecord::Base
 
   after_initialize :initialize_user_detail
 
-#  # The message to be shown if the account is inactive.
-#  def inactive_message
-#    !confirmed? ? :unconfirmed : super
-#  end
 
   def role?(role_name)
     if self.role.nil? or role_name.nil?
@@ -66,6 +69,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def interested_course?(course_id)
+    favorites.where(:course_id => course_id).count > 0
+  end
 
   protected
   def self.find_for_database_authentication(warden_conditions)

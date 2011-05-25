@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110508080910) do
+ActiveRecord::Schema.define(:version => 20110524081147) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(:version => 20110508080910) do
     t.decimal  "price"
     t.decimal  "discount_price"
     t.string   "avatar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

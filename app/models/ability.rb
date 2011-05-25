@@ -28,6 +28,8 @@ class Ability
 
     if user.role?('admin')
       can :manage, :all
+    elsif user.role?('user')
+      can :add_to_favorite, Course
     end
   end
 end

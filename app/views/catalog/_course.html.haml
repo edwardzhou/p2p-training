@@ -15,7 +15,7 @@
 
       = link_to t("label.detail"), course
       |
-      = link_to t("label.add_to_favorite"), add_to_favorite_course_path(course)
+      = link_to t("label.add_to_favorite"), favorites_path(:course_id => course.id), :method => 'POST'
       |
       = link_to t("label.register_now"), register_course_path(course)
 

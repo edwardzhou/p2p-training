@@ -1,13 +1,8 @@
 class CoursesController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :only => [:add_to_favorite, :register]
 
-  load_and_authorize_resource
-  check_authorization :only => [:add_to_favorite, :register]
-
-  # before_filter :authenticate_user!
-
-  def add_to_favorite
+  def register
 
   end
 

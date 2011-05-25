@@ -24,8 +24,11 @@ class Course < ActiveRecord::Base
 
   has_and_belongs_to_many :catalogs
   has_many :campaigns
+  has_many :favorites, :order => 'created_at DESC', :dependent => :destroy
+  has_many :interested_users,:through => :favorites, :order => 'created_at DESC', :source => :user
 
   scope :active_courses, where(:status.not_eq => "close")
+  #scope :active_campaigns2, campaigns.where(:status => "open")
 
   mount_uploader :avatar, AvatarUploader
 

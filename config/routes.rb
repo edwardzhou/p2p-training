@@ -12,11 +12,12 @@ P2pTraining::Application.routes.draw do
   resource :profile
   resources :courses do
     member do
-      post :add_to_favorite
       get :register
       post :register
     end
   end
+
+  resources :favorites
 
   resource :assets do
     member do

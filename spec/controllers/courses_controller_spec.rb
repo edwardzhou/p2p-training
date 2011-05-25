@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe CoursesController do
+  login_user
 
   before :each do
     setup_catalogs
@@ -10,17 +11,15 @@ describe CoursesController do
     setup_campaigns
   end
 
+  describe "GET 'register'" do
 
-  describe "POST 'add_to_favorite'" do
     it "should requires login" do
       logout
 
-      post 'add_to_favorite', :id => @software_estimates.id
+      get 'register', :id => @software_estimates.id
       response.should redirect_to(new_user_session_path)
 
     end
-
-    it "should increase my_favorites"
 
   end
 end
