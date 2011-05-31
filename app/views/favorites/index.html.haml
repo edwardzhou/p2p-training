@@ -5,4 +5,7 @@
 #favorites
   - @favorites.each do |fav|
     #favorite
-      =link_to fav.course.course_name, fav.course
+      .span-8
+        =link_to fav.course.course_name, fav.course
+      .span-2
+        =link_to t('lable.delete'), fav, :method => :delete
