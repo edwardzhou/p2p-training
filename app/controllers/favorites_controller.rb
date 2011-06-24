@@ -15,11 +15,20 @@ class FavoritesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html do
-        redirect_to( {:action => 'index'}, :notice => "收藏成功!" )
-      end
+      format.html { redirect_to({:action => 'index'}, :notice => "收藏成功!") }
       format.js
     end
+  end
+
+  def destroy
+    @favorite = Favorite.find( params[:id] )
+    @favorite.destroy
+
+    respond_to do |format|
+      format.html { redirect_to({:action => 'index'}, :notice => "删除成功!") }
+      format.js
+    end
+
   end
 
 end
