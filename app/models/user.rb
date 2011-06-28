@@ -46,11 +46,13 @@ class User < ActiveRecord::Base
   has_many :favorites, :order => 'created_at DESC', :dependent => :destroy, :uniq => true
   has_many :interested_courses, :through => :favorites, :source => :course
 
+  has_many :invited_users, :class_name => 'User', :conditions => "reference_to='#{username}'"
+
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :username, :true_name, :contact_phone, :gender, :user_detail_attributes,
-                  :user_detail, :role
+                  :user_detail, :role, :reference_to
 
   # for login
   attr_accessor :login

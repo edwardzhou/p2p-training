@@ -19,3 +19,5 @@
 #field_gender.field
   .field_label= f.label :gender
   = f.select :gender, {t('label.gender.male') => :male, t('label.gender.female') => :female}
+- if session['reference_to']
+  = f.hidden_field :reference_to, :value => session['reference_to']
