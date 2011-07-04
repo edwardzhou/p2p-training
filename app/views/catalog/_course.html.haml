@@ -1,5 +1,5 @@
 - courses.each do |course|
-  %div(id="course_#{course.id}")
+  #course(id="#{course.id}")
     #course_avatar.span-5.suffix-1
       = image_tag course.avatar_url(:thumb).to_s
 
@@ -18,5 +18,12 @@
       = link_to t("label.add_to_favorite"), favorites_path(:course_id => course.id), :method => 'POST'
       |
       = link_to t("label.register_now"), register_course_path(course)
+      %br/
+      %b
+        = course.comments.count
+      评论
+      = link_to "查看", "#"
+      #comments(id="course_#{course.id}")
 
   %hr
+

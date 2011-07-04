@@ -26,6 +26,7 @@ class Course < ActiveRecord::Base
   has_many :campaigns
   has_many :favorites, :order => 'created_at DESC', :dependent => :destroy
   has_many :interested_users,:through => :favorites, :order => 'created_at DESC', :source => :user
+  has_many :comments, :order => 'created_at DESC', :dependent => :destroy
 
   scope :active_courses, where(:status.not_eq => "close")
   #scope :active_campaigns2, campaigns.where(:status => "open")
@@ -38,6 +39,10 @@ class Course < ActiveRecord::Base
 
   def active_campaigns
     campaigns.where(:status => "open")
+  end
+
+  def latest_comments(count=10)
+    comments.limit(count)
   end
 
   def status_text

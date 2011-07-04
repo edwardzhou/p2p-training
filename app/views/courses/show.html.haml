@@ -1,0 +1,18 @@
+%div(id="course_#{@course.id}")
+  #course_avatar.span-5.suffix-1
+    = image_tag @course.avatar_url(:thumb).to_s
+
+  #course_main.span-12
+    #course_title
+      %h2= @course.course_name
+      #catalogs
+        所属目录:
+        = @course.catalogs.collect {|c| c.name}.join(", ")
+
+    #course_description
+      != @course.long_description
+
+    = link_to t("label.add_to_favorite"), favorites_path(:course_id => @course.id), :method => 'POST'
+    |
+    = link_to t("label.register_now"), register_course_path(@course)
+
