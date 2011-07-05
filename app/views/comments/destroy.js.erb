@@ -1,0 +1,3 @@
+var comment=$("#comment_<%=@comment.id%>");
+comment.hide('blind', {}, 500, function(){comment.remove();});
+$("#comment_count_<%=@course.id%>").html("<%=@course.comments.count%>");

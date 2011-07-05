@@ -20,9 +20,10 @@
       = link_to t("label.register_now"), register_course_path(course)
       %br/
       %b
-        = course.comments.count
+        %span(id="comment_count_#{course.id}")= course.comments.count
       评论
       = link_to "查看", course_comments_path(course), :remote => true
+      = link_to "说两句", course_comments_path(course), :remote => true
       .comments(id="comments_course_#{course.id}")
 
   %hr

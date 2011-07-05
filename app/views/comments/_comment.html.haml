@@ -1,7 +1,18 @@
 .comment(id="comment_#{comment.id}")
-  #post_info
+  .comment_title
     = comment.user.username
     发表于
     = comment.created_at
-  #content
+    - if user_signed_in?
+      - if current_user == comment.user
+        = link_to t('label.edit'), [comment.course, comment],
+            :method => :update,
+            :remote => true
+      - if current_user.role?('admin')
+        = link_to t('label.delete'), [comment.course, comment],
+            :confirm => t('label.delete_confirm', :name => '评论'),
+            :method => :delete,
+            :remote => true
+
+  .comment_content
     = comment.content
