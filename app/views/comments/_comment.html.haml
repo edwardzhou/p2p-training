@@ -1,0 +1,7 @@
+.comment(id="comment_#{comment.id}")
+  #post_info
+    = comment.user.username
+    发表于
+    = comment.created_at
+  #content
+    = comment.content

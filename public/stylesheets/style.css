@@ -1049,6 +1049,9 @@ div#user_nav {
 .required_field_label {
   color: PURPLE; }
 
+.comments {
+  background-color: #d3d3d3; }
+
 /**************************************/
 /*               FOOTER               */
 /**************************************/

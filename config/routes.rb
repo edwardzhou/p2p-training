@@ -16,6 +16,7 @@ P2pTraining::Application.routes.draw do
       get :register
       post :register
     end
+    resources :comments
   end
 
   resources :favorites

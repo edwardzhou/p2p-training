@@ -22,8 +22,8 @@
       %b
         = course.comments.count
       评论
-      = link_to "查看", "#"
-      #comments(id="course_#{course.id}")
+      = link_to "查看", course_comments_path(course), :remote => true
+      .comments(id="comments_course_#{course.id}")
 
   %hr
 
