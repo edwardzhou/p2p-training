@@ -1,1 +1,8 @@
-$('#course_<%=@course.id %>_new_comment').html("<%= escape_javascript(render('comment_form', :comment => @comment, :course => @course) )  %>");
+var new_comment = $('#course_<%=@course.id %>_new_comment');
+new_comment.hide();
+new_comment.html("<%= escape_javascript(render('comment_form', :comment => @comment, :course => @course) )  %>");
+new_comment.show('blind');
+$(".cancel_button").click(function(){
+  $('.new_comment').hide('blind');
+  $('.new_comment').empty();
+});

@@ -3,5 +3,8 @@
     %span
       新评论
     %br/
-    = f.text_area :content, :size => "80x10"
+    = f.text_area :content, :size => "100x5"
+    %br/
     = f.submit '提交'
+    %input(type="reset")
+    %input(type="button" id="btn_cancel" class="cancel_button" value="取消" data-holder='')
