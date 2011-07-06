@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110704065404) do
+ActiveRecord::Schema.define(:version => 20110706141827) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
@@ -78,6 +78,28 @@ ActiveRecord::Schema.define(:version => 20110704065404) do
     t.string   "zip",           :limit => 20
     t.string   "contact_phone", :limit => 50
     t.string   "map_url",       :limit => 250
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_items", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "campaign_id"
+    t.integer  "qty"
+    t.decimal  "price"
+    t.decimal  "discount_price"
+    t.decimal  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "order_code",   :limit => 20
+    t.integer  "user_id"
+    t.decimal  "total_amount"
+    t.string   "status",       :limit => 20
+    t.boolean  "payable",                    :default => false
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
