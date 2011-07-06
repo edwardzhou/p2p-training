@@ -2,3 +2,4 @@ var holder = $("#comments_course_<%= @course.id %>");
 holder.hide();
 holder.html("<%= escape_javascript(render @comments) %>");
 holder.show('blind');
+$("#comment_count_<%=@course.id%>").html("<%=@course.comments.count%>");

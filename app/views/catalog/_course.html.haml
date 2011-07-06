@@ -22,9 +22,12 @@
       %b
         %span(id="comment_count_#{course.id}")= course.comments.count
       评论
-      = link_to "查看", course_comments_path(course), :remote => true
-      = link_to "说两句", course_comments_path(course), :remote => true
-      .comments(id="comments_course_#{course.id}")
+      = link_to "查看", course_comments_path(course), :id => "show_comments_#{course.id}", :remote => true
+      - if user_signed_in?
+        = link_to "说两句", new_course_comment_path(course), :remote => true
+      #comments_panel
+        #new_comment
+        .comments(id="comments_course_#{course.id}")
 
   %hr
 

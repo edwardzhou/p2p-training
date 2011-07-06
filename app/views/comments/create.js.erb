@@ -1,0 +1,9 @@
+var holder = $("#comments_course_<%= @course.id %>");
+$('#new_comment').empty();
+holder.prepend("<%= escape_javascript(render @comment) %>");
+if (holder.css('display') != 'none') {
+    $("#comment_<%= @comment.id%>").show('highlight', {}, 1000);
+    $("#comment_count_<%=@course.id%>").html("<%=@course.comments.count%>");
+} else {
+    $("#show_comments_<%= @course.id%>").click();
+}

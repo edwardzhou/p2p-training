@@ -1,0 +1,7 @@
+- form_for [course, comment], :remote => true do |f|
+  %fieldset
+    %span
+      新评论
+    %br/
+    = f.text_area :content, :size => "80x10"
+    = f.submit '提交'
