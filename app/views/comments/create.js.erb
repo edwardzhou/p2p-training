@@ -1,5 +1,5 @@
 var holder = $("#comments_course_<%= @course.id %>");
-$('#new_comment').empty();
+$('#course_<%= @course.id %>_new_comment').empty();
 holder.prepend("<%= escape_javascript(render @comment) %>");
 if (holder.css('display') != 'none') {
     $("#comment_<%= @comment.id%>").show('highlight', {}, 1000);

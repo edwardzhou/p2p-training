@@ -1,1 +1,1 @@
-$('#new_comment').html("<%= escape_javascript(render('comment_form', :comment => @comment, :course => @course) )  %>");
+$('#course_<%=@course.id %>_new_comment').html("<%= escape_javascript(render('comment_form', :comment => @comment, :course => @course) )  %>");

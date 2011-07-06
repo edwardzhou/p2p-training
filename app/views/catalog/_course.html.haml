@@ -26,7 +26,7 @@
       - if user_signed_in?
         = link_to "说两句", new_course_comment_path(course), :remote => true
       #comments_panel
-        #new_comment
+        .new_comment(id="course_#{course.id}_new_comment")
         .comments(id="comments_course_#{course.id}")
 
   %hr
