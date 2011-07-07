@@ -1,0 +1,38 @@
+#order
+  %h1 报名
+
+  #course
+    #course_avatar.span-5.suffix-1
+      = image_tag @course.avatar_url(:thumb).to_s
+
+    #course_main.span-12
+      #course_title
+        %h2= @course.course_name
+        #catalogs
+          所属目录:
+          = @course.catalogs.collect {|c| c.name}.join(", ")
+
+      #course_description
+        != @course.short_description
+
+  .span-20
+    = form_for [@course, @order] do |f|
+      #price
+        报名人数
+        = text_field_tag :persons
+        X
+        %span.amount
+          = @course.discount_price
+          \/人
+        = f.text_field :total_amount
+      #campaigns
+        %br/
+        %b 请选择要参加的班次
+        - @campaigns.each do |campaign|
+          .campaign
+            = radio_button_tag 'selected_campaign', campaign.id
+            = label_tag "selected_campaign_#{campaign.id}", campaign.name
+
+      = f.submit t('label.submit')
+
+      = link_to t('label.back'), @course

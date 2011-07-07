@@ -22,6 +22,9 @@ zh-CN:
     add_to_favorite: 收藏
     register: 报名
     register_now: 立即报名
+    submit: 提交
+    cancel: 取消
+    reset: 重置
 
     save_success: 保存成功
     edit_success: 修改成功

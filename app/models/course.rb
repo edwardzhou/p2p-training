@@ -13,6 +13,7 @@
 # total_rating                   integer              true                   
 # price                          decimal              true                   
 # discount_price                 decimal              true                   
+# avatar                         varchar(255)         true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
 #
