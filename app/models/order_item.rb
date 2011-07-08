@@ -18,4 +18,8 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :campaign
+
+  def calc
+    self.amount = self.qty * self.discount_price
+  end
 end

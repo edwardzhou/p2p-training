@@ -46,6 +46,8 @@ class User < ActiveRecord::Base
   has_many :favorites, :order => 'created_at DESC', :dependent => :destroy, :uniq => true
   has_many :interested_courses, :through => :favorites, :source => :course
 
+  has_many :orders, :order => 'created_at DESC'
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :username, :true_name, :contact_phone, :gender, :user_detail_attributes,

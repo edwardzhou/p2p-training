@@ -19,4 +19,8 @@ class Order < ActiveRecord::Base
   has_many :order_items
   belongs_to :user
 
+  def calc
+    self.total_amount = self.order_items.inject(0) {|sum, item| sum + item.amount}
+  end
+
 end

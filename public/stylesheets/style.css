@@ -1059,6 +1059,9 @@ div#user_nav {
 .comment {
   border-bottom: 1px solid darkgrey; }
 
+.delete {
+  text-decoration: line-through; }
+
 /**************************************/
 /*               FOOTER               */
 /**************************************/
