@@ -6,7 +6,15 @@
       .required_field_label= f.label :course_name
       = f.text_field :course_name
 
-    #field_course_name.field
+    #field_price.field
+      .required_field_label= f.label :price
+      = f.text_field :price
+
+    #field_discount_price.field
+      .required_field_label= f.label :discount_price
+      = f.text_field :discount_price
+
+    #field_avatar.field
       .field_label= f.label :avatar
       .span-16.last
         = f.file_field :avatar

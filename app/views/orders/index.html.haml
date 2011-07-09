@@ -2,8 +2,30 @@
 
 #orders
   %table
+    %thead
+      %tr
+        %th
+          编号
+        %th
+          报名日期
+        %th
+          课程
+        %th
+          价格
+        %th
+          状态
+        %th/
 
-    %th
-  - @orders.each do |order|
-    #order
-      .span-2
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.order_code
+          %td= order.created_at
+          %td
+            = order.order_items[0].campaign.course.course_name
+            %br/
+            = order.order_items[0].campaign.name
+          %td= order.total_amount
+          %td= order.status
+          %td
+            立即付款 | 修改 | 取消

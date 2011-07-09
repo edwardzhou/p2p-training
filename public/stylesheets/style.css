@@ -1062,6 +1062,9 @@ div#user_nav {
 .delete {
   text-decoration: line-through; }
 
+.box {
+  border: 1px solid darkgrey; }
+
 /**************************************/
 /*               FOOTER               */
 /**************************************/

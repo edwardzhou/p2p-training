@@ -19,6 +19,7 @@ P2pTraining::Application.routes.draw do
     resources :comments
     resources :orders
   end
+  resources :orders
 
   resources :favorites
 

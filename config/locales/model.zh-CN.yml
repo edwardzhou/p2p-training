@@ -38,6 +38,8 @@ zh-CN:
 
       course:
         course_name: 课程名称
+        price: 价格
+        discount_price: 优惠价
         short_description: 简短描述
         long_description: 详细描述
         avatar: 图片

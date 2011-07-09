@@ -12,6 +12,10 @@ class Admin::CoursesController < Admin::BaseController
     @course = Course.find(params[:id])
   end
 
+  def show
+    @course = Course.find(params[:id])
+  end
+
   def create
     @course = Course.new(params[:course])
     if @course.save
