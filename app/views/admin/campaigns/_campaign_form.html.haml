@@ -1,0 +1,20 @@
+= form_for [:admin, course, campaign] do |f|
+  %fieldset
+    #course_name.field
+      .span-2.align_right= '课程'
+      .value= campaign.course.course_name
+
+    #field_name.field
+      .required_field_label= f.label :name
+      = f.text_field :name
+
+    #field_price.field
+      .required_field_label= f.label :price
+      = f.text_field :price
+
+    #field_discount_price.field
+      .required_field_label= f.label :discount_price
+      = f.text_field :discount_price
+
+    = f.submit t("label.save")
+    = link_to t("label.back"), admin_course_path(course)

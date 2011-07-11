@@ -33,10 +33,27 @@
 #campaigns
   %b 开班:
   %br/
-  - @course.active_campaigns.each do |campaign|
-    #campaign.box
-      = campaign.name
-    %br/
+  = link_to '新开班', new_admin_course_campaign_path(@course)
+  %br/
+  %table
+    %thead
+      %th 名称
+      %th 价格
+      %th 优惠价
+      %th
+    %tbody
+    - @course.active_campaigns.each do |campaign|
+      %tr
+        %td= campaign.name
+        %td= campaign.price
+        %td= campaign.discount_price
+        %td
+          = link_to t('label.show'), [:admin, @course, campaign]
+          |
+          = link_to t('label.edit'), edit_admin_course_campaign_path(@course, campaign)
+          |
+          = link_to t('label.delete'), [:admin, @course, campaign],
+                    :method => :delete, :confirm => t('label.delete_confirm', :name=>campaign.name)
 
 
 

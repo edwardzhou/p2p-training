@@ -11,7 +11,7 @@ P2pTraining::Application.routes.draw do
   match 'invites/:id' => "invites#invite"
 
   resource :profile
-  resources :courses do
+  resources :courses, :only => [:index, :show] do
     member do
       get :register
       post :register
@@ -19,7 +19,8 @@ P2pTraining::Application.routes.draw do
     resources :comments
     resources :orders
   end
-  resources :orders
+
+  resources :orders, :only => [:index, :show]
 
   resources :favorites
 
@@ -39,7 +40,9 @@ P2pTraining::Application.routes.draw do
       end
     end
 
-    resources :courses
+    resources :courses do
+      resources :campaigns
+    end
 
     resource :dashboards
 
