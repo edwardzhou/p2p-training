@@ -10,6 +10,8 @@ zh-CN:
     username: 用户名
     true_name: 真实姓名
     contact_phone: 联系电话
+    price: 价格
+    discount_price: 优惠价
 
   activerecord:
     models:
@@ -44,4 +46,10 @@ zh-CN:
         long_description: 详细描述
         avatar: 图片
         remove_avatar: 删除图片
+
+      campaign:
+        name: 班级名称
+        start_date: 课程开始时间
+        end_date: 课程结束时间
+        register_due_date: 报名截止时间
 

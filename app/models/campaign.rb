@@ -25,5 +25,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :trainer, :class_name => 'User', :foreign_key => 'trainer_id'
   belongs_to :training_room, :class_name => 'Location', :foreign_key => 'training_room_id'
 
-  validates_presence_of :name
+  validates_presence_of :name, :price, :discount_price
+  validates :price, :discount_price, :numericality => {:greater_than => 0}
+
 end
