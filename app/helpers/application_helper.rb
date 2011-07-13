@@ -16,4 +16,10 @@ module ApplicationHelper
         t("label.company.size.more_than_300") => :"5",
     }
   end
+
+    # @param count [Object]
+  def latest_courses(count=5)
+    Course.active_courses.order('created_at DESC').limit(count)
+  end
+  
 end
