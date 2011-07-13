@@ -1065,6 +1065,10 @@ div#user_nav {
 .box {
   border: 1px solid darkgrey; }
 
+#middle {
+  min-height: 350px;
+  height: auto; }
+
 /**************************************/
 /*               FOOTER               */
 /**************************************/
