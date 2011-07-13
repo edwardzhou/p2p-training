@@ -9,10 +9,24 @@
         所属目录:
         = @course.catalogs.collect {|c| c.name}.join(", ")
 
+    #duration 课程时间: #{@course.duration_in_hours} 小时
+
     #course_description
       != @course.long_description
 
+    #campaigns
+      - @course.active_campaigns.each do |campaign|
+        .prefix-1
+          %h3= campaign.name
+          报名截止时间: #{campaign.register_due_date}
+          %br/
+          原价: ￥
+          %span.delete= @course.price
+          %br/
+          优惠价: ￥#{@course.discount_price}
+
+
     = link_to t("label.add_to_favorite"), favorites_path(:course_id => @course.id), :method => 'POST'
     |
-    = link_to t("label.register_now"), register_course_path(@course)
+    = link_to t("label.register_now"), new_course_order_path(@course)
 
