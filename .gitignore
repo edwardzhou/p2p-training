@@ -7,4 +7,4 @@ tmp/
 rerun.txt
 test_report/
 public/uploads/*
-public/changes_log.html
+public/changes_log.*
