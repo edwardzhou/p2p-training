@@ -13,11 +13,11 @@
       %tr
         %td= location.city
         %th= location.address
-        %th= link_to location.address, location.address
+        %th= link_to location.map_url, location.map_url, :target => "_blank"
         %th
-          = link_to t('label.edit'), [:admin, location]
+          = link_to t('label.edit'), edit_admin_location_path(location)
           |
           = link_to t('label.delete'), [:admin, location],
             :method => 'delete',
-            :confirm => t('label.delete_confirm', :name => "#{campaign.city} - #{campaign.address}")
+            :confirm => t('label.delete_confirm', :name => "#{location.city} - #{location.address}")
 
