@@ -5,7 +5,7 @@ class Admin::BaseController < ApplicationController
   load_and_authorize_resource
   check_authorization
 
-  layout 'administration'
+  #layout 'administration'
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = exception.message
