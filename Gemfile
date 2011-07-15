@@ -25,6 +25,8 @@ gem 'ancestry'
 
 gem 'cancan'
 
+gem 'activemerchant', :git => 'git://github.com/Shopify/active_merchant.git'
+gem 'activemerchant_patch_for_china', :git => 'git://github.com/flyerhzm/activemerchant_patch_for_china.git'
 
 
 gem 'ruby-debug19'
