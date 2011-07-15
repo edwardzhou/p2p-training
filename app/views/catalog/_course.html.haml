@@ -13,6 +13,14 @@
       #course_description
         != course.short_description
 
+      #price
+        价格:
+        %span.delete #{course.price}
+        %br/
+        优惠价:
+        %b= course.discount_price
+
+
       = link_to t("label.detail"), course
       |
       = link_to t("label.add_to_favorite"), favorites_path(:course_id => course.id), :method => 'POST'
