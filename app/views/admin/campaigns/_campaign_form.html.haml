@@ -1,7 +1,9 @@
 - content_for :page_include_scripts do
-  = javascript_include_tag 'rails.validations'
-  = javascript_include_tag 'i18n/messages-zh-CN'
-  = javascript_include_tag 'i18n/jquery.ui.datepicker-zh-CN'
+  = javascript_include_tag 'rails.validations',
+                            'i18n/messages-zh-CN',
+                            'i18n/jquery.ui.datepicker-zh-CN',
+                            'i18n/jquery.ui.datepicker-zh-CN',
+                            'token-input'
 
 - content_for :page_inline_scripts do
   :javascript
@@ -15,37 +17,9 @@
     })
 
 - content_for :page_include_css do
-  = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom"
+  = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom", "token-input-mac"
 
 = form_for [:admin, course, campaign],:validate => true do |f|
   %fieldset
-    #course_name.field
-      .span-2.align_right= '课程'
-      .value= campaign.course.course_name
+    = render 'campaign_form_item_div', :f=>f, :campaign => campaign, :course => course
 
-    #field_name.field
-      .required_field_label= f.label :name
-      = f.text_field :name
-
-    #field_price.field
-      .required_field_label= f.label :price
-      = f.text_field :price
-
-    #field_discount_price.field
-      .required_field_label= f.label :discount_price
-      = f.text_field :discount_price
-
-    #field_start_date.field
-      .required_field_label= f.label :start_date
-      = f.text_field :start_date, :class => "date" , :date => "true"
-
-    #field_end_date.field
-      .required_field_label= f.label :end_date
-      = f.text_field :end_date, :class => "date" , :date => "true"
-
-    #field_register_due_date.field
-      .required_field_label= f.label :register_due_date
-      = f.text_field :register_due_date, :class => "date" , :date => "true"
-
-    = f.submit t("label.save")
-    = link_to t("label.back"), admin_course_path(course)

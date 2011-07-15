@@ -17,4 +17,10 @@
 class Location < ActiveRecord::Base
   validates_presence_of :city, :address, :zip
 
+  scope :sort_by_city, order('city DESC').order('address DESC')
+
+  def full_address
+    "#{city} #{address}"
+  end
+
 end

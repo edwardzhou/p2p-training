@@ -1,0 +1,42 @@
+#course_name.field
+  .span-3.align_right= label_tag '课程'
+  .value= campaign.course.course_name
+
+#field_name.field
+  .required_field_label= f.label :name
+  = f.text_field :name
+
+#field_price.field
+  .required_field_label= f.label :price
+  = f.text_field :price
+
+#field_discount_price.field
+  .required_field_label= f.label :discount_price
+  = f.text_field :discount_price
+
+#field_start_date.field
+  .field_label= f.label :start_date
+  = f.text_field :start_date, :class => "date" , :date => "true"
+
+#field_end_date.field
+  .field_label= f.label :end_date
+  = f.text_field :end_date, :class => "date" , :date => "true"
+
+#field_register_due_date.field
+  .field_label= f.label :register_due_date
+  = f.text_field :register_due_date, :class => "date" , :date => "true"
+
+#field_location.field
+  .field_label= label_tag "上课地点"
+  #locations.span-16.last
+    - Location.sort_by_city.each do |location|
+      = f.radio_button :training_room_id, location.id
+      = f.label "training_room_id_#{location.id}", location.full_address
+      %br/
+      .prefix-1
+        电子地图:
+        = link_to location.map_url, location.map_url, :target => "_blank"
+      %br/
+
+= f.submit t("label.save")
+= link_to t("label.back"), admin_course_path(course)

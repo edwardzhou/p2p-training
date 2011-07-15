@@ -12,9 +12,9 @@
     - @locations.each do |location|
       %tr
         %td= location.city
-        %th= location.address
-        %th= link_to location.map_url, location.map_url, :target => "_blank"
-        %th
+        %td= location.address
+        %td= link_to location.map_url, location.map_url, :target => "_blank"
+        %td
           = link_to t('label.edit'), edit_admin_location_path(location)
           |
           = link_to t('label.delete'), [:admin, location],
