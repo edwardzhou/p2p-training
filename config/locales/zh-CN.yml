@@ -59,4 +59,9 @@ zh-CN:
       pending: 等待开课
       suspend: 暂停
 
+    roles:
+      guest: 游客
+      user: 普通用户
+      trainer: 讲师
+      admin: 管理员
 

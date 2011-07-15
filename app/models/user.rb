@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :username, :true_name, :contact_phone, :gender, :user_detail_attributes,
-                  :user_detail, :role, :reference_to
+                  :user_detail, :role, :reference_to, :roles, :role_ids
 
   # for login
   attr_accessor :login
@@ -65,11 +65,15 @@ class User < ActiveRecord::Base
 
 
   def role?(role_name)
-    if self.role.nil? or role_name.nil?
-      false
-    else
-      self.role.downcase == role_name.downcase
+    role_name.downcase!
+    found = false
+    self.roles.each do |role|
+      if role.name.downcase == role_name
+        found = true
+      end
     end
+
+    found
   end
 
   def interested_course?(course_id)

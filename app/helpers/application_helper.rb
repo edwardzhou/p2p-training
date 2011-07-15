@@ -9,11 +9,11 @@ module ApplicationHelper
 
   def company_size_options
     {
-        t("label.company.size.less_50") => :"1",
-        t("label.company.size.less_100") => :"2",
-        t("label.company.size.less_200") => :"3",
-        t("label.company.size.less_300") => :"4",
-        t("label.company.size.more_than_300") => :"5",
+        t("label.company.size.less_50") => :"less_50",
+        t("label.company.size.less_100") => :"less_100",
+        t("label.company.size.less_200") => :"less_200",
+        t("label.company.size.less_300") => :"less_300",
+        t("label.company.size.more_than_300") => :"more_than_300",
     }
   end
 

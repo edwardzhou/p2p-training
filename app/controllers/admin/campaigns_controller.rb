@@ -1,4 +1,4 @@
-class Admin::CampaignsController < ApplicationController
+class Admin::CampaignsController < Admin::BaseController
   before_filter :load_course
 
   #attr_accessor :price, :discount_price, :status, :start_date, :end_date,

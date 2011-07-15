@@ -44,6 +44,8 @@ P2pTraining::Application.routes.draw do
       resources :campaigns
     end
 
+    resources :users
+
     resources :locations
 
     resource :dashboards

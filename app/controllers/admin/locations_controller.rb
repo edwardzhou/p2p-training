@@ -1,4 +1,4 @@
-class Admin::LocationsController < ApplicationController
+class Admin::LocationsController < Admin::BaseController
 
   def index
     @locations = Location.all

@@ -1,0 +1,7 @@
+#field_catalog.field
+  .field_label 角色
+  #catalogs.span-16.last
+    - Role.all.each do |role|
+      .span-3
+        = check_box_tag "user[role_ids][]", role.id, user.roles.include?(role), {:id => "user_role_ids_#{role.id}"}
+        = f.label "role_ids_#{role.id}", t("label.roles.#{role.name}")
