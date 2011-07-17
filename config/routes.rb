@@ -24,6 +24,16 @@ P2pTraining::Application.routes.draw do
 
   resources :favorites
 
+  resources :alipay_tests do
+    collection do
+      post :notify
+      get :notify
+      post :done
+      get :done
+    end
+  end
+
+
   resource :assets do
     member do
       post :upload_image

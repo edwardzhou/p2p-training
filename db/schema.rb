@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110715092836) do
+ActiveRecord::Schema.define(:version => 20110716133722) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
@@ -100,6 +100,18 @@ ActiveRecord::Schema.define(:version => 20110715092836) do
     t.string   "status",       :limit => 20
     t.boolean  "payable",                    :default => false
     t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", :force => true do |t|
+    t.string   "notify_id"
+    t.datetime "notify_time"
+    t.string   "trade_no"
+    t.string   "trade_status"
+    t.decimal  "total_amount"
+    t.string   "buyer_email"
+    t.text     "raw_post"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

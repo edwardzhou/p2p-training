@@ -1,0 +1,23 @@
+%h1 付款测试
+
+%p
+  = link_to '新测试付款', new_alipay_test_path
+
+%h3 付款通知
+%table
+  %thead
+    %th notify time
+    %th notify id
+    %th trx no
+    %th amount
+    %th status
+    %th buyer email
+  %tbody
+    - @payments.each do |payment|
+      %tr
+        %td= payment.notify_time
+        %td= payment.notify_id
+        %td= payment.trade_no
+        %td= payment.total_amount
+        %td= payment.trade_status
+        %td= payment.buyer_email

@@ -1,0 +1,25 @@
+%h1 测试付款确认
+
+%p 付款金额：￥0.01
+%p 付款标题: 购买<IT职场ABC>课程
+%p 付款内容: <IT职场ABC>课程 福田班第一期
+
+- payment_service_for Guid.new().to_s.gsub('-', ''), AlipayConfig[:account],
+                      :service => :alipay,
+                      :html => {:id => 'payment-form', :method => :get} do |service|
+  - service.total_fee 0.01
+  - service.seller :email => AlipayConfig[:email]
+  - service.notify_url url_for(:only_path => false, :controller => 'alipay_tests', :action => 'notify')
+  - service.return_url url_for(:only_path => false, :controller => 'alipay_tests', :action => 'done')
+  - service.charset 'utf-8'
+  - service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER
+  - service.payment_type 1
+  - service.subject '购买<IT职场ABC>课程'
+  - service.body '<IT职场ABC>课程 福田班第一期'
+  - service.sign
+
+= button_to_function "确认", "$(document.getElementById('payment-form').firstChild).remove();document.getElementById('payment-form').submit()"
+
+&nbsp;&nbsp;
+
+= link_to '返回', alipay_tests_path

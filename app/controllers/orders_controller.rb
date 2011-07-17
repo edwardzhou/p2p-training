@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
     @campaigns = @course.active_campaigns
     @order = Order.new({:user => current_user,
                         :total_amount => @course.discount_price})
+    @order.order_code = Guid.new().to_s.gsub('-', '')
     @order.status = '未付款'
     @order_item = @order.order_items.build
     @order_item.campaign = Campaign.find(params[:selected_campaign])
@@ -31,6 +32,7 @@ class OrdersController < ApplicationController
     @order.save
 
     redirect_to orders_path
-
   end
+
+
 end
