@@ -12,7 +12,8 @@ module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     module Integrations #:nodoc:
       module Alipay
-        class Notification < ActiveMerchant::Billing::Integrations::Notification
+        class Notification
+          alias_method :old_parse, :parse
           def parse(post)
             @raw = post
             for line in post.split('&')

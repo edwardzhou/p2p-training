@@ -1,19 +1,3 @@
-GIT
-  remote: git://github.com/Shopify/active_merchant.git
-  revision: 5ceb31a5852f6fb07c41a83c3232bb5e1b05f96f
-  specs:
-    activemerchant (1.15.0)
-      activesupport (>= 2.3.11)
-      braintree (>= 2.0.0)
-      builder (>= 2.0.0)
-
-GIT
-  remote: git://github.com/flyerhzm/activemerchant_patch_for_china.git
-  revision: 50f573e10296dca3acb71548d313e9a02210bf0f
-  specs:
-    activemerchant_patch_for_china (0.1.6)
-      activemerchant (>= 1.4.2)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -32,6 +16,13 @@ GEM
       rack-mount (~> 0.6.14)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
+    activemerchant (1.16.0)
+      activesupport (>= 2.3.11)
+      braintree (>= 2.0.0)
+      builder (>= 2.0.0)
+      json (>= 1.5.1)
+    activemerchant_patch_for_china (0.1.6)
+      activemerchant (>= 1.4.2)
     activemodel (3.0.7)
       activesupport (= 3.0.7)
       builder (~> 2.1.2)
@@ -196,8 +187,8 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
-  activemerchant!
-  activemerchant_patch_for_china!
+  activemerchant
+  activemerchant_patch_for_china
   ancestry
   builder (~> 2.1.2)
   cancan

@@ -13,12 +13,23 @@ class AlipayTestsController < ApplicationController
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
 
     payment_attributes = {
-      :total_amount    => notification.total_fee,
-      :trade_status => notification.trade_status,
-      :trade_no     => notification.trade_no,
-      :notify_time  => notification.notify_time,
-      :buyer_email  => notification.buyer_email,
-      :raw_post     => request.raw_post
+        :total_amount => notification.total_fee,
+        :trade_status => notification.trade_status,
+        :trade_no     => notification.trade_no,
+        :out_trade_no => notification.out_trade_no,
+        :notify_time  => notification.notify_time,
+        :notify_type  => notification.notify_type,
+        :gmt_create   => notification.gmt_create,
+        :gmt_payment  => notification.gmt_payment,
+        :subject      => notification.subject,
+        :body         => notification.body,
+        :price        => notification.price,
+        :quantity     => notification.quantity,
+        :use_coupon   => notification.use_coupon?,
+        :buyer_email  => notification.buyer_email,
+        :sign_type    => params[:sign_type],
+        :sign         => params[:sign],
+        :raw_post     => request.raw_post
     }
 
     if payment = Payment.find_by_notify_id(notification.notify_id)
