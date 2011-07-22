@@ -22,7 +22,7 @@ module CourseSpecHelper
   end
 
   def setup_trainers
-    @edward = Factory(:user, {:username => "edwardzhou",
+    @edward = Factory(:trainer, {:username => "edwardzhou",
                               :email => "edward.zhq@gmail.com",
                               :password => "123456",
                               :true_name => "周辉庆",
