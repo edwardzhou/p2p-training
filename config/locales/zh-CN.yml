@@ -5,6 +5,9 @@ zh-CN:
     messages:
       carrierwave_processing_error: 无法处理
       carrierwave_integrity_error: 不是允许的文件类型
+
+      course_registered: 已经报名该课程, 无需重复报名，请到[我的订单]查看!
+
   label:
     login: 登录
     logout: 退出

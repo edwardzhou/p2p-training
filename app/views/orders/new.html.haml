@@ -1,24 +1,29 @@
+
+
 #order
   %h1 报名
 
-  = form_for [@course, @order] do |f|
-    #course
-      #course_main
-        #course_title
-          %h2= @course.course_name
-    .span-20
-      #price
-        原价:
-        %span.delete ￥#{@course.price}
-        %h2 优惠价: ￥#{@course.discount_price}
-      #campaigns
-        %br/
-        %b 请选择要参加的班次
-        - @campaigns.each do |campaign|
-          .campaign
-            = radio_button_tag 'selected_campaign', campaign.id
-            = label_tag "selected_campaign_#{campaign.id}", campaign.name
+  = show_msg
 
-      = f.submit t('label.submit')
+  - unless @already_exists
+    = form_for [@course, @order] do |f|
+      #course
+        #course_main
+          #course_title
+            %h2= @course.course_name
+      .span-20
+        #price
+          原价:
+          %span.delete ￥#{@course.price}
+          %h2 优惠价: ￥#{@course.discount_price}
+        #campaigns
+          %br/
+          %b 请选择要参加的班次
+          - @campaigns.each do |campaign|
+            .campaign
+              = radio_button_tag 'selected_campaign', campaign.id
+              = label_tag "selected_campaign_#{campaign.id}", campaign.name
 
-      = link_to t('label.back'), @course
+        = f.submit t('label.submit')
+
+        = link_to t('label.back'), @course
