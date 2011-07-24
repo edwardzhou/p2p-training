@@ -25,7 +25,7 @@ def setup_user(user, role="user")
   user.contact_phone { Factory.next :contact_phone }
   user.password { "123456" }
   user.password_confirmation { "123456" }
-  #user.roles << Role.new({:name => role})
+  user.roles {|roles| [roles.association("#{role}_role".to_sym)] }
   user.gender { "male" }
   user.association :user_detail, :factory => :user_detail
   user
@@ -36,8 +36,8 @@ Factory.define :user do |user|
 end
 
 Factory.define :trainer,:parent => :user do |user|
-  user.association(:roles)
-  #setup_user user, "trainer"
+  #user.association(:roles)
+  setup_user user, "trainer"
 end
 
 Factory.define :admin_user, :class => User do |admin|

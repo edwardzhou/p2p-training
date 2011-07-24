@@ -4,6 +4,7 @@ CREATE TABLE "catalogs_courses" ("catalog_id" integer NOT NULL, "course_id" inte
 CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "course_id" integer, "content" varchar(255), "created_at" datetime, "updated_at" datetime);
 CREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_name" varchar(255), "version" varchar(255), "status" varchar(255), "short_description" text, "long_description" text, "duration_in_hours" integer, "total_rating" integer, "price" decimal, "discount_price" decimal, "avatar" varchar(255), "created_at" datetime, "updated_at" datetime);
 CREATE TABLE "favorites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "course_id" integer, "created_at" datetime, "updated_at" datetime);
+CREATE TABLE "key_numbers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "pattern" varchar(255), "next_value" integer, "created_at" datetime, "updated_at" datetime);
 CREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "city" varchar(50), "address" varchar(200), "zip" varchar(20), "contact_phone" varchar(50), "map_url" varchar(250), "created_at" datetime, "updated_at" datetime);
 CREATE TABLE "order_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "order_id" integer, "campaign_id" integer, "qty" integer, "price" decimal, "discount_price" decimal, "amount" decimal, "created_at" datetime, "updated_at" datetime);
 CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "order_code" varchar(20), "user_id" integer, "total_amount" decimal, "status" varchar(20), "payable" boolean DEFAULT 'f', "comment" text, "created_at" datetime, "updated_at" datetime);
@@ -47,3 +48,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110715092836');
 INSERT INTO schema_migrations (version) VALUES ('20110716133722');
 
 INSERT INTO schema_migrations (version) VALUES ('20110719071218');
+
+INSERT INTO schema_migrations (version) VALUES ('20110722082915');

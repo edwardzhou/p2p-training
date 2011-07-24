@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20110722082915) do
   create_table "key_numbers", :force => true do |t|
     t.string   "name"
     t.string   "pattern"
-    t.integer  "current"
+    t.integer  "next_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

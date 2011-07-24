@@ -3,7 +3,7 @@ class CreateKeyNumbers < ActiveRecord::Migration
     create_table :key_numbers do |t|
       t.string :name
       t.string :pattern
-      t.integer :current
+      t.integer :next_value
 
       t.timestamps
     end
