@@ -28,14 +28,17 @@
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+require "user_devise_support"
+
 class User < ActiveRecord::Base
 
-  #include UserDeviseSupport
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  include UserDeviseSupport
 
   validates_presence_of :username, :true_name, :contact_phone
   validates_uniqueness_of :username
@@ -84,6 +87,7 @@ class User < ActiveRecord::Base
     User.where(:reference_to => self.username)
   end
 
+=begin
   protected
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -133,6 +137,7 @@ class User < ActiveRecord::Base
     where(["username = :value OR email = :value", {:value => login}]).first
   end
 
+=end
 
   private
   def initialize_user_detail

@@ -11,7 +11,7 @@ def create_users(table)
 end
 
 def setup_user(username, role, confirmed=true)
-  user = Factory(:user, {
+  user = Factory(:admin_user, {
       :username => username,
       :email => "#{username}@p2p-training.com",
       :password => "123456",

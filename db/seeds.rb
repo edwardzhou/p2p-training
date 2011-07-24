@@ -8,3 +8,12 @@
 ["admin", "trainer", "user", "guest"].each do |role|
   Role.find_or_create_by_name(role)
 end
+
+[{"order_id" => "%y%{index}"}].each do |pair|
+  pair.each_pair do |key, value|
+    key_num = KeyNumber.find_or_create_by_name(key)
+    key_num.pattern = value
+    key_num.next_value ||= 1
+    key_num.save!
+  end
+end

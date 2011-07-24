@@ -1,7 +1,6 @@
-module UserDeviseSupport
-
+module UserDeviseSupportHelper
   #protected
-  def self.find_for_database_authentication(warden_conditions)
+  def find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     login = conditions.delete(:login)
     logger.debug("login => #{login}")
@@ -11,13 +10,13 @@ module UserDeviseSupport
   # Attempt to find a user by it's email. If a record is found, send new
   # password instructions to it. If not user is found, returns a new user
   # with an email not found error.
-  def self.send_reset_password_instructions(attributes={})
+  def send_reset_password_instructions(attributes={})
     recoverable = find_recoverable_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
     recoverable.send_reset_password_instructions if recoverable.persisted?
     recoverable
   end
 
-  def self.find_recoverable_or_initialize_with_errors(required_attributes, attributes, error=:invalid)
+  def find_recoverable_or_initialize_with_errors(required_attributes, attributes, error=:invalid)
     (case_insensitive_keys || []).each { |k| attributes[k].try(:downcase!) }
 
     attributes = attributes.slice(*required_attributes)
@@ -44,15 +43,18 @@ module UserDeviseSupport
     record
   end
 
-  def self.find_record(login)
+  def find_record(login)
     logger.debug("login => #{login}")
     where(["username = :value OR email = :value", {:value => login}]).first
   end
 
 
-  #private
-  def initialize_user_detail
-    self.build_user_detail unless user_detail
+end
+
+module UserDeviseSupport
+
+  def self.included(recipient)
+    recipient.extend(UserDeviseSupportHelper)
   end
 
 end
