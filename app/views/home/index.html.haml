@@ -1,7 +1,8 @@
 
 = show_msg
 
-= link_to 'change logs', 'changes_log.txt'
+- if Rails.env == 'development'
+  = link_to 'change logs', 'changes_log.txt'
 
 #latest_courses
   %h1 最新课程
