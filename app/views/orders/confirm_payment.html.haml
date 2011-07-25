@@ -1,0 +1,62 @@
+%h1 付款确认
+
+%table
+  %tbody
+    %tr
+      %td
+        %b 订单号
+      %td= @order.order_code
+    %tr
+      %td
+        %b 课程
+      %td
+        = link_to "<#{@order.campaign.course.course_name}> - #{@order.campaign.name}",
+                  course_path(@order.campaign.course), :target => '_blank'
+    %tr
+      %td
+        %b 上课地点
+      %td
+        = @order.campaign.training_room.full_address
+        - unless @order.campaign.training_room.map_url.nil?
+          &nbsp;&nbsp;
+          = link_to '电子地图',
+                  @order.campaign.training_room.map_url
+    %tr
+      %td
+        %b 付款金额
+      %td
+        ￥#{@order.total_amount}
+        - if is_development?
+          %b (当前测试模式，实际付款金额为 ￥0.01)
+    %tr
+      %td
+        %b 备注
+      %td= @order.comment
+
+    %tr
+      %th/
+      %td
+        - payment_service_for @order.order_code, AlipayConfig[:account],
+                              :service => :alipay,
+                              :html => {:id => 'payment-form', :method => :get} do |service|
+
+          - if is_development?
+            - service.total_fee 0.01
+          - else
+            - service.total_fee @order.total_amount
+          - service.seller :email => AlipayConfig[:email]
+          - service.notify_url payments_notify_url
+          - service.return_url payments_done_url
+          - service.charset 'utf-8'
+          - service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER
+          - service.payment_type 1
+          - service.paymethod 'directPay'
+          - service.subject "购买<#{@order.campaign.course.course_name}>课程"
+          - service.body "<#{@order.campaign.course.course_name}> - #{@order.campaign.name}"
+          - service.sign
+
+        = button_to_function "确认", "$(document.getElementById('payment-form').firstChild).remove();document.getElementById('payment-form').submit()"
+
+        &nbsp;&nbsp;
+
+        = link_to '返回', orders_path

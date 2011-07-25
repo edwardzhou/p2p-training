@@ -23,7 +23,11 @@ module ApplicationHelper
   end
 
   def human_status(status_type, status_value)
-    t("#{status_type}.status.#{status_value}")
+    t("status.#{status_type}.#{status_value}")
+  end
+
+  def is_development?
+    Rails.env == "development"
   end
   
 end

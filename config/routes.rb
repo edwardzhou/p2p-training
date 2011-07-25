@@ -20,7 +20,12 @@ P2pTraining::Application.routes.draw do
     resources :orders
   end
 
-  resources :orders, :only => [:index, :show]
+  resources :orders, :only => [:index, :show] do
+    member do
+      get :confirm_payment
+      post :pay
+    end
+  end
 
   resources :favorites
 
@@ -32,6 +37,18 @@ P2pTraining::Application.routes.draw do
       get :done
     end
   end
+
+  match '/payments/notify' => "payments#notify", :via => [:get, :post]
+  match '/payments/done' => "payments#done", :via => [:get, :post]
+
+  #resources :payments, :only => [:notify, :done] do
+  #  collection do
+  #    post :notify
+  #    get :notify
+  #    post :done
+  #    get :done
+  #  end
+  #end
 
 
   resource :assets do

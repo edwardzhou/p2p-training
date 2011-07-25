@@ -22,10 +22,11 @@
           %td= order.order_code
           %td= order.created_at
           %td
-            = order.order_items[0].campaign.course.course_name
+            = order.campaign.course.course_name
             %br/
-            = order.order_items[0].campaign.name
+            = order.campaign.name
           %td= order.total_amount
           %td= human_status('order', order.status)
           %td
-            立即付款 | 修改 | 取消
+            = link_to "现在付款", confirm_payment_order_path(order)
+            &nbsp;| 修改 | 取消

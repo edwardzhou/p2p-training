@@ -21,6 +21,12 @@
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 class Campaign < ActiveRecord::Base
+  module Status
+    OPEN      = "open"
+    CLOSED    = "closed"
+    FINISHED  = "finished"
+  end
+
   belongs_to :course
   belongs_to :trainer, :class_name => 'User', :foreign_key => 'trainer_id'
   belongs_to :training_room, :class_name => 'Location', :foreign_key => 'training_room_id'

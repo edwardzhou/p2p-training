@@ -12,6 +12,7 @@
 # amount                         decimal              true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
+# joiner_id                      integer              true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

@@ -5,7 +5,9 @@
 
   = show_msg
 
-  - unless @already_exists
+  - if @already_exists
+    = link_to "我的订单", orders_path
+  - else
     = form_for [@course, @order] do |f|
       #course
         #course_main

@@ -50,4 +50,14 @@ class OrdersController < ApplicationController
   end
 
 
+  def confirm_payment
+    @order = Order.find(params[:id])
+
+  end
+
+  def pay
+    @order = Order.find(params[:id])
+
+  end
+
 end

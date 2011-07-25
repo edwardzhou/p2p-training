@@ -12,6 +12,8 @@
 # comment                        text                 true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
+# campaign_id                    integer              true                   
+# paid_time                      datetime             true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -35,11 +37,21 @@ class Order < ActiveRecord::Base
 
   has_many :order_items,:dependent => :destroy
   belongs_to :user
+  belongs_to :campaign
 
   scope :pending, where(:status => Status::PENDING_PAYMENT)
 
   def calc
     self.total_amount = self.order_items.inject(0) {|sum, item| sum + item.amount}
+  end
+
+  def self.by_code(code)
+    results = find_by_order_code(code)
+    if results.size > 0
+      results[0]
+    else
+      nil
+    end
   end
 
 
