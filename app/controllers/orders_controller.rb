@@ -36,6 +36,7 @@ class OrdersController < ApplicationController
 
     @order.status = Order::Status::PENDING_PAYMENT
     @order.order_code = IdFactory.next_num(:order_id)
+    @order.campaign = @campaign
     @order_item = @order.order_items.build
     @order_item.campaign = @campaign
     @order_item.price = @campaign.price
