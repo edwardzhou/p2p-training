@@ -5,7 +5,7 @@
     %thead
       %tr
         %th
-          编号
+          订单号
         %th
           报名日期
         %th
@@ -26,6 +26,6 @@
             %br/
             = order.order_items[0].campaign.name
           %td= order.total_amount
-          %td= order.status
+          %td= human_status('order', order.status)
           %td
             立即付款 | 修改 | 取消

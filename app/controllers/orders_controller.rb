@@ -34,13 +34,7 @@ class OrdersController < ApplicationController
     @order = Order.new({:user => current_user,
                         :total_amount => @course.discount_price})
 
-    if is_order_exists?(@campaign.id)
-      flash[:alert] = 'you have register already.'
-      render 'new'
-      return
-    end
-
-    @order.status = '未付款'
+    @order.status = Order::Status::PENDING_PAYMENT
     @order.order_code = IdFactory.next_num(:order_id)
     @order_item = @order.order_items.build
     @order_item.campaign = @campaign

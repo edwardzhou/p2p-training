@@ -21,7 +21,7 @@
           %b 请选择要参加的班次
           - @campaigns.each do |campaign|
             .campaign
-              = radio_button_tag 'selected_campaign', campaign.id
+              = radio_button_tag 'selected_campaign', campaign.id, true
               = label_tag "selected_campaign_#{campaign.id}", campaign.name
 
         = f.submit t('label.submit')
