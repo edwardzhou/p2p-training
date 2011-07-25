@@ -40,6 +40,7 @@ class Order < ActiveRecord::Base
   belongs_to :campaign
 
   scope :pending, where(:status => Status::PENDING_PAYMENT)
+  scope :latest_orders, order("created_at DESC")
 
   def calc
     self.total_amount = self.order_items.inject(0) {|sum, item| sum + item.amount}

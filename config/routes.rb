@@ -75,7 +75,10 @@ P2pTraining::Application.routes.draw do
 
     resources :locations
 
+    resources :orders
+
     resource :dashboards
+
 
     root :to => "dashboards#show"
   end
