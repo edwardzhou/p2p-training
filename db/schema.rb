@@ -114,8 +114,7 @@ ActiveRecord::Schema.define(:version => 20110726163315) do
     t.integer  "campaign_id"
     t.datetime "paid_time"
     t.text     "reason"
-    t.datetime "paid_date"
-    t.datetime "refunded_date"
+    t.datetime "refunded_time"
   end
 
   create_table "payments", :force => true do |t|
