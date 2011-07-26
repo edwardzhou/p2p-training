@@ -38,6 +38,7 @@ class Order < ActiveRecord::Base
   has_many :order_items,:dependent => :destroy
   belongs_to :user
   belongs_to :campaign
+  has_many :payments
 
   scope :pending, where(:status => Status::PENDING_PAYMENT)
   scope :latest_orders, order("created_at DESC")

@@ -17,6 +17,8 @@
         %th
           状态
         %th
+          付款时间
+        %th
           原因
         %th/
 
@@ -36,6 +38,7 @@
               ￥#{format("%.2f", order.total_amount)}
           %td= order.comment
           %td= human_status('order', order.status)
+          %td= order.paid_date
           %td= order.reason
           %td
             = render 'order_operations', :order => order

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726102211) do
+ActiveRecord::Schema.define(:version => 20110726163315) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
@@ -103,17 +103,19 @@ ActiveRecord::Schema.define(:version => 20110726102211) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "order_code",   :limit => 20
+    t.string   "order_code",    :limit => 20
     t.integer  "user_id"
     t.decimal  "total_amount"
-    t.string   "status",       :limit => 20
-    t.boolean  "payable",                    :default => false
+    t.string   "status",        :limit => 20
+    t.boolean  "payable",                     :default => false
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "campaign_id"
     t.datetime "paid_time"
     t.text     "reason"
+    t.datetime "paid_date"
+    t.datetime "refunded_date"
   end
 
   create_table "payments", :force => true do |t|
@@ -137,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20110726102211) do
     t.string   "sign_type"
     t.string   "sign"
     t.string   "notify_type"
+    t.integer  "order_id"
   end
 
   create_table "roles", :force => true do |t|

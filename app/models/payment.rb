@@ -34,4 +34,6 @@ class Payment < ActiveRecord::Base
     CLOSED = "TRADE_CLOSED"
   end
 
+  belongs_to :order
+
 end
