@@ -13,6 +13,8 @@
         %th
           价格
         %th
+          备注
+        %th
           状态
         %th/
 
@@ -26,8 +28,10 @@
             %br/
             = order.campaign.name
           %td= order.total_amount
+          %td= order.comment
           %td= human_status('order', order.status)
           %td
             - if order.status == Order::Status::PENDING_PAYMENT
               = link_to "现在付款", confirm_payment_order_path(order)
-            &nbsp;| 修改 | 取消
+            &nbsp;| 修改 |
+            = link_to "取消", cancel_order_path(order), :method => :cancel

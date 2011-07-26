@@ -8,24 +8,4 @@
   - if @already_exists
     = link_to "我的订单", orders_path
   - else
-    = form_for [@course, @order] do |f|
-      #course
-        #course_main
-          #course_title
-            %h2= @course.course_name
-      .span-20
-        #price
-          原价:
-          %span.delete ￥#{@course.price}
-          %h2 优惠价: ￥#{@course.discount_price}
-        #campaigns
-          %br/
-          %b 请选择要参加的班次
-          - @campaigns.each do |campaign|
-            .campaign
-              = radio_button_tag 'selected_campaign', campaign.id, true
-              = label_tag "selected_campaign_#{campaign.id}", campaign.name
-
-        = f.submit t('label.submit')
-
-        = link_to t('label.back'), @course
+    = render 'order_form', :course => @course, :order => @order, :campaigns => @campaigns

@@ -24,6 +24,7 @@ P2pTraining::Application.routes.draw do
     member do
       get :confirm_payment
       post :pay
+      post :cancel
     end
   end
 

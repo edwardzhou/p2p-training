@@ -25,18 +25,22 @@ class PaymentsController < ApplicationController
     }
 
     if payment = Payment.find_by_notify_id(notification.notify_id)
-      result = payment.update_attributes(payment_attributes)
+      payment.update_attributes(payment_attributes)
     else
       payment_attributes.merge!(:notify_id => notification.notify_id)
-      result = Payment.create(payment_attributes)
+      payment = Payment.create(payment_attributes)
     end
 
-    if result
+    if payment
       @order = Order.by_code(payment.out_trade_no)
-      if (payment.trade_status == Payment::Status::SUCCESS) or
-          (payment.trade_status == Payment::Status::FINISHED)
-        @order.status = Order::Status::PAID
-        @order.save!
+      if @order.nil?
+        logger.error("[PAYMENT] Cannot find Order[#{payment.out_trade_no}] to update payment status.")
+      else
+        if (payment.trade_status == Payment::Status::SUCCESS) or
+            (payment.trade_status == Payment::Status::FINISHED)
+          @order.status = Order::Status::PAID
+          @order.save!
+        end
       end
 
       render :text => "success"

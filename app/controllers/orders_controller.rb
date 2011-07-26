@@ -33,6 +33,8 @@ class OrdersController < ApplicationController
 
     @order = Order.new({:user => current_user,
                         :total_amount => @course.discount_price})
+    #@order.attributes.merge!(params[:order])
+    @order.attributes = params[:order]
 
     @order.status = Order::Status::PENDING_PAYMENT
     @order.order_code = IdFactory.next_num(:order_id)
@@ -59,6 +61,13 @@ class OrdersController < ApplicationController
   def pay
     @order = Order.find(params[:id])
 
+  end
+
+  def cancel
+    @order = Order.find(params[:id])
+    @order.status = Order::Status::CANCELLED
+    @order.save
+    redirect_to orders_path
   end
 
 end

@@ -47,12 +47,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.by_code(code)
-    results = find_by_order_code(code)
-    if results.size > 0
-      results[0]
-    else
-      nil
-    end
+    find_by_order_code(code)
   end
 
 

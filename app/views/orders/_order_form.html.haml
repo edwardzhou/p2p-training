@@ -1,0 +1,34 @@
+= form_for [course, order] do |f|
+  %table
+    %tbody
+      %tr
+        %th 课程
+        %td= course.course_name
+      %tr
+        %th 价格
+        %td
+          - if course.price == course.discount_price
+            %font(size="large" color="red") ￥#{format("%.2f", course.price)}
+          - else
+            %span.delete 原价￥#{format("%.2f", course.price)} &nbsp;&nbsp;
+            %br/
+            %span(style="font-size:18px;color:green;") 现价￥#{format("%.2f", course.discount_price)}
+      %tr
+        %th 请选择要参加的班次
+        %td
+          #campaigns
+          - campaigns.each do |campaign|
+            #campaign
+              = radio_button_tag 'selected_campaign', campaign.id, true
+              = label_tag "selected_campaign_#{campaign.id}", campaign.name
+      %tr
+        %th 备注
+        %td
+          = f.text_area :comment, :size => "60x5"
+
+      %tr
+        %th/
+        %td
+          = f.submit t('label.submit')
+          &nbsp;&nbsp;
+          = link_to t('label.back'), course
