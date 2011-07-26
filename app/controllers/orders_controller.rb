@@ -65,6 +65,7 @@ class OrdersController < ApplicationController
 
   def cancel
     @order = Order.find(params[:id])
+    @order.reason = params[:cancel_reason]
     @order.status = Order::Status::CANCELLED
     @order.save
     redirect_to orders_path
