@@ -38,7 +38,7 @@
               ￥#{format("%.2f", order.total_amount)}
           %td= order.comment
           %td= human_status('order', order.status)
-          %td= order.paid_date
+          %td= order.paid_time
           %td= order.reason
           %td
             = render 'order_operations', :order => order
