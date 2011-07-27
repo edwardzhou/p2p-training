@@ -24,6 +24,9 @@ class Order < ActiveRecord::Base
     # 待付款
     PENDING_PAYMENT = 'pending_payment'
 
+    # 待退款
+    PENDING_REFUND = 'pending_refund'
+
     # 已付款
     PAID = 'paid'
 

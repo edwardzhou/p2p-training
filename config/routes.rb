@@ -25,6 +25,7 @@ P2pTraining::Application.routes.draw do
       get :confirm_payment
       post :pay
       post :cancel
+      post :apply_to_refund
     end
   end
 

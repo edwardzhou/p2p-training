@@ -65,10 +65,18 @@ class OrdersController < ApplicationController
 
   def cancel
     @order = Order.find(params[:id])
-    @order.reason = params[:cancel_reason]
+    @order.reason = params[:confirm_reason]
     @order.status = Order::Status::CANCELLED
     @order.save
-    redirect_to orders_path
+    redirect_to orders_path, :notice => "订单[#{@order.order_code}]取消成功!"
+  end
+
+  def apply_to_refund
+    @order = Order.find(params[:id])
+    @order.reason = params[:confirm_reason]
+    @order.status = Order::Status::PENDING_REFUND
+    @order.save
+    redirect_to orders_path, :notice => "订单[#{@order.order_code}]退款申请已成功提交! 请等待处理通知。"
   end
 
 end

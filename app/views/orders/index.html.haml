@@ -1,3 +1,6 @@
+
+= show_msg
+
 %h1 我报名的课程
 
 #orders
@@ -23,8 +26,8 @@
         %th/
 
     %tbody
-      - @orders.each do |order|
-        %tr
+      - @orders.each_with_index do |order, index|
+        %tr(class="#{even_odd(index)}")
           %td
             #order_code(id="#{order.id}")= order.order_code
           %td= order.created_at
@@ -43,84 +46,4 @@
           %td
             = render 'order_operations', :order => order
 
-#cancel_dialog(title="取消订单" style="display:none;")
-  %h3 确认取消订单?
-  = form_tag '/test', :id => 'cancel_form' do
-    %table
-      %tbody
-        %tr
-          %th 订单号
-          %td
-            #order_id
-        %tr
-          %th 课程
-          %td
-            #order_title
-        %tr
-          %th 取消原因
-          %td
-            %p.tips
-              &nbsp;
-            = text_area_tag :cancel_reason, nil, :size=>"40x3"
-
-
-
-- content_for :page_include_css do
-  = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom"
-
-- content_for :page_inline_scripts do
-  :javascript
-    var tips;
-    $(document).ready(function(){
-      tips = $(".tips");
-      $(".cancel_button").click(function(){
-        showCancelDialog($(this).data("action"), $(this).data("order-id"));
-        //alert($(this).data("action"));
-      })
-    })
-
-
-    function updateTip(tip, field) {
-      tips.text(tip);
-      if (tip.length > 0) {
-          tips.addClass( "ui-state-highlight" );
-          setTimeout(function() {
-              tips.removeClass( "ui-state-highlight", 1500 );
-          }, 500 );
-
-        field.addClass("ui-state-highlight");
-      } else {
-        tips.text(" ");
-        field.removeClass("ui-state-highlight");
-      }
-    }
-
-    function showCancelDialog(url, order_id) {
-        $("#cancel_form #order_id").text($("#order_code_" + order_id).text());
-        $("#cancel_form #order_title").text($("#order_title_" + order_id).text());
-        $("#cancel_form #cancel_reason").val('');
-        $("#cancel_form").attr("action", url);
-        updateTip('', $("#cancel_form #cancel_reason") );
-        $( "#cancel_dialog" ).dialog({
-                    resizable: false,
-                    height:390,
-                    width:450,
-                    modal: true,
-                    buttons: {
-                        "提交": function() {
-                            reason = $("#cancel_form #cancel_reason").val();
-                            if (reason.length < 4){
-                              updateTip('取消原因至少要填4个字符.', $("#cancel_form #cancel_reason"));
-                              $("#cancel_form #cancel_reason").focus();
-                              return false;
-                            }
-                            $("#cancel_form").submit();
-                            $( this ).dialog( "close" );
-                        },
-                        "返回": function() {
-                            $( this ).dialog( "close" );
-                        }
-                    }
-                });
-
-    }
+= render "confirm_dialog"

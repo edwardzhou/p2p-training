@@ -1069,6 +1069,53 @@ div#user_nav {
   min-height: 400px;
   height: auto; }
 
+.odd {
+  background-color: #CCEECC; }
+
+div#menu {
+  left: 1;
+  position: absolute;
+  text-align: left;
+  top: 1;
+  width: 960px;
+  padding-bottom: 6px; }
+
+div#menu div.wrapper {
+  background: url("/images/shadow.png") repeat-x scroll left bottom #6293bb;
+  bottom: 1;
+  font-size: 13px;
+  left: 1;
+  padding-bottom: 6px;
+  position: absolute;
+  width: 100%; }
+
+div#menu ul {
+  margin: 0;
+  padding: 0;
+  width: 100%; }
+
+div#menu li {
+  background-image: url("/images/line_white.gif");
+  background-position: right center;
+  background-repeat: no-repeat;
+  display: inline;
+  float: left;
+  line-height: 1em;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0 10px; }
+
+div#menu a:hover, div#menu a.selected {
+  background-color: #3671A5; }
+
+div#menu a, div#menu a:link, div#menu a:active, div#menu a:visited {
+  color: white;
+  display: block;
+  font-weight: bold;
+  margin: 0;
+  padding: 7px 13px;
+  text-decoration: none; }
+
 /**************************************/
 /*               FOOTER               */
 /**************************************/

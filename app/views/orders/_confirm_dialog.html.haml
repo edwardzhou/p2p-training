@@ -1,0 +1,90 @@
+#confirm_dialog(title="取消订单" style="display:none;")
+  %h3.confirm_header 确认取消订单?
+  = form_tag '/test', :id => 'confirm_form' do
+    %table
+      %tbody
+        %tr
+          %th 订单号
+          %td
+            #order_id
+        %tr
+          %th 课程
+          %td
+            #order_title
+        %tr
+          %th 原因
+          %td
+            %p.tips
+              &nbsp;
+            = text_area_tag :confirm_reason, nil, :size=>"40x3"
+
+
+- content_for :page_include_css do
+  = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom"
+
+- content_for :page_inline_scripts do
+  :javascript
+    var tips;
+    $(document).ready(function(){
+      tips = $(".tips");
+      $(".cancel_button").click(function(){
+        showConfirmDialog('cancel', $(this).data("action"), $(this).data("order-id"));
+      })
+      $(".refund_button").click(function(){
+        showConfirmDialog('refund', $(this).data("action"), $(this).data("order-id"));
+      })
+    })
+
+
+    function updateTip(tip, field) {
+      tips.text(tip);
+      if (tip.length > 0) {
+          tips.addClass( "ui-state-highlight" );
+          setTimeout(function() {
+              tips.removeClass( "ui-state-highlight", 1500 );
+          }, 500 );
+
+        field.addClass("ui-state-highlight");
+      } else {
+        tips.text(" ");
+        field.removeClass("ui-state-highlight");
+      }
+    }
+
+    function showConfirmDialog(type, url, order_id) {
+        if (type == 'cancel') {
+          $("#confirm_dialog").attr("title", "取消订单");
+          $(".confirm_header").text("确认取消订单?")
+        } else {
+          $("#confirm_dialog").attr("title", "订单退款");
+          $(".confirm_header").text("确认申请订单退款?")
+        }
+
+        $("#order_id").text($("#order_code_" + order_id).text());
+        $("#order_title").text($("#order_title_" + order_id).text());
+        $("#confirm_reason").val('');
+        $("#confirm_form").attr("action", url);
+        updateTip('', $(" #confirm_reason") );
+        $( "#confirm_dialog" ).dialog({
+                    resizable: false,
+                    height:390,
+                    width:450,
+                    modal: true,
+                    buttons: {
+                        "提交": function() {
+                            reason = $("#confirm_reason").val();
+                            if (reason.length < 4){
+                              updateTip('原因至少要填4个字符.', $("#confirm_reason"));
+                              $("#confirm_reason").focus();
+                              return false;
+                            }
+                            $("#confirm_form").submit();
+                            $( this ).dialog( "close" );
+                        },
+                        "返回": function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+
+    }
