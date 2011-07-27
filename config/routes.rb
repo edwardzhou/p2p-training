@@ -79,6 +79,8 @@ P2pTraining::Application.routes.draw do
 
     resources :orders
 
+    resources :payments
+
     resource :dashboards
 
 

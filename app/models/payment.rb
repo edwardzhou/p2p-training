@@ -34,6 +34,6 @@ class Payment < ActiveRecord::Base
     CLOSED = "TRADE_CLOSED"
   end
 
-  belongs_to :order
+  belongs_to :paid_order, :class_name => "Order", :foreign_key => "order_id"
 
 end
