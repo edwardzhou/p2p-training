@@ -3,7 +3,19 @@
 
 %h1 我报名的课程
 
+#search
+  = link_to "当前订单", orders_path("s" => "active")
+  &nbsp;|&nbsp;
+  = link_to "已付款/退款的订单", orders_path("s" => "finish")
+  &nbsp;|&nbsp;
+  = link_to "取消的订单", orders_path("s" => "cancel")
+  &nbsp;|&nbsp;
+  = link_to "全部订单", orders_path("s" => "all")
+
+
 #orders
+  订单数: &nbsp;
+  %b #{@orders.size}
   %table
     %thead
       %tr

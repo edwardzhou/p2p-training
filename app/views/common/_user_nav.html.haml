@@ -1,5 +1,5 @@
 #user_nav
-  - if ! user_signed_in? then
+  - unless user_signed_in?
     = link_to t('label.login'), new_user_session_path
     %span &nbsp;&nbsp;
     = link_to t('label.sign_up'), new_user_registration_path
@@ -7,7 +7,9 @@
     .span
       = t('label.login_as')
       = link_to "#{current_user.username}", edit_profile_path
-      ,
+      &nbsp;|&nbsp;
       = link_to t('label.logout'), destroy_user_session_path
-      ,
+      &nbsp;|&nbsp;
+      = link_to t('label.my_orders'), orders_path
+      &nbsp;|&nbsp;
       = link_to "管理", '/admin'

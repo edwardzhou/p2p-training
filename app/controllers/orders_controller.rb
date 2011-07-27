@@ -8,7 +8,22 @@ class OrdersController < ApplicationController
   include OrdersHelper
 
   def index
-    @orders = current_user.orders
+    status = case params[:s]
+               when 'all' then
+                 []
+               when 'cancel' then
+                 [Order::Status::CANCELLED]
+               when 'finish' then
+                 [Order::Status::PAID, Order::Status::REFUNDED]
+               else
+                 [Order::Status::PENDING_PAYMENT, Order::Status::PENDING_REFUND]
+             end
+    if status.size > 0
+      @orders = current_user.orders.where(:status => status)
+    else
+      @orders = current_user.orders
+    end
+
   end
 
   def new
