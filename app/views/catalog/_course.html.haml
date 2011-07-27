@@ -20,6 +20,13 @@
         优惠价:
         %b= course.discount_price
 
+      #info
+        - if course.favorites.size > 0
+          共
+          %b #{course.favorites.size}
+          人关注 &nbsp;&nbsp;
+
+
 
       = link_to t("label.detail"), course
       |

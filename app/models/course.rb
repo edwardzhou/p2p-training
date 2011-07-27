@@ -39,7 +39,7 @@ class Course < ActiveRecord::Base
                   :catalogs, :catalog_ids, :avatar, :avatar_cache
 
   def active_campaigns
-    campaigns.where(:status => "open")
+    campaigns.where(:status => Campaign::Status::OPEN)
   end
 
   def latest_comments(count=10)
