@@ -31,6 +31,11 @@ P2pTraining::Application.routes.draw do
 
   resources :favorites
 
+  match 'services' => "company#services"
+  match 'about_us' => "company#about_us"
+  match 'join_us' => "company#join_us"
+  match 'help' => "company#help"
+
   resources :alipay_tests do
     collection do
       post :notify
