@@ -13,7 +13,7 @@ zh-CN:
 
   devise:
     failure:
-      already_authenticated: 'You are already signed in.'
+      already_authenticated: '您已经登录了.'
       unauthenticated: '继续操作前请注册或者登录.'
       unconfirmed: '请先激活您的帐号'
       locked: '您的帐号已被锁定.'
@@ -32,7 +32,7 @@ zh-CN:
       confirmed: '您的帐号已经激活，您现在已经登录.'
     registrations:
       signed_up: '欢迎! 您的帐号已注册成功.'
-      inactive_signed_up: '您的帐号已注册成功. 由于您的帐号 %{reason}, 暂时不能登录.'
+      inactive_signed_up: '您的帐号已注册成功. 激活邮件已经发送至您的注册邮箱，请查看邮件并激活帐号.'
       updated: '帐号资料更新成功.'
       destroyed: '再见！您的帐户已成功注销。我们希望很快可以再见到您.'
     unlocks:

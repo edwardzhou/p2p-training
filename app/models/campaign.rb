@@ -34,4 +34,11 @@ class Campaign < ActiveRecord::Base
   validates_presence_of :name, :price, :discount_price
   validates :price, :discount_price, :numericality => {:greater_than => 0}
 
+  has_many :orders
+  has_many :registered_users, :through => :orders, :source => :user, :uniq => true
+
+  def valid_orders
+    orders.where(:status => [Order::Status::PENDING_PAYMENT, Order::Status::PAID])
+  end
+
 end

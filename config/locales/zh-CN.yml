@@ -6,7 +6,7 @@ zh-CN:
       carrierwave_processing_error: 无法处理
       carrierwave_integrity_error: 不是允许的文件类型
 
-      course_registered: 已经报名该课程, 无需重复报名，请到[我的订单]查看!
+      course_registered: 已经报名该课程, 无需重复报名，请到[我的课程]查看!
 
   label:
     login: 登录
@@ -24,13 +24,19 @@ zh-CN:
     enable: 启用
     disable: 禁用
     detail: 详细
-    add_to_favorite: 收藏
+    add_to_favorite: 关注
     register: 报名
     register_now: 立即报名
     submit: 提交
     cancel: 取消
     reset: 重置
-    my_orders: 我的订单
+    my_orders: 我的课程
+    my_favorites: 我的关注
+
+    forgot_your_password: 忘记密码?
+    dont_recv_confirmation_email: 没有收到激活邮件?
+    send_me_reset_password_instructions: 发送重置密码操作指令给我
+    resend_confirmation_instructions: 重发激活操作指令
 
     save_success: 保存成功
     edit_success: 修改成功

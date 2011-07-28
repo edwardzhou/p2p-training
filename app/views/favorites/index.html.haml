@@ -1,11 +1,36 @@
-%h1 我的收藏
+%h1= t('label.my_favorites')
 
 = show_msg
 
 #favorites
-  - @favorites.each do |fav|
-    #favorite
-      .span-8
-        =link_to fav.course.course_name, fav.course
-      .span-2
-        =link_to t('lable.delete'), fav, :method => :delete
+  %table
+    %thead
+      %tr
+        %th 课程
+        %th 关注人数
+        %th 开班情况
+        %th/
+    %tbody
+      - @favorites.each do |fav|
+        %tr
+          %td
+            = link_to fav.course.course_name, course_path(fav.course)
+          %td
+            = fav.course.favorites.size
+          %td
+            - if fav.course.active_campaigns.size > 0
+              %ul
+                - fav.course.active_campaigns.each do |campaign|
+                  %li
+                    %b= campaign.name
+                    &nbsp;&nbsp;已有&nbsp;
+                    %b= campaign.valid_orders.size
+                    &nbsp;报名
+                    &nbsp;&nbsp;
+
+                    = link_to "我要报名", new_course_order_path(fav.course)
+            - else
+              当前没有开班，
+              = link_to '催促开班', #
+          %td
+            =link_to t('label.delete'), fav, :method => :delete
