@@ -1,15 +1,15 @@
 - content_for :page_include_scripts do
-  = javascript_include_tag 'jquery.validate'
-  = javascript_include_tag 'i18n/messages-zh-CN'
-  = javascript_include_tag 'i18n/jquery.ui.datepicker-zh-CN'
+  = javascript_include_tag 'rails.validations',
+                           'i18n/messages-zh-CN' ,
+                           'i18n/jquery.ui.datepicker-zh-CN'
 
 - content_for :page_inline_scripts do
   :javascript
     $(document).ready(function(){
-      $("form").validate({errorClass: 'error_msg'});
       $('input[date=true]').datepicker({
         showButtonPanel: true,
-        changeYear: true
+        changeYear: true,
+        changeMonth: true,
         })
     })
 
@@ -17,7 +17,9 @@
   = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom"
 
 %h2= t('label.sign_up')
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+= form_for(resource, :as => resource_name,
+          :url => registration_path(resource_name),
+          :validate => true) do |f|
   = devise_error_messages!
   %fieldset
     %h6 登录信息

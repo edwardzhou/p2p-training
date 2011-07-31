@@ -2,13 +2,12 @@
   = javascript_include_tag 'rails.validations',
                             'i18n/messages-zh-CN',
                             'i18n/jquery.ui.datepicker-zh-CN',
-                            'i18n/jquery.ui.datepicker-zh-CN',
                             'token-input'
 
 - content_for :page_inline_scripts do
   :javascript
     $(document).ready(function(){
-      $("form").validate({errorClass: 'error_msg'});
+      //$("form").validate({errorClass: 'error_msg'});
       $('input[date=true]').datepicker({
         showButtonPanel: true,
         changeYear: true,

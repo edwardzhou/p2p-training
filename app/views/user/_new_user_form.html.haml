@@ -1,6 +1,6 @@
 #field_nick_name.field
   .required_field_label= f.label :username
-  = f.text_field :username, :class => "required", :maxlength => 20, :size => 30
+  = f.text_field :username, :validate => true, :class => "required", :maxlength => 20, :size => 30
 #field_email.field
   .required_field_label= f.label :email
   = f.text_field :email, :class => "required email"
