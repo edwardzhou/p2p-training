@@ -3,7 +3,7 @@ P2pTraining::Application.routes.draw do
 
   get "catalog/view"
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => 'registrations', :confirmations => 'confirmations'}
 
   get "home/index"
 
