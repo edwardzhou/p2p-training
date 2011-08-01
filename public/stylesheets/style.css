@@ -299,7 +299,8 @@ a:link {
   color: #36c; }
 a:visited {
   text-decoration: underline;
-  color: #99c; }
+  #color: #99c;
+  color: #36c; }
 a:hover {
   text-decoration: underline;
   color: #c33; }

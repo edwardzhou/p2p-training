@@ -317,7 +317,9 @@ a {
     color: #36c; }
   &:visited {
     text-decoration: underline;
-    color: #99c; }
+    #color: #99c;
+    color: #36c;
+    }
   &:hover {
     text-decoration: underline;
     color: #c33; }
