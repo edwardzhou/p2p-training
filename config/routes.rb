@@ -10,7 +10,9 @@ P2pTraining::Application.routes.draw do
   match 'catalog/:id' => "catalog#view", :as => :catalog
   match 'invites/:id' => "invites#invite"
 
-  resource :profile
+  resource :profile do
+    get :my_invitations
+  end
   resources :courses, :only => [:index, :show] do
     member do
       get :register
@@ -36,17 +38,17 @@ P2pTraining::Application.routes.draw do
   match 'join_us' => "company#join_us"
   match 'help' => "company#help"
 
-  resources :alipay_tests do
-    collection do
-      post :notify
-      get :notify
-      post :done
-      get :done
-    end
-  end
+  #resources :alipay_tests do
+  #  collection do
+  #    post :notify
+  #    get :notify
+  #    post :done
+  #    get :done
+  #  end
+  #end
 
-  match '/payments/notify' => "payments#notify", :via => [:get, :post]
-  match '/payments/done' => "payments#done", :via => [:get, :post]
+  #match '/payments/notify' => "payments#notify", :via => [:get, :post]
+  #match '/payments/done' => "payments#done", :via => [:get, :post]
 
   #resources :payments, :only => [:notify, :done] do
   #  collection do

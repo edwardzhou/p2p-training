@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
+
+  before_filter :load_user
+
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     user_attributes = params[:user]
     user_attributes.delete('username')
     user_attributes.delete('email')
@@ -15,5 +16,17 @@ class ProfilesController < ApplicationController
       render 'edit'
     end
   end
+
+
+  def my_invitations
+    @invited_users = User.invited_users(@user.username).order('created_at DESC')
+  end
+
+
+  private
+  def load_user
+    @user = current_user
+  end
+
 
 end

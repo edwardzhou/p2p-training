@@ -1,10 +1,10 @@
 
 = show_msg
 
-= render 'common/ad_01'
-
-- if Rails.env == 'development'
+- if is_dev?
   = link_to 'change logs', 'changes_log.txt'
+
+= render 'common/ad_01'
 
 #latest_courses
   %h1 最新课程

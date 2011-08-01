@@ -26,7 +26,7 @@
         %b 付款金额
       %td
         ￥#{@order.total_amount}
-        - if is_development?
+        - if is_dev?
           %b (当前测试模式，实际付款金额为 ￥0.01)
     %tr
       %td
@@ -40,7 +40,7 @@
                               :service => :alipay,
                               :html => {:id => 'payment-form', :method => :get} do |service|
 
-          - if is_development?
+          - if is_dev?
             - service.total_fee 0.01
           - else
             - service.total_fee @order.total_amount

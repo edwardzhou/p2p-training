@@ -41,8 +41,8 @@ class User < ActiveRecord::Base
   include UserDeviseSupport
 
   validates_presence_of :email, :username, :true_name, :contact_phone
-  validates_presence_of :login, :if => false
-  validates_uniqueness_of :username
+  #validates_presence_of :login, :if => false
+  validates_uniqueness_of :email, :username
 
 
   has_one :user_detail
@@ -67,6 +67,9 @@ class User < ActiveRecord::Base
 
   after_initialize :initialize_user_detail
 
+  scope :confirmed_users, where(:confirmed_at.not_eq => nil)
+  scope :invited_users, lambda {|ref_username| where(:reference_to => ref_username)}
+  scope :paid_users, joins(:orders).where(:orders => {:status => Order::Status::PAID})
 
   def role?(role_name)
     role_name.downcase!
@@ -74,6 +77,7 @@ class User < ActiveRecord::Base
     self.roles.each do |role|
       if role.name.downcase == role_name
         found = true
+        break
       end
     end
 
@@ -85,7 +89,15 @@ class User < ActiveRecord::Base
   end
 
   def invited_users
-    User.where(:reference_to => self.username)
+    invited_users(self.username)
+  end
+
+  def paid_orders
+    orders.where(:orders => {:status => Order::Status::PAID})
+  end
+
+  def pending_payment_orders
+    orders.where(:orders => {:status => Order::Status::PENDING_PAYMENT})
   end
 
   private

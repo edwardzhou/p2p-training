@@ -26,8 +26,8 @@ module ApplicationHelper
     t("status.#{status_type}.#{status_value}")
   end
 
-  def is_development?
-    Rails.env == "development"
+  def is_dev?
+    Rails.env.development?
   end
   
 end

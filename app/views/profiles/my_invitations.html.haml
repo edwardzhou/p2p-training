@@ -1,0 +1,32 @@
+%h1 我的推广
+
+%p= link_to '邀请朋友', #
+
+%p 有效推广数(帐号已激活): #{valid_invitations_count(@user)}
+
+%p 课程点数: #{course_credits(@user)}
+
+%p 已接受邀请的推广
+#prmotions
+  %table
+    %thead
+      %tr
+        %th 帐号
+        %th 注册时间
+        %th 状态
+    %tbody
+      - @invited_users.each do |invited_user|
+        %tr
+          %td
+            #{invited_user.username} (#{mail_to invited_user.email})
+          %td
+            = invited_user.created_at
+          %td
+            - if invited_user.confirmed_at.nil?
+              未激活
+            - elsif (paid_count = invited_user.paid_orders.size) > 0
+              已报名并付款 #{paid_count} 门课程
+            - elsif (pending_count = invited_user.pending_payment_orders.size ) > 0
+              已报名但未付款 #{pending_count} 门课程
+            - else
+              尚未报名课程
