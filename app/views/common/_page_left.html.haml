@@ -1,7 +1,8 @@
 #left_box(style="min-height:450px;")
   .recommended
   .inner_box
-    %h5 课程类别
+    %h5
+      %b 课程类别
     #catalog_nav
       %ul
         %li= link_to "最新课程", "#"
@@ -11,7 +12,8 @@
             = link_to catalog.name, catalog_path(catalog)
   .recommended
   .inner_box
-    %h5 标签
+    %h5
+      %b 标签
     %ul
       %li JAVA
       %li .Net
