@@ -1142,6 +1142,12 @@ div.inner_box {
 .recommended {
   min-height: 10px; }
 
+.li_star_orange {
+  list-style-image: url("/images/star_orange.gif"); }
+
+.li_star_blue {
+  list-style-image: url("/images/star_blue.gif"); }
+
 /**************************************/
 /*               FOOTER               */
 /**************************************/

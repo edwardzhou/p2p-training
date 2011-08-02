@@ -5,8 +5,8 @@
       %b 课程类别
     #catalog_nav
       %ul
-        %li= link_to "最新课程", "#"
-        %li= link_to "热门课程", "#"
+        %li.li_star_orange(style="display: list-item;")= link_to "最新课程", "#"
+        %li.li_star_orange(style="display: list-item;")= link_to "热门课程", "#"
         - Catalog.active_root_catalogs.each do |catalog|
           %li
             = link_to catalog.name, catalog_path(catalog)
