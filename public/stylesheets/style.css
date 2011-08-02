@@ -1117,6 +1117,31 @@ div#menu a, div#menu a:link, div#menu a:active, div#menu a:visited {
   padding: 7px 13px;
   text-decoration: none; }
 
+div.inner_box {
+  border: 1px solid #A8BACD;
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding: 1px;
+  position: relative; }
+  div.inner_box h5 {
+    background-image: url("/images/bg_box_title.png");
+    border-bottom: 1px solid #A8BACD;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0.15em 0 0.67em;
+    padding: 2px 0;
+    text-align: center; }
+  div.inner_box ul {
+    margin: 0 0 1.5em;
+    padding: 0; }
+    div.inner_box ul li {
+      display: table;
+      margin: 0 0 0.25em 30px;
+      padding: 0 10px 5px 0; }
+
+.recommended {
+  min-height: 10px; }
+
 /**************************************/
 /*               FOOTER               */
 /**************************************/
