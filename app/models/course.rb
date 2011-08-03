@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # Course
 #
@@ -30,7 +32,12 @@ class Course < ActiveRecord::Base
   has_many :comments, :order => 'created_at DESC', :dependent => :destroy
 
   scope :active_courses, where(:status.not_eq => "close")
-  #scope :active_campaigns2, campaigns.where(:status => "open")
+
+  # return top lastest courses, default 10
+  scope :latest_courses, lambda{|*top| active_courses.order("created_at DESC").limit(top.first || 10) }
+
+  # hot courses
+  scope :hot_courses, lambda{|*top| latest_courses(*top) }
 
   mount_uploader :avatar, AvatarUploader
 
