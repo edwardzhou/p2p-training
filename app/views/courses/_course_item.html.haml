@@ -1,1 +1,14 @@
 %li
+  = image_tag course_item.avatar_url(:thumb).to_s, :align => "left"
+  %b= course_item.course_name
+  %p!= course_item.short_description
+  %p
+    - if !course_item.discount_price.nil? && course_item.price != course_item.discount_price
+      价格: ￥
+      %span.delete= course_item.price
+      &nbsp;&nbsp;优惠价: ￥
+      %b= course_item.discount_price
+    -else
+      价格: ￥
+      %b= course_item.price
+

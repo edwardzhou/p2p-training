@@ -17,11 +17,6 @@ module ApplicationHelper
     }
   end
 
-    # @param count [Object]
-  def latest_courses(count=5)
-    Course.active_courses.order('created_at DESC').limit(count)
-  end
-
   def human_status(status_type, status_value)
     t("status.#{status_type}.#{status_value}")
   end
