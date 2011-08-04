@@ -12,4 +12,35 @@
       价格: ￥
       %b= course_item.price
 
+  %p 累计报名人数: #{course_item.total_register_count}
+
+  %p
+    - if course_item.active_campaigns.size > 0
+      #campaigns
+        当前开班:
+        %ul
+          - course_item.active_campaigns.each do |campaign|
+            %li
+              #{campaign.name} (已有 #{campaign.register_count} 人报名)
+
+  %p
+    = link_to t("label.detail"), course_item
+    |
+    = link_to t("label.add_to_favorite"), favorites_path(:course_id => course_item.id), :method => 'POST'
+    |
+    = link_to t("label.register_now"), new_course_order_path(course_item)
+    %br/
+    %b
+      %span(id="comment_count_#{course_item.id}")= course_item.comments.count
+    评论
+    = link_to "查看", course_comments_path(course_item), :id => "show_comments_#{course_item.id}", :remote => true
+    - if user_signed_in?
+      = link_to "说两句", new_course_comment_path(course_item), :remote => true
+    #comments_panel
+      .new_comment(id="course_#{course_item.id}_new_comment")
+      .comments(id="comments_course_#{course_item.id}")
+
+
+
+
 %hr/
