@@ -14,9 +14,8 @@ P2pTraining::Application.routes.draw do
     get :my_invitations
   end
   resources :courses, :only => [:index, :show] do
-    member do
-      get :register
-      post :register
+    collection do
+      get :latest, :hot
     end
     resources :comments
     resources :orders

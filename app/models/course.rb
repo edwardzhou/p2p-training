@@ -22,6 +22,13 @@
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 class Course < ActiveRecord::Base
+
+  module Status
+    OPEN      = "open"
+    CLOSED    = "closed"
+  end
+
+
   validates_presence_of :course_name
   validates_uniqueness_of :course_name
 
@@ -31,7 +38,7 @@ class Course < ActiveRecord::Base
   has_many :interested_users,:through => :favorites, :order => 'created_at DESC', :source => :user
   has_many :comments, :order => 'created_at DESC', :dependent => :destroy
 
-  scope :active_courses, where(:status.not_eq => "close")
+  scope :active_courses, where(:status.not_eq => Course::Status::CLOSED)
 
   # return top lastest courses, default 10
   scope :latest_courses, lambda{|*top| active_courses.order("created_at DESC").limit(top.first || 10) }
@@ -55,6 +62,13 @@ class Course < ActiveRecord::Base
 
   def status_text
     t("label.status.#{self.status}")
+  end
+
+  def self.search(criteria)
+    criteria = "%#{criteria}%"
+    Course.where( { :course_name.like => criteria } \
+      | { :short_description.like => criteria } \
+      | { :long_description.like => criteria } )
   end
 
   def to_s
