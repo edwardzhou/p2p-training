@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to({:action => 'index'}, :notice => "收藏成功!") }
+      format.html { redirect_to({:action => 'index'}, :notice => "关注成功!") }
       format.js
     end
   end
