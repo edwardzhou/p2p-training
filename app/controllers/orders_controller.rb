@@ -27,27 +27,24 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @course = Course.find(params[:course_id])
-    @campaigns = @course.active_campaigns
+    @campaign = Campaign.find(params[:campaign_id])
 
-    @already_exists = is_order_exists?(@campaigns.collect{|c| c.id})
+    @already_exists = is_order_exists?([@campaign.id])
 
     if @already_exists
       flash[:alert] = t('errors.messages.course_registered')
     end
 
     @order = Order.new({:user => current_user,
-                        :total_amount => @course.discount_price})
+                        :campaign => @campaign,
+                        :total_amount => @campaign.discount_price})
   end
 
   def create
-    @course = Course.find(params[:course_id])
-    @campaigns = @course.active_campaigns
-
-    @campaign = Campaign.find(params[:selected_campaign])
+    @campaign = Campaign.find(params[:campaign_id])
 
     @order = Order.new({:user => current_user,
-                        :total_amount => @course.discount_price})
+                        :total_amount => @campaign.discount_price})
     #@order.attributes.merge!(params[:order])
     @order.attributes = params[:order]
 

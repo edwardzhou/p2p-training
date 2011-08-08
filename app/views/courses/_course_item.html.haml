@@ -21,14 +21,16 @@
         %ul
           - course_item.active_campaigns.each do |campaign|
             %li
-              #{campaign.name} (已有 #{campaign.register_count} 人报名)
+              = link_to campaign.name, campaign
+              (已有 #{campaign.register_count} 人报名) &nbsp;
+              = link_to t("label.register_now"), new_campaign_order_path(campaign)
 
   %p
     = link_to t("label.detail"), course_item
     |
     = link_to t("label.add_to_favorite"), favorites_path(:course_id => course_item.id), :method => 'POST'
     |
-    = link_to t("label.register_now"), new_course_order_path(course_item)
+    //= link_to t("label.register_now"), new_course_order_path(course_item)
     %br/
     %b
       %span(id="comment_count_#{course_item.id}")= course_item.comments.count

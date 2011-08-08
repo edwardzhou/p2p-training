@@ -18,6 +18,9 @@ P2pTraining::Application.routes.draw do
       get :latest, :hot
     end
     resources :comments
+  end
+
+  resources :campaigns do
     resources :orders
   end
 

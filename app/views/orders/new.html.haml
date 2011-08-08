@@ -8,4 +8,4 @@
   - if @already_exists
     = link_to "我的订单", orders_path
   - else
-    = render 'order_form', :course => @course, :order => @order, :campaigns => @campaigns
+    = render 'order_form', :course => @campaign.course, :order => @order, :campaign => @campaign

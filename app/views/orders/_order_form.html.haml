@@ -1,4 +1,4 @@
-= form_for [course, order] do |f|
+= form_for [campaign, order] do |f|
   %table
     %tbody
       %tr
@@ -10,17 +10,17 @@
           - if course.price == course.discount_price
             %font(size="large" color="red") ￥#{format("%.2f", course.price)}
           - else
-            %span.delete 原价￥#{format("%.2f", course.price)} &nbsp;&nbsp;
+            %span.delete 原价￥#{format("%.2f", campaign.price)} &nbsp;&nbsp;
             %br/
-            %span(style="font-size:18px;color:green;") 现价￥#{format("%.2f", course.discount_price)}
+            %span(style="font-size:18px;color:green;") 现价￥#{format("%.2f", campaign.discount_price)}
       %tr
-        %th 请选择要参加的班次
+        %th 报名的班次
         %td
-          #campaigns
-          - campaigns.each do |campaign|
-            #campaign
-              = radio_button_tag 'selected_campaign', campaign.id, true
-              = label_tag "selected_campaign_#{campaign.id}", campaign.name
+          #campaign
+            #{campaign.name} (已有 #{campaign.register_count} 人报名)
+            %br/
+            上课地点: #{campaign.training_room.full_address},
+            = link_to '查看地图', campaign.training_room.map_url, :target => "_blank"
       %tr
         %th 备注
         %td
