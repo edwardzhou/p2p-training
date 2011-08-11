@@ -14,10 +14,12 @@ class CoursesController < ApplicationController
 
   def latest
     @courses = Course.latest_courses(10)
+    render 'index'
   end
 
   def hot
     @courses = Course.hot_courses(10)
+    render 'index'
   end
 
 
