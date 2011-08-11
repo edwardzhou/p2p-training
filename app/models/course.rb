@@ -44,7 +44,7 @@ class Course < ActiveRecord::Base
   scope :latest_courses, lambda{|*top| active_courses.order("created_at DESC").limit(top.first || 10) }
 
   # hot courses
-  scope :hot_courses, lambda{|*top| latest_courses(*top) }
+  scope :hot_courses, lambda{|*top| active_courses.order("total_register_count DESC").limit(top.first || 10) }
 
   mount_uploader :avatar, AvatarUploader
 

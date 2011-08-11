@@ -1,34 +1,42 @@
-%div(id="course_#{@course.id}")
-  #course_avatar.span-5.suffix-1
-    = image_tag @course.avatar_url(:thumb).to_s
+%h1 课程: #{@course.course_name}
 
-  #course_main.span-12
-    #course_title
-      %h2= @course.course_name
-      #catalogs
-        所属目录:
-        = @course.catalogs.collect {|c| c.name}.join(", ")
+%div
+  = image_tag @course.avatar_url(:thumb).to_s
+
+  #course_main
+    #catalogs
+      所属目录:
+      = @course.catalogs.collect {|c| c.name}.join(", ")
 
     #duration 课程时间: #{@course.duration_in_hours} 小时
 
     #course_description
       != @course.long_description
 
-    #campaigns
-      - @course.active_campaigns.each do |campaign|
-        .prefix-1
-          %h3= campaign.name
-          开课时间: #{start_date(campaign)}
-          %br/
-          报名截止时间: #{register_due_date(campaign)}
-          %br/
-          原价: ￥
-          %span.delete= @course.price
-          %br/
-          优惠价: ￥#{@course.discount_price}
+    %p 累计报名人数: #{@course.total_register_count}
+
+    %p= link_to t("label.add_to_favorite"), favorites_path(:course_id => @course.id), :method => 'POST'
 
 
-    = link_to t("label.add_to_favorite"), favorites_path(:course_id => @course.id), :method => 'POST'
-    |
-    = link_to t("label.register_now"), new_course_order_path(@course)
+  #campaigns
+    %h4 开班：
+    - @course.active_campaigns.each do |campaign|
+      .prefix-1
+        %b= campaign.name
+        %br/
+        开课时间: #{start_date(campaign)}
+        %br/
+        报名截止时间: #{register_due_date(campaign)}
+        %br/
+        原价: ￥
+        %span.delete= campaign.price
+        &nbsp;&nbsp; 优惠价: ￥#{campaign.discount_price}
+        %br/
+        上课地点: #{campaign.training_room.full_address}, &nbsp;&nbsp;
+        =link_to "查看电子地图与交通路线", campaign.training_room.map_url, :target => "_blank"
+        %br/
+        = link_to t("label.register_now"), new_campaign_order_path(campaign)
+
+
+
 
