@@ -41,7 +41,7 @@ class Course < ActiveRecord::Base
   scope :active_courses, where(:status.not_eq => Course::Status::CLOSED)
 
   # return top lastest courses, default 10
-  scope :latest_courses, lambda{|*top| active_courses.order("created_at DESC").limit(top.first || 10) }
+  scope :latest_courses, lambda{|*top| active_courses.where(:display_order.gt => 0).order("display_order").limit(top.first || 10) }
 
   # hot courses
   scope :hot_courses, lambda{|*top| active_courses.order("total_register_count DESC").limit(top.first || 10) }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110803151004) do
+ActiveRecord::Schema.define(:version => 20110812010615) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20110803151004) do
     t.datetime "updated_at"
     t.integer  "total_interesting_count", :default => 0
     t.integer  "total_register_count",    :default => 0
+    t.integer  "display_order"
   end
 
   create_table "favorites", :force => true do |t|
