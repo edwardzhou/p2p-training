@@ -1,0 +1,11 @@
+%h1 邀请朋友
+
+= form_for @invitation do |f|
+  %fieldset
+    #field_email.field
+      .required_field_label= f.label :friend_email
+      = f.text_field :friend_email, :class => "required email"
+
+
+    = f.submit t('label.submit')
+

@@ -28,7 +28,7 @@
 
   场景: 添加新的课程
     假如 我打开 课程管理页面
-    而且 I dump page content
+    #而且 I dump page content
     而且 我点击连接 "新增课程"
     而且 我在 "课程名称" 填入 "敏捷开发Scrum"
     而且 在 "简短描述" 填入 "敏捷Scrum简短描述"

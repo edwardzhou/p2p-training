@@ -8,11 +8,14 @@ P2pTraining::Application.routes.draw do
   get "home/index"
 
   match 'catalog/:id' => "catalog#view", :as => :catalog
-  match 'invites/:id' => "invites#invite"
+  #match 'invitations/:id' => "invites#invite"
 
   resource :profile do
     get :my_invitations
   end
+
+  resources :invitations
+
   resources :courses, :only => [:index, :show] do
     collection do
       get :latest, :hot

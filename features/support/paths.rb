@@ -42,6 +42,14 @@ module NavigationHelpers
       when /课程管理页面/
         admin_courses_path
 
+      when /<(.*)>\s*页面/
+        begin
+          path_components = $1.split(/\s+/)
+          self.send(path_components.push('path').join('_').to_sym)
+        rescue Object => e
+          raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+                    "Now, go and add a mapping in #{__FILE__}"
+        end
       else
         begin
           page_name =~ /the (.*) page/

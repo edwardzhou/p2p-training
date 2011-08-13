@@ -165,7 +165,7 @@ GEM
       json_pure
       rubyzip
     sexp_processor (3.0.5)
-    spork (0.9.0.rc4)
+    spork (0.9.0.rc9)
     sqlite3 (1.3.3)
     subexec (0.0.4)
     term-ansicolor (1.0.5)

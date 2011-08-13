@@ -21,6 +21,7 @@ zh-CN:
       location: 位置
       campaign: 活动
       order:    订单
+      invitation: 邀请
 
     attributes:
       user_detail: &ud_attrs
@@ -53,6 +54,11 @@ zh-CN:
         start_date: 课程开始时间
         end_date: 课程结束时间
         register_due_date: 报名截止时间
+
+      invitation:
+        friend_email: 朋友邮件地址
+        friend_name: 朋友名称
+
 
   status:
     order:
