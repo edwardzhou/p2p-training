@@ -4,8 +4,15 @@
   %fieldset
     #field_email.field
       .required_field_label= f.label :friend_email
-      = f.text_field :friend_email, :class => "required email"
+      = f.text_field :friend_email
 
+    #field_email.field
+      .required_field_label= f.label :friend_name
+      = f.text_field :friend_name
+
+    #field_email.field
+      .required_field_label= f.label :my_name
+      = f.text_field :my_name
 
     = f.submit t('label.submit')
 

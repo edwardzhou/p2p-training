@@ -10,13 +10,14 @@ class InvitationsController < ApplicationController
   end
 
   def new
-    @invitation = Invitation.new
+    @invitation = Invitation.new({:user => @user, :my_name => @user.username})
   end
 
   def create
     @invitation = Invitation.new(params[:invitation])
     @invitation.user = @user
     if @invitation.save
+      InvitationMailer.invite(@invitation).deliver
       redirect_to({:action => "index"}, :notice => "邀请发送成功!")
     else
       render "new"

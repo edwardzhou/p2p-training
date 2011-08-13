@@ -1,0 +1,11 @@
+%p
+  #{@invitation.friend_name}, 您好!
+
+%p
+  www.p2p-training.info 是一个IT专业人员对专业人员的经验分享平台,
+  您的朋友 #{@invitation.my_name} (#{@invitation.user.email})已经注册了，TA觉得上面的课程对你非常有
+  帮助，因此邀请您免费注册。请点击下面链接或复制到浏览器地址栏进行免费注册。
+  %br/
+  %p/
+
+  = link_to "免费注册: #{@invitation_url}", @invitation_url
