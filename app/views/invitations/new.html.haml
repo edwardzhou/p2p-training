@@ -1,7 +1,9 @@
 %h1 邀请朋友
 
-= form_for @invitation do |f|
+= form_for @invitation, :validate => true do |f|
   %fieldset
+    %p/
+
     #field_email.field
       .required_field_label= f.label :friend_email
       = f.text_field :friend_email
@@ -15,4 +17,23 @@
       = f.text_field :my_name
 
     = f.submit t('label.submit')
+
+
+- content_for :page_include_scripts do
+  = javascript_include_tag 'rails.validations',
+                           'i18n/messages-zh-CN',
+                           'rails.validations.custom'
+
+- content_for :page_inline_scripts do
+  :javascript
+    $(document).ready(function(){
+      $('#invitation_friend_email').change(function(){
+        friend_email = $.trim($('#invitation_friend_email').val());
+        friend_name = $.trim($('#invitation_friend_name').val());
+        if (friend_email.length > 0 && friend_name.length == 0) {
+          $('#invitation_friend_name').val(friend_email).data("changed", true).trigger('focusout');
+          //$('#invitation_friend_name').trigger('focusout');
+        }
+      })
+    })
 

@@ -65,8 +65,10 @@ group :development, :test do
   gem 'capybara'
   gem 'ZenTest'
   gem 'spork', '~> 0.9.0.rc'
-end
-
-group :test do
   gem 'factory_girl_rails'
+  gem 'rb-inotify', :require => false if RUBY_PLATFORM =~ /linux/i
+  gem 'libnotify'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'guard-spork'
 end
