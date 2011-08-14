@@ -4,23 +4,23 @@
 %h1 我报名的课程
 
 #search
-  = link_to "当前订单", orders_path("s" => "active")
+  = link_to "当前课程", orders_path("s" => "active")
   &nbsp;|&nbsp;
-  = link_to "已付款/退款的订单", orders_path("s" => "finish")
+  = link_to "已完成的课程", orders_path("s" => "finish")
   &nbsp;|&nbsp;
-  = link_to "取消的订单", orders_path("s" => "cancel")
+  = link_to "取消的课程", orders_path("s" => "cancel")
   &nbsp;|&nbsp;
-  = link_to "全部订单", orders_path("s" => "all")
+  = link_to "全部课程", orders_path("s" => "all")
 
 
 #orders
-  订单数: &nbsp;
+  课程订单数: &nbsp;
   %b #{@orders.size}
   %table
     %thead
       %tr
         %th
-          订单号
+          课程订单号
         %th
           报名日期
         %th
@@ -45,9 +45,9 @@
           %td= order.created_at
           %td
             #order_title(id="#{order.id}")
-              = order.campaign.course.course_name
+              = link_to order.campaign.course.course_name, order.campaign.course
               %br/
-              = order.campaign.name
+              = link_to order.campaign.name, order.campaign
           %td
             #order_amount(id="#{order.id}")
               ￥#{format("%.2f", order.total_amount)}

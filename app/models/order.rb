@@ -35,6 +35,9 @@ class Order < ActiveRecord::Base
 
     # 取消
     CANCELLED = 'cancelled'
+
+    # 已上课
+    FINISHED = 'finished'
   end
 
 
@@ -45,6 +48,10 @@ class Order < ActiveRecord::Base
 
   scope :pending, where(:status => Status::PENDING_PAYMENT)
   scope :latest_orders, order("created_at DESC")
+  scope :finished, where(:status => Status::FINISHED)
+  scope :paid, where(:status => Status::PAID)
+  scope :active, where(:status => [Status::PAID, Status::PENDING_PAYMENT])
+  scope :cancelled, where(:status => [Status::CANCELLED, Status::PENDING_REFUND, Status::REFUNDED])
 
   def calc
     self.total_amount = self.order_items.inject(0) {|sum, item| sum + item.amount}
