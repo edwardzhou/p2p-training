@@ -52,8 +52,8 @@ P2pTraining::Application.routes.draw do
   #  end
   #end
 
-  #match '/payments/notify' => "payments#notify", :via => [:get, :post]
-  #match '/payments/done' => "payments#done", :via => [:get, :post]
+  match '/payments/notify' => "payments#notify", :via => [:get, :post]
+  match '/payments/done' => "payments#done", :via => [:get, :post]
 
   #resources :payments, :only => [:notify, :done] do
   #  collection do

@@ -5,6 +5,9 @@ require "id_factory"
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
 
+  load_and_authorize_resource
+  skip_authorization_check :only => [:index, :new, :create]
+
   include OrdersHelper
 
   def index
@@ -35,6 +38,10 @@ class OrdersController < ApplicationController
     @order = Order.new({:user => current_user,
                         :campaign => @campaign,
                         :total_amount => @campaign.discount_price})
+  end
+
+  def edit
+    @order = Order.find(params[:id])
   end
 
   def create

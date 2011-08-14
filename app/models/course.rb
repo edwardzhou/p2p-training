@@ -18,6 +18,9 @@
 # avatar                         varchar(255)         true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
+# total_interesting_count        integer              true    0              
+# total_register_count           integer              true    0              
+# display_order                  integer              true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

@@ -24,6 +24,7 @@
 # sign_type                      varchar(255)         true                   
 # sign                           varchar(255)         true                   
 # notify_type                    varchar(255)         true                   
+# order_id                       integer              true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

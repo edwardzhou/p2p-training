@@ -17,6 +17,7 @@
 # description                    text                 true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
+# register_count                 integer              true    0              
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

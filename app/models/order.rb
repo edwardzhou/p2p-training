@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 # Order
 #
@@ -14,6 +16,8 @@
 # updated_at                     datetime             true                   
 # campaign_id                    integer              true                   
 # paid_time                      datetime             true                   
+# reason                         text                 true                   
+# refunded_time                  datetime             true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

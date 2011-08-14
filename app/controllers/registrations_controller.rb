@@ -11,6 +11,9 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource
 
+    # default to assign 'user' role
+    resource.roles << Role.ROLE_USER
+
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
