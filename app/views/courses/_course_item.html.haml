@@ -1,6 +1,6 @@
 %li
-  = image_tag course_item.avatar_url(:thumb).to_s, :align => "left"
-  %b= course_item.course_name
+  = image_tag course_item.avatar_url(:thumb).to_s, :align => "right"
+  %h4= course_item.course_name
   %p!= course_item.short_description
   %p
     - if !course_item.discount_price.nil? && course_item.price != course_item.discount_price
