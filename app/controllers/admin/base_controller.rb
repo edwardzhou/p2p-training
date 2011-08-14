@@ -7,10 +7,10 @@ class Admin::BaseController < ApplicationController
 
   #layout 'administration'
 
-  rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = exception.message
-    redirect_to root_url
-  end
-
+  #rescue_from CanCan::AccessDenied do |exception|
+  #  flash[:alert] = exception.message
+  #  redirect_to root_url
+  #end
+  #
 
 end

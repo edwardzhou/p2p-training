@@ -27,7 +27,7 @@ P2pTraining::Application.routes.draw do
     resources :orders
   end
 
-  resources :orders, :only => [:index, :show] do
+  resources :orders do
     member do
       get :confirm_payment
       post :pay
@@ -37,6 +37,8 @@ P2pTraining::Application.routes.draw do
   end
 
   resources :favorites
+
+  resources :errors, :only => [:show]
 
   match 'services' => "company#services"
   match 'about_us' => "company#about_us"

@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
     location
   end
 
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = exception.message
+    redirect_to error_path(403)
+  end
+
+
 end

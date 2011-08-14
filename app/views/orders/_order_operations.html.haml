@@ -1,6 +1,6 @@
 - if order.status == Order::Status::PENDING_PAYMENT
   = link_to "现在付款", confirm_payment_order_path(order)
-  = link_to "修改", order
+  = link_to "修改", edit_order_path(order)
   = link_to "取消", "#", {"data-order-id" => order.id,
                           "data-action" => cancel_order_path(order),
                           :class => 'cancel_button'}

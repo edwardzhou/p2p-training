@@ -41,7 +41,9 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
+    #@order = Order.find(params[:id])
+    @campaign = @order.campaign
+    @course = @campaign.course
   end
 
   def create
@@ -68,6 +70,12 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
+  def update
+    @order.comment = params[:order][:comment]
+    @order.save
+
+    redirect_to orders_path
+  end
 
   def confirm_payment
     @order = Order.find(params[:id])
@@ -84,7 +92,7 @@ class OrdersController < ApplicationController
     @order.reason = params[:confirm_reason]
     @order.status = Order::Status::CANCELLED
     @order.save
-    redirect_to orders_path, :notice => "订单[#{@order.order_code}]取消成功!"
+    redirect_to orders_path, :notice => "课程订单[#{@order.order_code}]取消成功!"
   end
 
   def apply_to_refund
@@ -92,7 +100,7 @@ class OrdersController < ApplicationController
     @order.reason = params[:confirm_reason]
     @order.status = Order::Status::PENDING_REFUND
     @order.save
-    redirect_to orders_path, :notice => "订单[#{@order.order_code}]退款申请已成功提交! 请等待处理通知。"
+    redirect_to orders_path, :notice => "课程订单[#{@order.order_code}]退款申请已成功提交! 请等待处理通知。"
   end
 
 end
