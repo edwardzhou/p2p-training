@@ -31,7 +31,7 @@ class Ability
     elsif user.role?('user')
       can :add_to_favorite, Course
       #can :create, Order
-      can [:read, :create, :update, :cancel, :confirm_payment, :pay, :confirm_payment, :apply_to_refund], Order, :user_id => user.id
+      can :manage, Order, :user_id => user.id
     end
   end
 end
