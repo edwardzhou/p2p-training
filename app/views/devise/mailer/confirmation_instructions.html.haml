@@ -3,7 +3,7 @@
 %p
   感谢您的注册，您在p2p-training网站的帐号尚未激活，请点击下面连接激活您的帐号:
 %p
-  = link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+  = link_to '激活帐号', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
 
 %p
   或者将下面连接复制后在浏览器上打开也可以完成激活:
