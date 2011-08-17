@@ -9,6 +9,7 @@ gem "builder", "~> 2.1.2"
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'mysql2', "~> 0.2.11"
 
 gem 'haml'
 gem 'hpricot'

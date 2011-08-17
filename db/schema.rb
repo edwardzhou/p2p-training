@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(:version => 20110812150923) do
     t.date     "register_due_date"
     t.integer  "course_id"
     t.integer  "trainer_id"
-    t.string   "status",            :limit => 50, :default => "open"
-    t.decimal  "price"
-    t.decimal  "discount_price"
+    t.string   "status",            :limit => 50,                                :default => "open"
+    t.decimal  "price",                           :precision => 10, :scale => 0
+    t.decimal  "discount_price",                  :precision => 10, :scale => 0
     t.integer  "training_room_id"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "register_count",                  :default => 0
+    t.integer  "register_count",                                                 :default => 0
   end
 
   create_table "catalogs", :force => true do |t|
@@ -59,13 +59,13 @@ ActiveRecord::Schema.define(:version => 20110812150923) do
     t.text     "long_description"
     t.integer  "duration_in_hours"
     t.integer  "total_rating"
-    t.decimal  "price"
-    t.decimal  "discount_price"
+    t.decimal  "price",                   :precision => 10, :scale => 0
+    t.decimal  "discount_price",          :precision => 10, :scale => 0
     t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "total_interesting_count", :default => 0
-    t.integer  "total_register_count",    :default => 0
+    t.integer  "total_interesting_count",                                :default => 0
+    t.integer  "total_register_count",                                   :default => 0
     t.integer  "display_order"
   end
 
@@ -110,9 +110,9 @@ ActiveRecord::Schema.define(:version => 20110812150923) do
     t.integer  "order_id"
     t.integer  "campaign_id"
     t.integer  "qty"
-    t.decimal  "price"
-    t.decimal  "discount_price"
-    t.decimal  "amount"
+    t.decimal  "price",          :precision => 10, :scale => 0
+    t.decimal  "discount_price", :precision => 10, :scale => 0
+    t.decimal  "amount",         :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "joiner_id"
@@ -121,9 +121,9 @@ ActiveRecord::Schema.define(:version => 20110812150923) do
   create_table "orders", :force => true do |t|
     t.string   "order_code",    :limit => 20
     t.integer  "user_id"
-    t.decimal  "total_amount"
+    t.decimal  "total_amount",                :precision => 10, :scale => 0
     t.string   "status",        :limit => 20
-    t.boolean  "payable",                     :default => false
+    t.boolean  "payable",                                                    :default => false
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(:version => 20110812150923) do
     t.datetime "notify_time"
     t.string   "trade_no"
     t.string   "trade_status"
-    t.decimal  "total_amount"
+    t.decimal  "total_amount", :precision => 10, :scale => 0
     t.string   "buyer_email"
     t.text     "raw_post"
     t.datetime "created_at"
@@ -149,8 +149,8 @@ ActiveRecord::Schema.define(:version => 20110812150923) do
     t.boolean  "use_coupon"
     t.string   "subject"
     t.string   "body"
-    t.decimal  "price"
-    t.decimal  "quantity"
+    t.decimal  "price",        :precision => 10, :scale => 0
+    t.decimal  "quantity",     :precision => 10, :scale => 0
     t.string   "sign_type"
     t.string   "sign"
     t.string   "notify_type"

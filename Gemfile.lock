@@ -122,6 +122,7 @@ GEM
     mime-types (1.16)
     mini_magick (3.2.1)
       subexec (~> 0.0.4)
+    mysql2 (0.2.13)
     nokogiri (1.4.4)
     orm_adapter (0.0.4)
     polyglot (0.3.1)
@@ -223,6 +224,7 @@ DEPENDENCIES
   libnotify
   meta_where
   mini_magick
+  mysql2 (~> 0.2.11)
   rails (= 3.0.7)
   rb-inotify
   rspec (~> 2.5.0)
