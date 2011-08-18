@@ -49,6 +49,15 @@ class OrdersController < ApplicationController
   def create
     @campaign = Campaign.find(params[:campaign_id])
 
+    @already_exists = is_order_exists?([@campaign.id])
+
+    if @already_exists
+      flash[:alert] = t('errors.messages.course_registered')
+      redirect_to ({:action => "index"})
+      return
+    end
+
+
     @order = Order.new({:user => current_user,
                         :total_amount => @campaign.discount_price})
     #@order.attributes.merge!(params[:order])

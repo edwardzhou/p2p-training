@@ -36,6 +36,7 @@
       %span(id="comment_count_#{course_item.id}")= course_item.comments.count
     评论
     = link_to "查看", course_comments_path(course_item), :id => "show_comments_#{course_item.id}", :remote => true
+    = link_to "收起", course_comments_path(course_item), :id => "show_comments_#{course_item.id}", :remote => true
     - if user_signed_in?
       = link_to "说两句", new_course_comment_path(course_item), :remote => true
     #comments_panel
