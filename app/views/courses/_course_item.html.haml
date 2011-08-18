@@ -24,6 +24,12 @@
               = link_to campaign.name, campaign
               (已有 #{campaign.register_count} 人报名) &nbsp;
               = link_to t("label.register_now"), new_campaign_order_path(campaign)
+              %br/
+              开课时间: &nbsp;#{start_date(campaign)}
+              %br/
+              报名截止时间: #{register_due_date(campaign)}
+              %br/
+              %br/
 
   %p
     = link_to t("label.detail"), course_item
