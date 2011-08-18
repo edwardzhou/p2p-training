@@ -1,0 +1,8 @@
+%h1 报名取消
+
+= render "order", :order => @order
+
+%hr
+
+%h1 当前报名情况
+= render "campaign_stat", :campaign => @order.campaign

@@ -76,12 +76,16 @@ class OrdersController < ApplicationController
 
     @order.save
 
+    NotificationMailer.notify_order_created(@order).deliver
+
     redirect_to orders_path
   end
 
   def update
     @order.comment = params[:order][:comment]
     @order.save
+
+    NotificationMailer.notify_order_updated(@order).deliver
 
     redirect_to orders_path
   end
@@ -101,6 +105,9 @@ class OrdersController < ApplicationController
     @order.reason = params[:confirm_reason]
     @order.status = Order::Status::CANCELLED
     @order.save
+
+    NotificationMailer.notify_order_cancelled(@order).deliver
+
     redirect_to orders_path, :notice => "课程订单[#{@order.order_code}]取消成功!"
   end
 

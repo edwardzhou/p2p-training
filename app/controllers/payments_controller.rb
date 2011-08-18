@@ -49,6 +49,8 @@ class PaymentsController < ApplicationController
         end
       end
 
+      NotificationMailer.notify_payment(payment).deliver
+
       render :text => "success"
     else
       render :text => "failure"

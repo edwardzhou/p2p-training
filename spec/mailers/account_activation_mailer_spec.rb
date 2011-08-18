@@ -1,8 +1,8 @@
 require "spec_helper"
 
-describe AccountActivationMailer do
+describe NotificationMailer do
   describe "notify_activation" do
-    let(:mail) { AccountActivationMailer.notify_activation }
+    let(:mail) { NotificationMailer.notify_user_activation }
 
     it "renders the headers" do
       mail.subject.should eq("Notify activation")

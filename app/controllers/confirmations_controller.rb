@@ -8,7 +8,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       set_flash_message(:notice, :confirmed) if is_navigational_format?
       sign_in(resource_name, resource)
       logger.info("[新用户激活] - {username:#{resource.username}, email:#{resource.email}}")
-      AccountActivationMailer.notify_activation(resource).deliver
+      NotificationMailer.notify_user_activation(resource).deliver
       respond_with_navigational(resource){ redirect_to redirect_location(resource_name, resource) }
     else
       respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render_with_scope :new }

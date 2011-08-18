@@ -1,0 +1,60 @@
+%table(border="1")
+  %tbody
+    %tr
+      %th 报名时间
+      %td= order.created_at
+    %tr
+      %th 订单号
+      %td= order.order_code
+    %tr
+      %th 金额
+      %td
+        ￥&nbsp;
+        = format("%.2f", order.total_amount)
+    %tr
+      %th 订单状态
+      %td= human_status("order", order.status)
+    %tr
+      %th
+        - if order.status == Order::Status::CANCELLED
+          取消时间
+        - else
+          付款时间
+      %td
+        - if order.status == Order::Status::CANCELLED
+          = order.updated_at
+        - else
+          = order.paid_time
+    - if order.status == Order::Status::CANCELLED || order.status == Order::Status::REFUNDED || order.status == Order::Status::PENDING_REFUND
+      %tr
+        %th 取消/退款原因
+        %td= order.reason
+    %tr
+      %th 备注
+      %td= order.comment
+    %tr
+      %th 用户
+      %td "#{order.user.username} (#{order.user.email})"
+    %tr
+      %th 姓名
+      %td= order.user.true_name
+    %tr
+      %th 电话
+      %td= order.user.contact_phone
+    %tr
+      %th 课程
+      %td= link_to order.campaign.course.course_name, course_url(order.campaign.course)
+    %tr
+      %th 班次
+      %td= link_to order.campaign.name, campaign_url(order.campaign)
+    %tr
+      %th 上课时间
+      %td= start_date(order.campaign)
+    %tr
+      %th 上课地点
+      %td
+        - unless order.campaign.training_room.nil?
+          = order.campaign.training_room.full_address
+          &nbsp;&nbsp;
+          = link_to "电子地图", order.campaign.training_room.map_url
+
