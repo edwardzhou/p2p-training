@@ -15,16 +15,18 @@
   = f.text_field :discount_price
 
 #field_start_date.field
-  .field_label= f.label :start_date
-  = f.text_field :start_date, :class => "date" , :date => "true"
+  .field_label= f.label :start_date_date
+  = f.text_field :start_date_date, :class => "date" , :date => "true"
+  = f.select :start_date_time, time_options
 
 #field_end_date.field
-  .field_label= f.label :end_date
-  = f.text_field :end_date, :class => "date" , :date => "true"
+  .field_label= f.label :end_date_date
+  = f.text_field :end_date_date, :class => "date" , :date => "true"
+  = f.select :end_date_time, time_options
 
 #field_register_due_date.field
-  .field_label= f.label :register_due_date
-  = f.text_field :register_due_date, :class => "date" , :date => "true"
+  .field_label= f.label :register_due_date_date
+  = f.text_field :register_due_date_date, :class => "date" , :date => "true"
 
 #field_location.field
   .field_label= label_tag "上课地点"

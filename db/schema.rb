@@ -10,13 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110812150923) do
+ActiveRecord::Schema.define(:version => 20110818082022) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
-    t.date     "start_date"
-    t.date     "end_date"
-    t.date     "register_due_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "register_due_date"
     t.integer  "course_id"
     t.integer  "trainer_id"
     t.string   "status",            :limit => 50,                                :default => "open"

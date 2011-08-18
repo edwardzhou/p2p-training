@@ -28,6 +28,8 @@ class Campaign < ActiveRecord::Base
     FINISHED  = "finished"
   end
 
+  include DateTimeMacro
+
   belongs_to :course
   belongs_to :trainer, :class_name => 'User', :foreign_key => 'trainer_id'
   belongs_to :training_room, :class_name => 'Location', :foreign_key => 'training_room_id'
@@ -37,6 +39,10 @@ class Campaign < ActiveRecord::Base
 
   has_many :orders
   has_many :registered_users, :through => :orders, :source => :user, :uniq => true
+
+  ["start_date", "end_date", "register_due_date"].each do |the_date|
+    define_date_and_time(the_date)
+  end
 
   def valid_orders
     orders.where(:status => [Order::Status::PENDING_PAYMENT, Order::Status::PAID])

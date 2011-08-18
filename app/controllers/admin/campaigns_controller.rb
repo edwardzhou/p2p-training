@@ -15,7 +15,8 @@ class Admin::CampaignsController < Admin::BaseController
   end
 
   def create
-    @campaign = @course.campaigns.build(params[:campaign])
+    campaign_attributes = delete_time_for_null_date(params[:campaign])
+    @campaign = @course.campaigns.build(campaign_attributes)
     @campaign.save
 
     redirect_to admin_course_path(@course)
@@ -26,8 +27,9 @@ class Admin::CampaignsController < Admin::BaseController
   end
 
   def update
+    campaign_attributes = delete_time_for_null_date(params[:campaign])
     @campaign = Campaign.find(params[:id])
-    @campaign.update_attributes( params[:campaign] )
+    @campaign.update_attributes( campaign_attributes )
 
     #redirect_to edit_admin_course_campaign_path(@course, @campaign)
     redirect_to admin_course_path(@course)
@@ -43,6 +45,16 @@ class Admin::CampaignsController < Admin::BaseController
   private
   def load_course
     @course = Course.find(params[:course_id]) unless params[:course_id].nil?
+  end
+
+  def delete_time_for_null_date(attributes)
+    ["start_date", "end_date", "register_due_date"].each do |the_date|
+      if attributes["#{the_date}_date"].blank?
+        attributes.delete("#{the_date}_time")
+      end
+    end
+
+    attributes
   end
 
 end
