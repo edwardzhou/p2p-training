@@ -18,7 +18,7 @@
 - content_for :page_include_css do
   = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom", "token-input-mac"
 
-= form_for [:admin, course, campaign],:validate => true do |f|
+= form_for [:admin, course, campaign], :validate => true do |f|
   %fieldset
     = render 'campaign_form_item_div', :f=>f, :campaign => campaign, :course => course
 

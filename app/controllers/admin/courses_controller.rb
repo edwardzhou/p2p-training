@@ -1,7 +1,16 @@
 class Admin::CoursesController < Admin::BaseController
 
   def index
-    @courses = Course.all
+    if params[:q].blank?
+      @courses = Course.all
+    else
+      @courses = Course.where(:course_name.like => "%#{params[:q].strip}%")
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {render :json => @courses.collect{|course| {:id => course.id, :name => course.course_name} }.to_json }
+    end
   end
 
   def new

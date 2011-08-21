@@ -22,6 +22,12 @@
             上课地点: #{campaign.training_room.full_address},
             = link_to '查看地图', campaign.training_room.map_url, :target => "_blank"
       %tr
+        %th 优惠卷
+        %td
+          如果你有邀请码，请输入
+          %br/
+          = f.text_field :coupon_code, :size => "40"
+      %tr
         %th 备注
         %td
           = f.text_area :comment, :size => "60x5"

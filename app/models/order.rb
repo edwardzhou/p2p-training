@@ -49,6 +49,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :campaign
   has_many :payments
+  belongs_to :coupon
 
   scope :pending, where(:status => Status::PENDING_PAYMENT)
   scope :latest_orders, order("created_at DESC")
@@ -56,6 +57,19 @@ class Order < ActiveRecord::Base
   scope :paid, where(:status => Status::PAID)
   scope :active, where(:status => [Status::PAID, Status::PENDING_PAYMENT])
   scope :cancelled, where(:status => [Status::CANCELLED, Status::PENDING_REFUND, Status::REFUNDED])
+
+  attr_accessor :coupon_code
+
+  def coupon_code
+    unless coupon.nil?
+      coupon.coupon_code
+    end
+  end
+
+  def coupon_code=(code)
+    new_coupon = Coupon.find_by_coupon_code(code)
+    coupon = new_coupon unless new_coupon.nil?
+  end
 
   def calc
     self.total_amount = self.order_items.inject(0) {|sum, item| sum + item.amount}

@@ -4,6 +4,13 @@ class Admin::CampaignsController < Admin::BaseController
   #attr_accessor :price, :discount_price, :status, :start_date, :end_date,
   #              :register_due_date, :description
 
+  def index
+    @campaigns = Campaign.where(:name.like => "%#{params[:q].strip}%")
+    respond_to do |format|
+      format.json {render :json => @campaigns.collect{|c| {:id => c.id, :name => "#{c.course.course_name} - #{c.name}"} }.to_json }
+    end
+  end
+
   def show
 
   end
@@ -44,7 +51,7 @@ class Admin::CampaignsController < Admin::BaseController
 
   private
   def load_course
-    @course = Course.find(params[:course_id]) unless params[:course_id].nil?
+    @course = Course.find(params[:course_id]) unless (params[:course_id].nil? || (params[:course_id].to_i < 1))
   end
 
   def delete_time_for_null_date(attributes)

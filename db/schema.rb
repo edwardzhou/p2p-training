@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110818082022) do
+ActiveRecord::Schema.define(:version => 20110820092024) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(:version => 20110818082022) do
     t.integer  "user_id"
     t.integer  "course_id"
     t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "coupons", :force => true do |t|
+    t.string   "coupon_code"
+    t.string   "coupon_name"
+    t.integer  "qty"
+    t.integer  "discount_rate"
+    t.datetime "due_date"
+    t.boolean  "disabled"
+    t.integer  "course_id"
+    t.integer  "campaign_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -131,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20110818082022) do
     t.datetime "paid_time"
     t.text     "reason"
     t.datetime "refunded_time"
+    t.integer  "coupon_id"
   end
 
   create_table "payments", :force => true do |t|

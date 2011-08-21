@@ -48,4 +48,12 @@ class Campaign < ActiveRecord::Base
     orders.where(:status => [Order::Status::PENDING_PAYMENT, Order::Status::PAID])
   end
 
+  def to_s
+    unless course.nil?
+      "#{course.course_name} - #{name}"
+    else
+      name
+    end
+  end
+
 end

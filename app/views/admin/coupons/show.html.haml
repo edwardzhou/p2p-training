@@ -1,0 +1,37 @@
+%p#notice= notice
+
+%p
+  %b Coupon code:
+  = @admin_coupon.coupon_code
+
+%p
+  %b Coupon name:
+  = @admin_coupon.coupon_name
+
+%p
+  %b Qty:
+  = @admin_coupon.qty
+
+%p
+  %b Discount rate:
+  = @admin_coupon.discount_rate
+
+%p
+  %b Due date:
+  = @admin_coupon.due_date
+
+%p
+  %b Disabled:
+  = @admin_coupon.disabled
+
+%p
+  %b Course:
+  = @admin_coupon.course
+
+%p
+  %b Campaign:
+  = @admin_coupon.campaign
+
+= link_to 'Edit', edit_admin_coupon_path(@admin_coupon)
+|
+= link_to 'Back', admin_coupons_path

@@ -1,0 +1,31 @@
+%h1 Listing admin_coupons
+
+%table
+  %tr
+    %th Coupon code
+    %th Coupon name
+    %th Qty
+    %th Discount rate
+    %th Due date
+    %th Disabled
+    %th Course
+    %th Campaign
+    %th
+    %th
+    %th
+  - @admin_coupons.each do |admin_coupon|
+    %tr
+      %td= admin_coupon.coupon_code
+      %td= admin_coupon.coupon_name
+      %td= admin_coupon.qty
+      %td= admin_coupon.discount_rate
+      %td= admin_coupon.due_date
+      %td= admin_coupon.disabled
+      %td= admin_coupon.course
+      %td= admin_coupon.campaign
+      %td= link_to 'Show', [:admin, admin_coupon]
+      %td= link_to 'Edit', edit_admin_coupon_path(admin_coupon)
+      %td= link_to 'Destroy', [:admin, admin_coupon], :confirm => 'Are you sure?', :method => :delete
+
+%br/
+= link_to 'New Coupon', new_admin_coupon_path

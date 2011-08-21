@@ -22,6 +22,7 @@ zh-CN:
       campaign: 活动
       order:    订单
       invitation: 邀请
+      coupon:   优惠卷
 
     attributes:
       user_detail: &ud_attrs
@@ -61,6 +62,17 @@ zh-CN:
       invitation:
         friend_email: 朋友邮件地址
         friend_name: 朋友名称
+
+      coupon:
+        coupon_code: 邀请码
+        coupon_name: 名称
+        qty: 数量
+        discount_rate: 折扣率
+        due_date: 到期时间
+        due_date_date: 到期时间
+        disabled: 失效
+        course: 使用课程
+        campaign: 使用班次
 
 
   status:

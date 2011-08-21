@@ -1,4 +1,6 @@
 P2pTraining::Application.routes.draw do
+  namespace :admin do resources :coupons end
+
   get "catalogs/index"
 
   get "catalog/view"
