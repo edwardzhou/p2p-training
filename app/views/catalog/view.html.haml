@@ -1,3 +1,6 @@
-%h1 Catalog#view
+%h1 #{@catalog.name}
 
-= render 'course', :courses => @catalog.active_courses
+//= render 'course', :courses => @catalog.active_courses
+#courses
+  %ul
+    = render :partial => 'courses/course_item', :collection => @catalog.active_courses
