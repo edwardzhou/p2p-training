@@ -35,7 +35,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :training_room, :class_name => 'Location', :foreign_key => 'training_room_id'
 
   validates_presence_of :name, :price, :discount_price
-  validates :price, :discount_price, :numericality => {:greater_than => 0}
+  validates :price, :discount_price, :numericality => {:greater_than_or_equal_to => 0}
 
   has_many :orders
   has_many :registered_users, :through => :orders, :source => :user, :uniq => true
