@@ -61,4 +61,15 @@ class NotificationMailer < ActionMailer::Base
     mail :to => to, :subject => subject
   end
 
+  def notify_custom(to, subject, content, options = {})
+    @content = content
+    Rails.logger.debug "#{options}"
+    @user = options[:user]
+    bcc = options[:bcc]
+    cc = options[:cc]
+
+    mail :to => to, :subject => subject, :cc => cc, :bcc => bcc
+
+  end
+
 end

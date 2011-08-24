@@ -99,6 +99,8 @@ P2pTraining::Application.routes.draw do
 
     resource :dashboards
 
+    resources :custom_emails
+
 
     root :to => "dashboards#show"
   end

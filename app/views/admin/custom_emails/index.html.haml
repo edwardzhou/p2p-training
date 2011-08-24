@@ -1,0 +1,82 @@
+%h1 发送自定义邮件
+
+= show_msg
+
+= form_tag admin_custom_emails_path, :id => 'custom_mail_form' do |f|
+  %table
+    %tbody
+      %tr
+        %th 标题
+        %td
+          = text_field_tag :mail_subject, nil, :size => "80"
+      %tr
+        %th 内容
+        %td
+          = text_area_tag :mail_content, nil, :size => "100x10"
+      %tr
+        %th 收件人
+        %td
+          %table
+            %thead
+              %th
+                = check_box_tag :select_all
+              %th 姓名
+              %th 邮件
+              %th 公司
+              %th 已报名
+            %tbody
+              - User.joins(:user_detail).order("user_details.company, true_name").each do |u|
+                %tr
+                  %td
+                    = check_box_tag :"picked_users[]", u.id, false, :id => "picked_users_#{u.id}"
+                  %td= u.true_name
+                  %td= u.email
+                  %td= u.user_detail.company
+                  %td
+                    %ul
+                      - u.orders.each do |o|
+                        %li
+                          #{o.campaign.course.course_name} - #{o.campaign.name}
+
+  = submit_tag :submit
+
+
+
+
+- content_for :page_include_css do
+  :css
+    textarea {
+        display: block;
+    }
+
+- content_for :page_include_scripts do
+  = javascript_include_tag 'kindeditor'
+
+- content_for :page_inline_scripts do
+  :javascript
+    $(document).ready(function(){
+      KE.show({
+          id : 'mail_content',
+          cssPath : './index.css',
+          filterMode: true,
+          imageUploadJson: '/assets/upload_image.json',
+          fileManagerJson: '/assets/browse_images.json',
+          allowFileManager: true,
+          newlineTag: 'br',
+          afterCreate : function(id) {
+              KE.event.ctrl(document, 13, function() {
+                  KE.sync(id);
+                  document.forms['custom_mail_form'].submit();
+              });
+              KE.event.ctrl(KE.g[id].iframeDoc, 13, function() {
+                  KE.sync(id);
+                  document.forms['custom_mail_form'].submit();
+              });
+          }
+      });
+
+      $('#select_all').click(function(item){
+        $('input[name="picked_users[]"]').attr('checked', this.checked);
+      });
+    })
+
