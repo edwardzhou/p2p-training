@@ -44,7 +44,7 @@
     = f.label :campaign_id
     %br/
     = f.text_field :campaign_id, :tokeninput=>true,
-                   "data-url" => admin_course_campaigns_path(:course_id=>0, :format => :json),
+                   "data-url" => search_admin_course_campaigns_path(:course_id=>0, :format => :json),
                    "data-pre" => pre_campaign(@admin_coupon.campaign),
                    "data-exclude" => "[course_id]"
   .actions

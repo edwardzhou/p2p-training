@@ -42,6 +42,9 @@ class Order < ActiveRecord::Base
 
     # 已上课
     FINISHED = 'finished'
+
+    # 缺席
+    ABSENT = 'absent'
   end
 
 

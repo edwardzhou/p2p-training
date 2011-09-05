@@ -86,7 +86,16 @@ P2pTraining::Application.routes.draw do
     end
 
     resources :courses do
-      resources :campaigns
+      resources :campaigns do
+        collection do
+          get :search
+          post :search
+        end
+        member do
+          post :absent, :present, :finish
+          get :absent, :present
+        end
+      end
     end
 
     resources :users

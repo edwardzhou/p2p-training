@@ -45,7 +45,21 @@ class Campaign < ActiveRecord::Base
   end
 
   def valid_orders
-    orders.where(:status => [Order::Status::PENDING_PAYMENT, Order::Status::PAID])
+    orders.where(:status.not_in => [Order::Status::CANCELLED, Order::Status::REFUNDED, Order::Status::PENDING_REFUND])
+  end
+
+  def presents(present = true)
+    orders.where(:present => present)
+  end
+
+  def finish!
+    self.status = Status::FINISHED
+    valid_orders.each do |order|
+      order.status = order.present? ? Order::Status::FINISHED : Order::Status::ABSENT
+      order.save!
+    end
+    self.save!
+
   end
 
   def to_s

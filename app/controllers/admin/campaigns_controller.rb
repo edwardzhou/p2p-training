@@ -5,6 +5,10 @@ class Admin::CampaignsController < Admin::BaseController
   #              :register_due_date, :description
 
   def index
+    @campaigns = Campaign.all
+  end
+
+  def search
     @campaigns = Campaign.where(:name.like => "%#{params[:q].strip}%")
     respond_to do |format|
       format.json {render :json => @campaigns.collect{|c| {:id => c.id, :name => "#{c.course.course_name} - #{c.name}"} }.to_json }
@@ -12,7 +16,7 @@ class Admin::CampaignsController < Admin::BaseController
   end
 
   def show
-
+    @campaign = Campaign.find(params[:id])
   end
 
   def new
@@ -47,6 +51,25 @@ class Admin::CampaignsController < Admin::BaseController
     @campaign.destroy
 
     redirect_to admin_course_path(@course)
+  end
+
+  def present
+    @order = Order.find(params[:order_id])
+    @campaign = @order.campaign
+    @order.update_attribute(:present, true)
+  end
+
+  def absent
+    @order = Order.find(params[:order_id])
+    @campaign = @order.campaign
+    @order.update_attribute(:present, false)
+  end
+
+  def finish
+    @campaign = Campaign.find(params[:id])
+    @campaign.finish!
+
+    redirect_to [:admin, @course, @campaign]
   end
 
   private

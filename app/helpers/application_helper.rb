@@ -21,6 +21,10 @@ module ApplicationHelper
     t("status.#{status_type}.#{status_value}")
   end
 
+  def human_attr(object, attr_name)
+    object.class.human_attribute_name(attr_name)
+  end
+
   def is_dev?
     Rails.env.development?
   end

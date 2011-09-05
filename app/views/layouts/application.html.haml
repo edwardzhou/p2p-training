@@ -16,6 +16,7 @@
       = stylesheet_link_tag "ie", :media => "screen, projection"
     = stylesheet_link_tag "style", :media => "screen, projection"
     = yield(:page_include_css) if content_for?(:page_include_css)
+    = yield(:page_inline_css) if content_for?(:page_inline_css)
     = yield(:page_inline_scripts) if content_for?(:page_inline_scripts)
 
   %body

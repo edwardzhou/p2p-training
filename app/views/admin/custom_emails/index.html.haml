@@ -21,6 +21,7 @@
               %th
                 = check_box_tag :select_all
               %th 姓名
+              %th 电话
               %th 邮件
               %th 公司
               %th 已报名
@@ -30,6 +31,7 @@
                   %td
                     = check_box_tag :"picked_users[]", u.id, false, :id => "picked_users_#{u.id}"
                   %td= u.true_name
+                  %td= u.contact_phone
                   %td= u.email
                   %td= u.user_detail.company
                   %td

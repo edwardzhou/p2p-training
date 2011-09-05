@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110820092024) do
+ActiveRecord::Schema.define(:version => 20110904030754) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20110820092024) do
     t.text     "reason"
     t.datetime "refunded_time"
     t.integer  "coupon_id"
+    t.boolean  "present"
   end
 
   create_table "payments", :force => true do |t|
