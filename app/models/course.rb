@@ -59,6 +59,10 @@ class Course < ActiveRecord::Base
     campaigns.where(:status => Campaign::Status::OPEN)
   end
 
+  def finished_campaigns
+    campaigns.where(:status => Campaign::Status::FINISHED)
+  end
+
   def latest_comments(count=10)
     comments.limit(count)
   end

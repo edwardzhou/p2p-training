@@ -22,6 +22,10 @@ P2pTraining::Application.routes.draw do
     collection do
       get :latest, :hot
     end
+    member do
+      get :finished_campaigns
+    end
+
     resources :comments
   end
 
@@ -98,7 +102,11 @@ P2pTraining::Application.routes.draw do
       end
     end
 
-    resources :users
+    resources :users do
+      collection do
+        get :search
+      end
+    end
 
     resources :locations
 

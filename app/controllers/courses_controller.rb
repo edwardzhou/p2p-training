@@ -22,11 +22,13 @@ class CoursesController < ApplicationController
     render 'index'
   end
 
-
   def show
     @course = Course.find( params[:id] )
   end
 
-
+  def finished_campaigns
+    @course = Course.find( params[:id] )
+    @campaigns = @course.finished_campaigns
+  end
 
 end

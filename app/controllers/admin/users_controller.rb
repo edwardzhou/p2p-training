@@ -17,5 +17,16 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
+  def search
+    query = "%#{params[:q].strip}%"
+    @users = User.where({:username.like => query} |
+                        {:email.like => query} |
+                        {:true_name.like => query} |
+                        {:contact_phone.like => query}).order("true_name")
+    respond_to do |format|
+      format.json {render :json => @users.collect{|c| {:id => c.id, :name => "#{c.true_name}"} }.to_json }
+    end
+  end
+
 
 end

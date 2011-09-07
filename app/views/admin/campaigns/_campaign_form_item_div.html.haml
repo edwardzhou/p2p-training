@@ -6,6 +6,13 @@
   .required_field_label= f.label :name
   = f.text_field :name
 
+#field_name.field
+  .required_field_label= f.label :trainer
+  = f.text_field :trainer_id,:tokeninput=>true,
+                 "data-url" => search_admin_users_path(:format => :json),
+                 "data-pre" => pre_user(campaign.trainer),
+                 :size => 30
+
 #field_price.field
   .required_field_label= f.label :price
   = f.text_field :price
@@ -42,3 +49,25 @@
 
 = f.submit t("label.save")
 = link_to t("label.back"), admin_course_path(course)
+
+
+- content_for :page_include_scripts do
+  = javascript_include_tag 'rails.validations',
+                            'i18n/messages-zh-CN',
+                            'i18n/jquery.ui.datepicker-zh-CN',
+                            'jquery.tokeninput'
+
+- content_for :page_inline_scripts do
+  :javascript
+    $(document).ready(function(){
+      //$("form").validate({errorClass: 'error_msg'});
+      $('input[tokeninput=true]').each(function(index){
+        $(this).tokenInput($(this).data("url"),{
+          tokenLimit:1,
+        })
+      })
+    })
+
+- content_for :page_include_css do
+  = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom","token-input", "token-input-mac", "token-input-facebook"
+

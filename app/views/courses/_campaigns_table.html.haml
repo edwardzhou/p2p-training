@@ -1,0 +1,25 @@
+%table
+  %thead
+    %tr
+      %th 班级名称
+      %th 讲课时间
+      %th 讲师
+      %th 讲课地点
+      %th 出席人数
+      %th 总评分
+  %tbody
+    - campaigns.each_with_index do |campaign, index|
+      %tr(style="background-color:#{index.odd? ? 'lightgray' : 'white'} ")
+        %td
+          = campaign.name
+        %td
+          = campaign.start_date
+        %td
+          = campaign.trainer.nil? ? '' : campaign.trainer.true_name
+        %td
+          = campaign.training_room.full_address
+        %td
+          = campaign.presents.count
+        %td
+          8
+

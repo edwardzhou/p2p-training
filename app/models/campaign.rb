@@ -26,6 +26,7 @@ class Campaign < ActiveRecord::Base
     OPEN      = "open"
     CLOSED    = "closed"
     FINISHED  = "finished"
+    CANCELLED = "cancelled"
   end
 
   include DateTimeMacro

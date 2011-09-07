@@ -33,6 +33,15 @@
               %br/
               %br/
 
+    - if course_item.finished_campaigns.size > 0
+      = link_to "已完成开班: #{course_item.finished_campaigns.size}", finished_campaigns_course_path(course_item), :remote => true
+      |
+      = link_to "收起"
+      #finished_campaigns
+
+
+    
+
   %p
     = link_to t("label.detail"), course_item
     |

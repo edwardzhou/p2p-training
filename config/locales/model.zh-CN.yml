@@ -58,6 +58,7 @@ zh-CN:
         end_date_date: 课程结束时间
         register_due_date: 报名截止时间
         register_due_date_date: 报名截止时间
+        trainer: 讲师
 
       invitation:
         friend_email: 朋友邮件地址
