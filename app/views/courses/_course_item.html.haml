@@ -36,11 +36,11 @@
     - if course_item.finished_campaigns.size > 0
       = link_to "已完成开班: #{course_item.finished_campaigns.size}", finished_campaigns_course_path(course_item), :remote => true
       |
-      = link_to "收起"
-      #finished_campaigns
-
-
-    
+      = link_to "收起", "javascript:void(0);",
+                "hide_block" => true,
+                "data-target" => "course_#{course_item.id}_finished_campaigns",
+                "data-clean-on-hide" => "true"
+      %div(id="course_#{course_item.id}_finished_campaigns")
 
   %p
     = link_to t("label.detail"), course_item
@@ -53,14 +53,12 @@
       %span(id="comment_count_#{course_item.id}")= course_item.comments.count
     评论
     = link_to "查看", course_comments_path(course_item), :id => "show_comments_#{course_item.id}", :remote => true
-    = link_to "收起", course_comments_path(course_item), :id => "show_comments_#{course_item.id}", :remote => true
+    //= link_to "收起", course_comments_path(course_item), :id => "show_comments_#{course_item.id}", :remote => true
+    = link_to "收起", "javascript:void(0);", "hide_block" => true, "data-target" => "comments_course_#{course_item.id}"
     - if user_signed_in?
       = link_to "说两句", new_course_comment_path(course_item), :remote => true
     #comments_panel
       .new_comment(id="course_#{course_item.id}_new_comment")
       .comments(id="comments_course_#{course_item.id}")
-
-
-
 
 %hr/

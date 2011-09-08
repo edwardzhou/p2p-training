@@ -1,4 +1,4 @@
-theDiv = $("#finished_campaigns")
+theDiv = $("#course_#{@course.id}_finished_campaigns")
 theDiv.show("hide")
 theDiv.html("#{escape_javascript(render 'campaigns_table', {:campaigns => @campaigns})}")
 theDiv.show("blind")
