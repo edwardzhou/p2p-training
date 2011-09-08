@@ -15,4 +15,8 @@ class CompanyController < ApplicationController
 
   end
 
+  def trainers
+
+  end
+
 end

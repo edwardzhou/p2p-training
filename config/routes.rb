@@ -50,6 +50,7 @@ P2pTraining::Application.routes.draw do
   match 'about_us' => "company#about_us"
   match 'join_us' => "company#join_us"
   match 'help' => "company#help"
+  match 'trainers' => "company#trainers"
 
   #resources :alipay_tests do
   #  collection do
