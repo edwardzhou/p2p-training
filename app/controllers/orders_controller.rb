@@ -93,7 +93,10 @@ class OrdersController < ApplicationController
 
     NotificationMailer.notify_order_created(@order).deliver
 
-    redirect_to confirm_payment_order_path(@order)
+    if @order.status != Order::Status::PAID
+      redirect_to confirm_payment_order_path(@order)
+    else
+      redirect_to orders_path
   end
 
   def update
