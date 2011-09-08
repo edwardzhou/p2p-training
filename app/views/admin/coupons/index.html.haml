@@ -5,7 +5,9 @@
     %th Coupon code
     %th Coupon name
     %th Qty
+    %th Discount type
     %th Discount rate
+    %th Discount price
     %th Due date
     %th Disabled
     %th Course
@@ -18,7 +20,9 @@
       %td= admin_coupon.coupon_code
       %td= admin_coupon.coupon_name
       %td= admin_coupon.qty
+      %td= t("coupon.discount_type.#{admin_coupon.discount_type}")
       %td= admin_coupon.discount_rate
+      %td= format("%.2f", admin_coupon.discount_price)
       %td= admin_coupon.due_date
       %td= admin_coupon.disabled
       %td= admin_coupon.course

@@ -7,12 +7,24 @@
       %tr
         %th 价格
         %td
-          - if course.price == course.discount_price
-            %font(size="large" color="red") ￥#{format("%.2f", course.price)}
+          - if campaign.price == campaign.discount_price
+            %font(size="large" color="red")
+              %span(id="current_price")
+                ￥#{format("%.2f", campaign.price)}
           - else
-            %span.delete 原价￥#{format("%.2f", campaign.price)} &nbsp;&nbsp;
+            %span.delete
+              - if order.new_record?
+                原价￥#{format("%.2f", campaign.price)} &nbsp;&nbsp;
+              - else
+                原优惠价￥#{format("%.2f", campaign.discount_price)} &nbsp;&nbsp;
             %br/
-            %span(style="font-size:18px;color:green;") 现价￥#{format("%.2f", campaign.discount_price)}
+            %span(style="font-size:18px;color:green;")
+              %span(id="current_price")
+                - if order.coupon.nil?
+                  现价￥
+                - else
+                  优惠卷价格￥
+                #{format("%.2f", order.total_amount)}
       %tr
         %th 报名的班次
         %td
@@ -24,9 +36,20 @@
       %tr
         %th 优惠卷
         %td
-          如果你有邀请码，请输入
-          %br/
-          = f.text_field :coupon_code, :size => "40"
+          - if order.new_record?
+            如果你有邀请码，请输入
+            %br/
+            = f.text_field :coupon_code, :size => "40", :maxlength => 32, :coupon => true
+            #coupon_msg
+          - elsif order.coupon.nil?
+            没有使用优惠卷
+          - else
+            优惠卷码: #{order.coupon.coupon_code}
+            %br/
+            = coupon_info(order)
+
+
+          //= link_to "校验邀请码", "javascript:void(0);",
       %tr
         %th 备注
         %td
@@ -38,3 +61,35 @@
           = f.submit t('label.submit')
           &nbsp;&nbsp;
           = link_to t('label.back'), course
+
+
+- content_for :page_inline_scripts do
+  :javascript
+    $(document).ready(function(){
+      $('input[coupon=true]').change(function(){
+        coupon_code = $(this).val();
+        checkCoupon(coupon_code);
+      })
+    })
+
+    function checkCoupon(coupon_code) {
+      baseUrl = "#{verify_coupon_campaign_orders_path(campaign)}"
+      $.ajax({url: baseUrl + "?coupon_code=" + coupon_code,
+              dataType: 'json',
+              type: 'POST',
+              success: function(data){
+                divMsg = $('#coupon_msg');
+                divMsg.text(data.msg);
+                if (data.result < 0 ){
+                  divMsg.switchClass('success', 'error');
+                  price = "现价￥" + data.new_price + ".00"
+                }
+                else {
+                  divMsg.switchClass('error', 'success');
+                  price = "优惠卷价格￥" + data.new_price + ".00"
+                }
+                divMsg.effect("highlight", 2000)
+                $('#current_price').text(price).effect("pulsate");
+              }})
+    }
+

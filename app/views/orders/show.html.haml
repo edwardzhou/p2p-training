@@ -1,0 +1,43 @@
+= show_msg
+
+%br/
+%h1 报名
+
+%table
+  %tbody
+    %tr
+      %th 课程
+      %td= @order.campaign.course.course_name
+    %tr
+      %th 价格
+      %td
+        %span(style="font-size:18px;color:green;")
+          ￥#{format("%.2f", @order.total_amount)}
+        %br/
+        - if @order.coupon.nil?
+          (没有使用优惠卷)
+        - else
+          优惠卷码: #{@order.coupon.coupon_code}
+          %br/
+          = coupon_info(@order)
+    %tr
+      %th 报名的班次
+      %td
+        #campaign
+          #{@order.campaign.name} (已有 #{@order.campaign.register_count} 人报名)
+          %br/
+          上课地点: #{@order.campaign.training_room.full_address},
+          = link_to '查看地图', @order.campaign.training_room.map_url, :target => "_blank"
+    %tr
+      %th 备注
+      %td
+        = @order.comment
+
+    %tr
+      %th/
+      %td
+        = link_to "现在付款", confirm_payment_order_path(@order)
+        |
+        = link_to "修改", edit_campaign_order_path(@order.campaign, @order)
+        |
+        = link_to t('label.back'), orders_path

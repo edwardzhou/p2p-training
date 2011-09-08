@@ -30,10 +30,17 @@ P2pTraining::Application.routes.draw do
   end
 
   resources :campaigns do
-    resources :orders
+    resources :orders do
+      collection do
+        post :verify_coupon
+        get :verify_coupon
+      end
+
+    end
   end
 
   resources :orders do
+
     member do
       get :confirm_payment
       post :pay

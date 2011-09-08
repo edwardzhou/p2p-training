@@ -25,7 +25,15 @@
       %td
         %b 付款金额
       %td
-        ￥#{@order.total_amount}
+        %span(style="font-size:18px;color:green;")
+          ￥#{format("%.2f", @order.total_amount)}
+        %br/
+        - if @order.coupon.nil?
+          (没有使用优惠卷)
+        - else
+          优惠卷码: #{@order.coupon.coupon_code}
+          %br/
+          = coupon_info(@order)
         - if is_dev?
           %b (当前测试模式，实际付款金额为 ￥0.01)
     %tr
@@ -55,8 +63,12 @@
           - service.body "<#{@order.campaign.course.course_name}> - #{@order.campaign.name}"
           - service.sign
 
-        = button_to_function "确认", "$(document.getElementById('payment-form').firstChild).remove();document.getElementById('payment-form').submit()"
+        = button_to_function "现在付款", "$(document.getElementById('payment-form').firstChild).remove();document.getElementById('payment-form').submit()"
 
         &nbsp;&nbsp;
+
+        = link_to t("label.edit"), edit_campaign_order_path(@order.campaign, @order)
+
+        |
 
         = link_to '返回', orders_path

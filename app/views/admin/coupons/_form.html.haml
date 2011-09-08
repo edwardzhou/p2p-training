@@ -21,9 +21,17 @@
     %br/
     = f.text_field :qty
   .field
+    = f.label :discount_type
+    %br/
+    = f.select :discount_type, {'By Rate' => 1, 'By Price'=> 2}
+  .field
     = f.label :discount_rate
     %br/
     = f.text_field :discount_rate
+  .field
+    = f.label :discount_price
+    %br/
+    = f.text_field :discount_price
   .field
     = f.label :due_date_date
     %br/
