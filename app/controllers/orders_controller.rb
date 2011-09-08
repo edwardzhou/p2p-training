@@ -97,6 +97,7 @@ class OrdersController < ApplicationController
       redirect_to confirm_payment_order_path(@order)
     else
       redirect_to orders_path
+    end
   end
 
   def update
