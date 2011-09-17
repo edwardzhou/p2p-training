@@ -44,7 +44,7 @@ class PaymentsController < ApplicationController
         if (payment.trade_status == Payment::Status::SUCCESS) or
             (payment.trade_status == Payment::Status::FINISHED)
           @order.status = Order::Status::PAID
-          @order.paid_date = notification.gmt_payment
+          @order.paid_time = notification.gmt_payment
           @order.save!
         end
       end
