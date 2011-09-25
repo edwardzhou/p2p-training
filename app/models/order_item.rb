@@ -3,16 +3,16 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
-# order_id                       integer              true                   
-# campaign_id                    integer              true                   
-# qty                            integer              true                   
-# price                          decimal              true                   
-# discount_price                 decimal              true                   
-# amount                         decimal              true                   
+# id                             int(11)              false           true   
+# order_id                       int(11)              true                   
+# campaign_id                    int(11)              true                   
+# qty                            int(11)              true                   
+# price                          decimal(10,0)        true                   
+# discount_price                 decimal(10,0)        true                   
+# amount                         decimal(10,0)        true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
-# joiner_id                      integer              true                   
+# joiner_id                      int(11)              true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

@@ -3,21 +3,21 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
+# id                             int(11)              false           true   
 # name                           varchar(50)          true                   
-# start_date                     date                 true                   
-# end_date                       date                 true                   
-# register_due_date              date                 true                   
-# course_id                      integer              true                   
-# trainer_id                     integer              true                   
+# start_date                     datetime             true                   
+# end_date                       datetime             true                   
+# register_due_date              datetime             true                   
+# course_id                      int(11)              true                   
+# trainer_id                     int(11)              true                   
 # status                         varchar(50)          true    open           
-# price                          decimal              true                   
-# discount_price                 decimal              true                   
-# training_room_id               integer              true                   
+# price                          decimal(10,0)        true                   
+# discount_price                 decimal(10,0)        true                   
+# training_room_id               int(11)              true                   
 # description                    text                 true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
-# register_count                 integer              true    0              
+# register_count                 int(11)              true    0              
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -40,6 +40,13 @@ class Campaign < ActiveRecord::Base
 
   has_many :orders
   has_many :registered_users, :through => :orders, :source => :user, :uniq => true
+  has_many :feedbacks
+
+  scope :opening, where(:status => Campaign::Status::OPEN)
+  scope :finished, where(:status => Campaign::Status::FINISHED)
+  scope :cancelled, where(:status => Campaign::Status::CANCELLED)
+  scope :closed, where(:status => Campaign::Status::CLOSED)
+
 
   ["start_date", "end_date", "register_due_date"].each do |the_date|
     define_date_and_time(the_date)
@@ -63,12 +70,16 @@ class Campaign < ActiveRecord::Base
 
   end
 
-  def to_s
-    unless course.nil?
+  def full_name
+    unless self.course.nil?
       "#{course.course_name} - #{name}"
     else
       name
     end
+  end
+
+  def to_s
+    full_name
   end
 
 end

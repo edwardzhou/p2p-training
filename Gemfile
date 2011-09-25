@@ -33,6 +33,8 @@ gem 'guid'
 
 gem 'ruby-debug19'
 
+gem 'activeadmin'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

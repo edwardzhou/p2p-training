@@ -7,10 +7,6 @@ module OrdersHelper
       .where(:status.not_eq => Order::Status::CANCELLED).count > 0
   end
 
-  def even_odd(index)
-    index.even? ? "even" : "odd"
-  end
-
   def coupon_info(order)
     coupon = order.coupon
     campaign = order.campaign

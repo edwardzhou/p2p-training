@@ -3,10 +3,10 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
+# id                             int(11)              false           true   
 # name                           varchar(255)         true                   
 # pattern                        varchar(255)         true                   
-# next_value                     integer              true                   
+# next_value                     int(11)              true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
 #

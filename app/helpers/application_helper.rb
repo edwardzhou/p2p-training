@@ -28,5 +28,11 @@ module ApplicationHelper
   def is_dev?
     Rails.env.development?
   end
+
+  def even_odd(index)
+    index.even? ? "even" : "odd"
+  end
+
+
   
 end

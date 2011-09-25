@@ -1,5 +1,5 @@
 P2pTraining::Application.routes.draw do
-  namespace :admin do resources :coupons end
+  ActiveAdmin.routes(self)
 
   get "catalogs/index"
 
@@ -107,6 +107,8 @@ P2pTraining::Application.routes.draw do
           post :absent, :present, :finish
           get :absent, :present
         end
+
+        #resources :feedbacks
       end
     end
 
@@ -125,6 +127,8 @@ P2pTraining::Application.routes.draw do
     resource :dashboards
 
     resources :custom_emails
+
+    resources :coupons
 
 
     root :to => "dashboards#show"

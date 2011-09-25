@@ -5,22 +5,22 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
+# id                             int(11)              false           true   
 # course_name                    varchar(255)         true                   
 # version                        varchar(255)         true                   
 # status                         varchar(255)         true                   
 # short_description              text                 true                   
 # long_description               text                 true                   
-# duration_in_hours              integer              true                   
-# total_rating                   integer              true                   
-# price                          decimal              true                   
-# discount_price                 decimal              true                   
+# duration_in_hours              int(11)              true                   
+# total_rating                   int(11)              true                   
+# price                          decimal(10,0)        true                   
+# discount_price                 decimal(10,0)        true                   
 # avatar                         varchar(255)         true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
-# total_interesting_count        integer              true    0              
-# total_register_count           integer              true    0              
-# display_order                  integer              true                   
+# total_interesting_count        int(11)              true    0              
+# total_register_count           int(11)              true    0              
+# display_order                  int(11)              true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

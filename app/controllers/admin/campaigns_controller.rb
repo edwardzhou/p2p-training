@@ -5,7 +5,11 @@ class Admin::CampaignsController < Admin::BaseController
   #              :register_due_date, :description
 
   def index
-    @campaigns = Campaign.all
+    unless @course.nil?
+      @campaigns = @course.campaigns
+    else
+      @campaigns = Campaign.all
+    end
   end
 
   def search

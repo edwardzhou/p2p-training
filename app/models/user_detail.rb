@@ -3,8 +3,8 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
-# user_id                        integer              true                   
+# id                             int(11)              false           true   
+# user_id                        int(11)              true                   
 # id_card                        varchar(20)          true                   
 # birthday                       date                 true                   
 # company                        varchar(100)         true                   

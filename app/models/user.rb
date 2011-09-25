@@ -3,13 +3,13 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
+# id                             int(11)              false           true   
 # email                          varchar(255)         false                  
 # encrypted_password             varchar(128)         false                  
 # reset_password_token           varchar(255)         true                   
 # reset_password_sent_at         datetime             true                   
 # remember_created_at            datetime             true                   
-# sign_in_count                  integer              true    0              
+# sign_in_count                  int(11)              true    0              
 # current_sign_in_at             datetime             true                   
 # last_sign_in_at                datetime             true                   
 # current_sign_in_ip             varchar(255)         true                   
@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   has_many :interested_courses, :through => :favorites, :source => :course
 
   has_many :orders, :order => 'created_at DESC'
+  has_many :feedbacks
 
   has_and_belongs_to_many :roles
 
@@ -67,21 +68,15 @@ class User < ActiveRecord::Base
 
   after_initialize :initialize_user_detail
 
+  scope :activated, where(:confirmed_at.not_eq => nil)
   scope :confirmed_users, where(:confirmed_at.not_eq => nil)
   scope :invited_users, lambda {|ref_username| where(:reference_to => ref_username)}
   scope :paid_users, joins(:orders).where(:orders => {:status => Order::Status::PAID})
+  delegate :confirmed_users, :to => :activated
 
   def role?(role_name)
     role_name.downcase!
-    found = false
-    self.roles.each do |role|
-      if role.name.downcase == role_name
-        found = true
-        break
-      end
-    end
-
-    found
+    self.roles.select{|r| r.name.downcase == role_name}.size > 0
   end
 
   def interested_course?(course_id)
@@ -98,6 +93,14 @@ class User < ActiveRecord::Base
 
   def pending_payment_orders
     orders.where(:orders => {:status => Order::Status::PENDING_PAYMENT})
+  end
+
+  def full_name
+    "#{username} (#{true_name})"
+  end
+
+  def to_s
+    full_name
   end
 
   private

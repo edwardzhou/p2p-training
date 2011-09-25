@@ -3,7 +3,7 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
+# id                             int(11)              false           true   
 # city                           varchar(50)          true                   
 # address                        varchar(200)         true                   
 # zip                            varchar(20)          true                   
@@ -21,6 +21,10 @@ class Location < ActiveRecord::Base
 
   def full_address
     "#{city} #{address}"
+  end
+
+  def to_s
+    full_address
   end
 
 end

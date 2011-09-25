@@ -3,9 +3,9 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
-# user_id                        integer              true                   
-# course_id                      integer              true                   
+# id                             int(11)              false           true   
+# user_id                        int(11)              true                   
+# course_id                      int(11)              true                   
 # content                        varchar(255)         true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   

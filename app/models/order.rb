@@ -5,19 +5,21 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
+# id                             int(11)              false           true   
 # order_code                     varchar(20)          true                   
-# user_id                        integer              true                   
-# total_amount                   decimal              true                   
+# user_id                        int(11)              true                   
+# total_amount                   decimal(10,0)        true                   
 # status                         varchar(20)          true                   
-# payable                        boolean              true                   
+# payable                        tinyint(1)           true                   
 # comment                        text                 true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
-# campaign_id                    integer              true                   
+# campaign_id                    int(11)              true                   
 # paid_time                      datetime             true                   
 # reason                         text                 true                   
 # refunded_time                  datetime             true                   
+# coupon_id                      int(11)              true                   
+# present                        tinyint(1)           true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

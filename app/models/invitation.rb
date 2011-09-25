@@ -3,14 +3,14 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
-# user_id                        integer              true                   
+# id                             int(11)              false           true   
+# user_id                        int(11)              true                   
 # friend_email                   varchar(255)         true                   
 # friend_name                    varchar(255)         true                   
 # my_name                        varchar(255)         true                   
 # content                        text                 true                   
 # last_resend_time               datetime             true                   
-# signed_up                      boolean              true                   
+# signed_up                      tinyint(1)           true                   
 # created_at                     datetime             true                   
 # updated_at                     datetime             true                   
 #

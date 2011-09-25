@@ -3,12 +3,12 @@
 #
 # Name                           SQL Type             Null    Default Primary
 # ------------------------------ -------------------- ------- ------- -------
-# id                             INTEGER              false           true   
+# id                             int(11)              false           true   
 # notify_id                      varchar(255)         true                   
 # notify_time                    datetime             true                   
 # trade_no                       varchar(255)         true                   
 # trade_status                   varchar(255)         true                   
-# total_amount                   decimal              true                   
+# total_amount                   decimal(10,0)        true                   
 # buyer_email                    varchar(255)         true                   
 # raw_post                       text                 true                   
 # created_at                     datetime             true                   
@@ -16,15 +16,15 @@
 # out_trade_no                   varchar(255)         true                   
 # gmt_create                     datetime             true                   
 # gmt_payment                    datetime             true                   
-# use_coupon                     boolean              true                   
+# use_coupon                     tinyint(1)           true                   
 # subject                        varchar(255)         true                   
 # body                           varchar(255)         true                   
-# price                          decimal              true                   
-# quantity                       decimal              true                   
+# price                          decimal(10,0)        true                   
+# quantity                       decimal(10,0)        true                   
 # sign_type                      varchar(255)         true                   
 # sign                           varchar(255)         true                   
 # notify_type                    varchar(255)         true                   
-# order_id                       integer              true                   
+# order_id                       int(11)              true                   
 #
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

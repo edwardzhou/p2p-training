@@ -1,5 +1,6 @@
 zh-CN:
   attributes:
+    id: 编号
     login: 用户名或邮箱
     email: 邮箱
     password: 密码
@@ -12,17 +13,29 @@ zh-CN:
     contact_phone: 联系电话
     price: 价格
     discount_price: 优惠价
+    status: 状态
+    created_at: 创建时间
+    updated_at: 上次更新时间
+    confirmed_at: 激活时间
+
+    user: 用户
+    campaign: 班次
+    coupon: 优惠卷
+    course: 课程
+    location: 上课地点
+    feedback: 反馈
 
   activerecord:
     models:
       user:     用户
       catalog:  目录
       course:   课程
-      location: 位置
-      campaign: 活动
+      location: 上课地点
+      campaign: 班次
       order:    订单
       invitation: 邀请
       coupon:   优惠卷
+      feedback: 反馈
 
     attributes:
       user_detail: &ud_attrs
@@ -41,7 +54,7 @@ zh-CN:
       catalog:
         name: 名称
 
-      course:
+      course: &course_attrs
         course_name: 课程名称
         price: 价格
         discount_price: 优惠价
@@ -59,6 +72,9 @@ zh-CN:
         register_due_date: 报名截止时间
         register_due_date_date: 报名截止时间
         trainer: 讲师
+        training_room: 上课地点
+        register_count: 报名人数
+        course: 课程
 
       invitation:
         friend_email: 朋友邮件地址
@@ -74,6 +90,23 @@ zh-CN:
         disabled: 失效
         course: 使用课程
         campaign: 使用班次
+
+      location:
+        city: 城市
+        address: 地址
+        zip: 邮编
+        map_url: 电子地图
+
+      feedback:
+        useful_rating: 有用评分
+        content_rating: 内容评分
+        interact_rating: 互动评分
+        gain_from_lesson: 学习收获
+        interesting_feature: 最吸引人的部分
+        advice: 建议或意见
+
+
+
 
 
   status:
