@@ -1,5 +1,7 @@
+#encoding: utf-8
+
 ActiveAdmin.register Campaign do
-  scope :all
+  scope :default, :scoped
   scope :opening, :default => true
   scope :finished
   scope :closed
@@ -17,9 +19,18 @@ ActiveAdmin.register Campaign do
     column :end_date
     column :register_due_date
     column :description
+    column :register_count
     column :created_at
     column :updated_at
 
     default_actions
   end
+
+  form do |f|
+    f.inputs :name, :course, :trainer, :training_room, :start_date, :end_date, :register_due_date,
+             :price, :discount_price, :register_count, :description
+
+    f.buttons
+  end
+
 end

@@ -1,5 +1,5 @@
 ActiveAdmin.register Feedback do
-  scope :all, :default => true
+  scope :default, :scoped, :default => true
 
   index do
     column :id

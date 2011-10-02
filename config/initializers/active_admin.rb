@@ -26,6 +26,9 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "P2p Training"
+  config.site_title_link = "/"
+
+  #config.setting :default_scope, :all
 
 
   # == Default Namespace
@@ -117,4 +120,11 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+  config.register_javascript "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
+  config.register_javascript "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"
+  config.register_javascript "rails"
+  config.register_javascript "application"
+  config.register_javascript "kindeditor.js"
+
+  #config.register_stylesheet
 end

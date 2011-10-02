@@ -11,8 +11,8 @@
 
     #duration 课程时间: #{@course.duration_in_hours} 小时
 
-    #course_description
-      != @course.short_description
+    - #course_description
+    - #  != @course.short_description
 
     %p 累计报名人数: #{@course.total_register_count}
 
@@ -28,6 +28,82 @@
     %br/
     上课地点: #{@campaign.training_room.full_address},
     = link_to '查看地图', @campaign.training_room.map_url, :target => "_blank"
-    %p
-      = link_to t("label.register_now"), new_campaign_order_path(@campaign)
+    - if @campaign.is_opening
+      %p
+        = link_to t("label.register_now"), new_campaign_order_path(@campaign)
+    - else
+      #comments
+        #rating
+          %ul
+            %li
+              课程实用评分: #{@campaign.avg_useful_rating}
+            %li
+              课程内容评分: #{@campaign.avg_content_rating}
+            %li
+              课程互动评分: #{@campaign.avg_interact_rating}
+        #details
+          #gain.span-6.inner_box
+            %h5
+              课程收获
+            #list
+              - @campaign.feedbacks.each do |f|
+                - unless f.gain_from_lesson.blank?
+                  #item(style="margin:3px 3px 10px 3px;")
+                    %b.b1
+                    %b.b2.d1
+                    %b.b3.d1
+                    %b.b4.d1
+                    #comment.d1.b(style="padding:5px;")
+                      = f.gain_from_lesson
+                    %b.b4b.d1
+                    %b.b3b.d1
+                    %b.b2b.d1
+                    %b.b1b
 
+          #feature.span-6.inner_box
+            %h5
+              课程特色
+            #list
+              - @campaign.feedbacks.each do |f|
+                - unless f.interesting_feature.blank?
+                  #item(style="margin:3px 3px 10px 3px;")
+                    %b.b1
+                    %b.b2.d1
+                    %b.b3.d1
+                    %b.b4.d1
+                    #comment.d1.b(style="padding:5px;")
+                      = f.interesting_feature
+                    %b.b4b.d1
+                    %b.b3b.d1
+                    %b.b2b.d1
+                    %b.b1b
+
+          #advice.span-6.inner_box.last
+            %h5
+              意见或建议
+            #list
+              - @campaign.feedbacks.each do |f|
+                - unless f.advice.blank?
+                  #item(style="margin:3px 3px 10px 3px;")
+                    %b.b1
+                    %b.b2.d1
+                    %b.b3.d1
+                    %b.b4.d1
+                    #comment.d1.b(style="padding:5px;")
+                      = f.advice
+                    %b.b4b.d1
+                    %b.b3b.d1
+                    %b.b2b.d1
+                    %b.b1b
+
+
+- content_for :page_inline_css do
+  :css
+    .b1,.b2,.b3,.b4,.b1b,.b2b,.b3b,.b4b,.b{display:block;overflow:hidden;}
+    .b1,.b2,.b3,.b1b,.b2b,.b3b{height:1px;}
+    .b2,.b3,.b4,.b2b,.b3b,.b4b,.b{border-left:1px solid #999;border-right:1px solid #999;}
+    .b1,.b1b{margin:0 5px;background:#999;}
+    .b2,.b2b{margin:0 3px;border-width:2px;}
+    .b3,.b3b{margin:0 2px;}
+    .b4,.b4b{height:2px;margin:0 1px;}
+    .d1{background:#F7F8F9;}

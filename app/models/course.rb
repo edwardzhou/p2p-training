@@ -31,6 +31,7 @@ class Course < ActiveRecord::Base
     CLOSED    = "closed"
   end
 
+  include RatingMacro
 
   validates_presence_of :course_name
   validates_uniqueness_of :course_name
@@ -40,6 +41,7 @@ class Course < ActiveRecord::Base
   has_many :favorites, :order => 'created_at DESC', :dependent => :destroy
   has_many :interested_users,:through => :favorites, :order => 'created_at DESC', :source => :user
   has_many :comments, :order => 'created_at DESC', :dependent => :destroy
+  has_many :feedbacks, :through => :campaigns
 
   scope :active_courses, where(:status.not_eq => Course::Status::CLOSED)
 
@@ -53,14 +55,15 @@ class Course < ActiveRecord::Base
 
   attr_accessible :course_name, :version, :status, :short_description,
                   :long_description, :duration_in_hours, :total_rating, :price, :discount_price,
-                  :catalogs, :catalog_ids, :avatar, :avatar_cache
+                  :catalogs, :catalog_ids, :avatar, :avatar_cache, :remove_avatar,
+                  :total_interesting_count, :total_register_count
 
   def active_campaigns
     campaigns.where(:status => Campaign::Status::OPEN)
   end
 
   def finished_campaigns
-    campaigns.where(:status => Campaign::Status::FINISHED)
+    campaigns.where(:status => Campaign::Status::FINISHED).order("start_date DESC")
   end
 
   def latest_comments(count=10)

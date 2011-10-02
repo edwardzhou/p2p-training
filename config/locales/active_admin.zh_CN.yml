@@ -40,5 +40,9 @@ zh-CN:
       link: "新建一个"
 
     scopes:
-      all: 全部
+      scoped: "全部"
       activated: "已激活"
+      opening: "开放中"
+      closed: "已关闭"
+      finished: "已结束"
+      cancelled: "已取消"

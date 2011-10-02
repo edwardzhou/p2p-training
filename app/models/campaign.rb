@@ -30,6 +30,7 @@ class Campaign < ActiveRecord::Base
   end
 
   include DateTimeMacro
+  include RatingMacro
 
   belongs_to :course
   belongs_to :trainer, :class_name => 'User', :foreign_key => 'trainer_id'
@@ -40,7 +41,7 @@ class Campaign < ActiveRecord::Base
 
   has_many :orders
   has_many :registered_users, :through => :orders, :source => :user, :uniq => true
-  has_many :feedbacks
+  has_many :feedbacks, :order => "created_at DESC"
 
   scope :opening, where(:status => Campaign::Status::OPEN)
   scope :finished, where(:status => Campaign::Status::FINISHED)
@@ -76,6 +77,10 @@ class Campaign < ActiveRecord::Base
     else
       name
     end
+  end
+
+  def is_opening
+    Campaign::Status::OPEN == self.status
   end
 
   def to_s
