@@ -37,7 +37,7 @@ class Course < ActiveRecord::Base
   validates_uniqueness_of :course_name
 
   has_and_belongs_to_many :catalogs
-  has_many :campaigns
+  has_many :campaigns, :order => 'id DESC'
   has_many :favorites, :order => 'created_at DESC', :dependent => :destroy
   has_many :interested_users,:through => :favorites, :order => 'created_at DESC', :source => :user
   has_many :comments, :order => 'created_at DESC', :dependent => :destroy
@@ -59,11 +59,11 @@ class Course < ActiveRecord::Base
                   :total_interesting_count, :total_register_count
 
   def active_campaigns
-    campaigns.where(:status => Campaign::Status::OPEN)
+    campaigns.opening
   end
 
   def finished_campaigns
-    campaigns.where(:status => Campaign::Status::FINISHED).order("start_date DESC")
+    campaigns.finished
   end
 
   def latest_comments(count=10)

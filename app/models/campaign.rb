@@ -54,11 +54,11 @@ class Campaign < ActiveRecord::Base
   end
 
   def valid_orders
-    orders.where(:status.not_in => [Order::Status::CANCELLED, Order::Status::REFUNDED, Order::Status::PENDING_REFUND])
+    orders.active
   end
 
-  def presents(present = true)
-    orders.where(:present => present)
+  def presents
+    orders.presented
   end
 
   def finish!

@@ -57,11 +57,13 @@ class Order < ActiveRecord::Base
   belongs_to :coupon
 
   scope :pending, where(:status => Status::PENDING_PAYMENT)
-  scope :latest_orders, order("created_at DESC")
+  scope :latest_orders, lambda{|*top| order("created_at DESC").limit(top.first || 10) }
   scope :finished, where(:status => Status::FINISHED)
   scope :paid, where(:status => Status::PAID)
-  scope :active, where(:status => [Status::PAID, Status::PENDING_PAYMENT])
+  scope :active, where(:status => [Status::PAID, Status::PENDING_PAYMENT, Status::FINISHED])
   scope :cancelled, where(:status => [Status::CANCELLED, Status::PENDING_REFUND, Status::REFUNDED])
+  scope :presented, where(:present => true)
+  scope :not_presented, where(:present => false)
 
   attr_accessor :coupon_code
 
