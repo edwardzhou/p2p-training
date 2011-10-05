@@ -37,7 +37,7 @@ class Course < ActiveRecord::Base
   validates_uniqueness_of :course_name
 
   has_and_belongs_to_many :catalogs
-  has_many :campaigns, :order => 'id DESC'
+  has_many :campaigns
   has_many :favorites, :order => 'created_at DESC', :dependent => :destroy
   has_many :interested_users,:through => :favorites, :order => 'created_at DESC', :source => :user
   has_many :comments, :order => 'created_at DESC', :dependent => :destroy
@@ -63,7 +63,7 @@ class Course < ActiveRecord::Base
   end
 
   def finished_campaigns
-    campaigns.finished
+    campaigns.finished.order('start_date DESC')
   end
 
   def latest_comments(count=10)

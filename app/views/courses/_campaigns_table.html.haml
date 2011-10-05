@@ -6,12 +6,12 @@
       %th 讲师
       %th 讲课地点
       %th 出席人数
-      %th 总评分(最高10分)
+      %th 平均评分(最高10分)
   %tbody
     - campaigns.each do |campaign|
       %tr(class="#{cycle('even', 'odd')}")
         %td
-          = campaign.name
+          = link_to campaign.name, campaign
         %td
           = campaign.start_date
         %td
@@ -21,7 +21,7 @@
         %td
           = campaign.present_count
         %td
-          课程有用评分:&nbsp;
+          课程实用评分:&nbsp;
           %b= campaign.avg_useful_rating
           %br/
           课程内容评分:&nbsp;

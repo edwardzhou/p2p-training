@@ -18,11 +18,16 @@
 
 
   #campaign
-    开班：
+    %h3 开班：
     %br/
     #{@campaign.name} (已有 #{@campaign.register_count} 人报名)
+    - unless @campaign.is_opening
+      %br/
+      实到人数: #{@campaign.present_count}
     %br/
     上课时间: &nbsp;#{start_date(@campaign)}
+    %br/
+    结束时间: &nbsp;#{@campaign.end_date}
     %br/
     报名截止时间: #{register_due_date(@campaign)}
     %br/
@@ -32,16 +37,25 @@
       %p
         = link_to t("label.register_now"), new_campaign_order_path(@campaign)
     - else
+      %h3 学员反馈
+
       #comments
+        平均评分(最低0分，最高10分)
         #rating
           %ul
             %li
-              课程实用评分: #{@campaign.avg_useful_rating}
+              课程实用评分:
+              != rating_to_images(@campaign.avg_useful_rating)
             %li
-              课程内容评分: #{@campaign.avg_content_rating}
+              课程内容评分:
+              != rating_to_images(@campaign.avg_content_rating)
             %li
-              课程互动评分: #{@campaign.avg_interact_rating}
+              课程互动评分:
+              != rating_to_images(@campaign.avg_interact_rating)
         #details
+          %p
+            %b 详细反馈
+
           #gain.span-6.inner_box
             %h5
               课程收获

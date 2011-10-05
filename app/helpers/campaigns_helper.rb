@@ -29,4 +29,12 @@ module CampaignsHelper
         "20:30" => :"20:30:00"
     }
   end
+
+  def rating_to_images(rating)
+    images = []
+    rating.times {images << image_tag('star_24.gif', :height => 18, :width => 18) }
+    (10 - rating).times {images << image_tag('star_24_off.gif', :height => 18, :width => 18) }
+    images.join('')
+
+  end
 end
