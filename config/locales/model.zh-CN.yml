@@ -17,13 +17,16 @@ zh-CN:
     created_at: 创建时间
     updated_at: 上次更新时间
     confirmed_at: 激活时间
+    description: 描述
 
-    user: 用户
     campaign: 班次
-    coupon: 优惠卷
     course: 课程
+    name: 名称
+    user: 用户
+    coupon: 优惠卷
     location: 上课地点
     feedback: 反馈
+
 
   activerecord:
     models:
@@ -36,6 +39,8 @@ zh-CN:
       invitation: 邀请
       coupon:   优惠卷
       feedback: 反馈
+      album:    相册
+      photo:    相片
 
     attributes:
       user_detail: &ud_attrs
@@ -104,9 +109,6 @@ zh-CN:
         gain_from_lesson: 学习收获
         interesting_feature: 最吸引人的部分
         advice: 建议或意见
-
-
-
 
 
   status:

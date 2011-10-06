@@ -1581,3 +1581,11 @@ table.dashboard {
   padding: 0; }
   .columns .column {
     float: left; }
+
+div.photo {
+  float: left;
+  padding: 5px; }
+
+div.panel_contents {
+  float: none;
+  min-height: 200px; }

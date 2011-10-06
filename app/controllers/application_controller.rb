@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     location = stored_location_for(:user) || root_path
 
     if current_user.role?('admin')
-      location = admin_dashboards_path
+      location = "/admin/"
     end
 
     location

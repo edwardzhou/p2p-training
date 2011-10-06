@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003074654) do
+ActiveRecord::Schema.define(:version => 20111006073559) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20111003074654) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "albums", :force => true do |t|
+    t.string   "name"
+    t.integer  "campaign_id"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",              :limit => 50
@@ -204,6 +212,15 @@ ActiveRecord::Schema.define(:version => 20111003074654) do
     t.string   "sign"
     t.string   "notify_type"
     t.integer  "order_id"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "album_id"
+    t.integer  "display_order"
+    t.string   "description"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", :force => true do |t|

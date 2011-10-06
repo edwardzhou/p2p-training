@@ -1,0 +1,11 @@
+= semantic_form_for [:admin, @photo], :html => {:multipart => true} do |f|
+  = f.inputs :album, :display_order, :description
+  = f.inputs do
+    = f.input :image, :as => :file
+    = f.input :image_cache, :as => :hidden
+    - if @photo.image?
+      = f.input :remove_image, :as => :boolean
+      %li
+        = label_tag "."
+        = image_tag @photo.image_url.to_s, :align => "center"
+  = f.buttons

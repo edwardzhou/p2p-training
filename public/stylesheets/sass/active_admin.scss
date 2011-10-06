@@ -2,3 +2,13 @@
 @import "active_admin/mixins";
 
 @import "active_admin/base";
+
+div.photo {
+    float: left;
+    padding: 5px;
+}
+
+div.panel_contents {
+    float: none;
+    min-height: 200px;
+}

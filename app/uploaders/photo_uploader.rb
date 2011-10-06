@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class AvatarUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
@@ -14,13 +14,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/album/#{model.album.id}/photos"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  def default_url
-     "/images/fallback/" + [version_name, "no_image.png"].compact.join('_')
-  end
+  # def default_url
+  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+  # end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -31,18 +31,22 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-     process :resize_to_fit => [200, 125]
+     process :resize_to_fit => [100, 80]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-     %w(jpg jpeg gif png bmp)
+     %w(jpg jpeg gif png bmp tif)
   end
 
-  # Override the filename of the uploaded files:
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  ## Override the filename of the uploaded files:
+  #def filename
+  #  Rails.logger.info "original_filename => #{original_filename}"
+  #  #"something.jpg" if original_filename
+  #  "#{Guid.new.to_s.gsub('-', '')}#{File.extname(original_filename)}"
+  #  #"#{File.dirname(original_filename)}/#{Guid.new.to_s.gsub('-', '')}#{File.extname(original_filename)}"
+  #  #"#{File.dirname(original_filename)}/#{model.id}#{File.extname(original_filename)}"
+  #end
 
 end
