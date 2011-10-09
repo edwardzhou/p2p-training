@@ -20,6 +20,7 @@ ActiveAdmin.register Campaign do
     column :register_due_date
     column :description
     column :register_count
+    column :present_count
     column :created_at
     column :updated_at
 
@@ -28,7 +29,8 @@ ActiveAdmin.register Campaign do
 
   form do |f|
     f.inputs :name, :course, :trainer, :training_room, :start_date, :end_date, :register_due_date,
-             :price, :discount_price, :register_count, :description
+             :price, :discount_price, :register_count, :present_count, :description
+
 
     f.buttons
   end

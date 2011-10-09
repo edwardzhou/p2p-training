@@ -12,6 +12,7 @@ ActiveAdmin.register Course do
     column(:price) {|course| number_to_currency course.price}
     column(:discount_price) {|course| number_to_currency course.discount_price}
     column :display_order
+    column :total_register_count
     column :created_at
     column :updated_at
     default_actions
@@ -34,6 +35,7 @@ ActiveAdmin.register Course do
         row :total_interesting_count
         row :total_register_count
         row :status
+
       end
     end
     panel "课程简介" do
