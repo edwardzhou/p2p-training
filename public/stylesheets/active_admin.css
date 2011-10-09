@@ -1582,10 +1582,7 @@ table.dashboard {
   .columns .column {
     float: left; }
 
-div.photo {
-  float: left;
-  padding: 5px; }
-
-div.panel_contents {
-  float: none;
-  min-height: 200px; }
+/*div.photo {*/
+/*float: left;*/
+/*padding: 5px;*/
+/*}*/

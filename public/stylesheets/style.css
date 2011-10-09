@@ -1148,6 +1148,18 @@ div.inner_box {
 .li_star_blue {
   list-style-image: url("/images/star_blue.gif"); }
 
+div#hot_photos {
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding: 1px;
+  position: relative; }
+  div#hot_photos ul {
+    padding: 0;
+    width: 1600px; }
+    div#hot_photos ul li {
+      display: inline;
+      padding: 5px; }
+
 /**************************************/
 /*               FOOTER               */
 /**************************************/

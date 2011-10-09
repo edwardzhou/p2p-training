@@ -38,8 +38,8 @@
         %th/
 
     %tbody
-      - @orders.each_with_index do |order, index|
-        %tr(class="#{even_odd(index)}")
+      - @orders.each do |order|
+        %tr(class="#{cycle('even', 'odd')}")
           %td
             #order_code(id="#{order.id}")= order.order_code
           %td= order.created_at

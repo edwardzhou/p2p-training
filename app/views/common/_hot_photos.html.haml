@@ -1,0 +1,19 @@
+
+#hot_photos
+  %h5 课间留影
+  %ul
+    - hot_photos().each do |photo|
+      %li
+        = link_to photo.image_url.to_s, :class => "hot_photos", :rel => "hot_photos", :title => "#{photo.description}" do
+          = image_tag photo.image_url(:thumb).to_s
+
+
+= stylesheet_link_tag '/fancybox/jquery.fancybox-1.3.4.css'
+= javascript_include_tag '/fancybox/jquery.fancybox-1.3.4.pack.js'
+= javascript_include_tag '/fancybox/jquery.mousewheel-3.0.4.pack.js'
+
+:javascript
+  $(document).ready(function(){
+    $("a.hot_photos").fancybox();
+  });
+
