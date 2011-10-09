@@ -1,0 +1,23 @@
+%h1 培训地点
+
+= link_to t('label.new') , new_admin_location_path
+
+%table
+  %thead
+    %th 城市
+    %th 地址
+    %th 电子地图
+    %th/
+  %tbody
+    - @locations.each do |location|
+      %tr
+        %td= location.city
+        %td= location.address
+        %td= link_to location.map_url, location.map_url, :target => "_blank"
+        %td
+          = link_to t('label.edit'), edit_admin_location_path(location)
+          |
+          = link_to t('label.delete'), [:admin, location],
+            :method => 'delete',
+            :confirm => t('label.delete_confirm', :name => "#{location.city} - #{location.address}")
+

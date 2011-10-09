@@ -1,0 +1,73 @@
+#course_name.field
+  .span-3.align_right= label_tag '课程'
+  .value= campaign.course.course_name
+
+#field_name.field
+  .required_field_label= f.label :name
+  = f.text_field :name
+
+#field_name.field
+  .required_field_label= f.label :trainer
+  = f.text_field :trainer_id,:tokeninput=>true,
+                 "data-url" => search_admin_users_path(:format => :json),
+                 "data-pre" => pre_user(campaign.trainer),
+                 :size => 30
+
+#field_price.field
+  .required_field_label= f.label :price
+  = f.text_field :price
+
+#field_discount_price.field
+  .required_field_label= f.label :discount_price
+  = f.text_field :discount_price
+
+#field_start_date.field
+  .field_label= f.label :start_date_date
+  = f.text_field :start_date_date, :class => "date" , :date => "true"
+  = f.select :start_date_time, time_options
+
+#field_end_date.field
+  .field_label= f.label :end_date_date
+  = f.text_field :end_date_date, :class => "date" , :date => "true"
+  = f.select :end_date_time, time_options
+
+#field_register_due_date.field
+  .field_label= f.label :register_due_date_date
+  = f.text_field :register_due_date_date, :class => "date" , :date => "true"
+
+#field_location.field
+  .field_label= label_tag "上课地点"
+  #locations.span-16.last
+    - Location.sort_by_city.each do |location|
+      = f.radio_button :training_room_id, location.id
+      = f.label "training_room_id_#{location.id}", location.full_address
+      %br/
+      .prefix-1
+        电子地图:
+        = link_to location.map_url, location.map_url, :target => "_blank"
+      %br/
+
+= f.submit t("label.save")
+= link_to t("label.back"), admin_course_path(course)
+
+
+- content_for :page_include_scripts do
+  = javascript_include_tag 'rails.validations',
+                            'i18n/messages-zh-CN',
+                            'i18n/jquery.ui.datepicker-zh-CN',
+                            'jquery.tokeninput'
+
+- content_for :page_inline_scripts do
+  :javascript
+    $(document).ready(function(){
+      //$("form").validate({errorClass: 'error_msg'});
+      $('input[tokeninput=true]').each(function(index){
+        $(this).tokenInput($(this).data("url"),{
+          tokenLimit:1,
+        })
+      })
+    })
+
+- content_for :page_include_css do
+  = stylesheet_link_tag "ui-lightness/jquery-ui-1.8.11.custom","token-input", "token-input-mac", "token-input-facebook"
+

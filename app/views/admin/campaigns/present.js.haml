@@ -1,0 +1,5 @@
+order_div=$("#order_present_#{@order.id}");
+order_div.html('#{link_to "缺席", {:action => "absent", :order_id => @order.id}, :method => 'post', :remote => true}');
+$("#order_present_title_#{@order.id}").text('是');
+$("#order_row_#{@order.id}").show('highlight', 1000);
+$("#registers_present").text('实到人数: #{@campaign.presents.count}, 缺席人数: #{@campaign.presents(false).count}').show('highlight', 1000);

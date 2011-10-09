@@ -1,0 +1,10 @@
+= form_for [:admin, catalog] do |f|
+
+  %fieldset
+    %br
+    #field_name.field
+      .required_field_label= f.label :name
+      = f.text_field :name
+
+    = f.submit t("label.save")
+    = link_to t("label.back"), admin_catalogs_path

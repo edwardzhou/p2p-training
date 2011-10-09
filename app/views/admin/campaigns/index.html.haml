@@ -1,0 +1,40 @@
+%h1 Campaigns
+
+- unless @course.nil?
+  #course
+    课程: #{link_to @course.course_name, [:admin, @course]}
+
+%table(id="campaigns")
+  %thead
+    %tr
+      %th 班级
+      %th 上课时间
+      %th 结束时间
+      %th 讲师
+      %th 上课地点
+      %th 报名人数
+      %th 实到人数
+      %th/
+  %tbody
+    - @campaigns.each_with_index do |campaign, index|
+      %tr(class="#{even_odd(index)}")
+        %td
+          = link_to campaign.name, [:admin, campaign.course, campaign]
+        %td
+          = start_date(campaign)
+        %td
+          = campaign.end_date
+        %td
+          - unless campaign.trainer.nil?
+            = link_to campaign.trainer.username, [:admin, campaign.trainer]
+        %td
+          = link_to campaign.training_room.full_address, campaign.training_room.map_url, :target => "_blank"
+        %td
+          = campaign.register_count
+        %td
+          = campaign.presents.size
+        %td
+          = link_to t("label.show"), [:admin, campaign.course, campaign]
+          |
+          = link_to t("label.edit"), edit_admin_course_campaign_path(campaign.course, campaign)
+

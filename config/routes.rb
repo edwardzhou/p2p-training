@@ -89,7 +89,6 @@ P2pTraining::Application.routes.draw do
     end
   end
 
-=begin
   namespace :admin do
     resources :catalogs do
       member do
@@ -134,7 +133,6 @@ P2pTraining::Application.routes.draw do
 
     root :to => "dashboards#show"
   end
-=end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
