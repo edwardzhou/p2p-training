@@ -1,5 +1,3 @@
-#encoding: utf-8
-
 ActiveAdmin.register Photo do
 
   # New Link on all actions except :new and :show
@@ -9,24 +7,6 @@ ActiveAdmin.register Photo do
     end
   end
 
-  show do
-    panel "照片详情" do
-      attributes_table_for photo do
-        row :id
-        row :album
-        row :display_order
-        row :show_in_index
-        row :description
-        row :created_at
-        row :updated_at
-        row(:image) do
-          image_tag photo.image_url(:thumb).to_s
-        end
-      end
-    end
-
-    active_admin_comments
-  end
 
   form :partial => "form"
 end
