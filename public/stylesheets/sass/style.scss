@@ -168,7 +168,7 @@ div#menu {
 
 div#menu div.wrapper {
   //background: url("/images/ba00.jpg") repeat-x scroll left bottom #6293BB;
-  background: url("/images/ba00.jpg");
+  background: url("/images/ba00.jpg") no-repeat scroll left bottom;
   //bottom: 1;
   font-size: 13px;
   //left: 1;
@@ -316,6 +316,7 @@ div#hot_photos{
 .course_title {
     font-size: 16px;
     text-align: center;
+    font-weight: bold;
     //color:#066188;
 }
 

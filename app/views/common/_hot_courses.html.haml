@@ -3,7 +3,7 @@
     热门课程
     &nbsp;&nbsp;
     = link_to "更多", "/courses"
-  #couses.span-24.last(style="padding:2px; border: 0px solid #E9E9E9; background-color: #E9E9E9")
+  #couses.span-24.last(style="padding:0px; border: 0px solid #E9E9E9; background-color: #E9E9E9")
     - Course.latest_courses.each do |course|
       .span-8(id="course_#{course.id}")
         .box(style="height:160px;")
@@ -15,18 +15,18 @@
                 %td(style="vertical-align: top; border: 0px none #ffffff;")
                   .course_title
                     = link_to course.course_name, course
-                  .short_description(style="min-height:85px;")
+                  .short_description(style="height:73px;padding-top:4px;")
                     != course.short_description
                   .price
                     - if !course.discount_price.nil? && course.price != course.discount_price
                       价格:￥
                       %span.delete= course.price
-                      &nbsp;&nbsp;
-                      %span(style="color:green;font-size:14px;")
+                      &nbsp;
+                      %span(style="color:green;font-size:13px;")
                         优惠价: ￥
                         %b= course.discount_price
                     -else
-                      %span(style="color:green;font-size:14px;")
+                      %span(style="color:green;font-size:13px;")
                         价格:￥
                         %b= course.price
 

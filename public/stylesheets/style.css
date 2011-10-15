@@ -1092,7 +1092,7 @@ div#menu {
   padding-bottom: 6px; }
 
 div#menu div.wrapper {
-  background: url("/images/ba00.jpg");
+  background: url("/images/ba00.jpg") no-repeat scroll left bottom;
   font-size: 13px;
   padding-bottom: 0px;
   position: absolute;
@@ -1195,7 +1195,8 @@ div#hot_photos {
 
 .course_title {
   font-size: 16px;
-  text-align: center; }
+  text-align: center;
+  font-weight: bold; }
 
 .panel_left {
   background: url("../images/zl.gif") repeat-x scroll 0 0 transparent;
