@@ -1,0 +1,36 @@
+#hot_courses.span-24.last
+  #title.hot_courses_title
+    热门课程
+    &nbsp;&nbsp;
+    = link_to "更多", "/courses"
+  #couses.span-24.last(style="padding:2px; border: 0px solid #E9E9E9; background-color: #E9E9E9")
+    - Course.latest_courses.each do |course|
+      .span-8(id="course_#{course.id}")
+        .box(style="height:160px;")
+          %table(style="border: 0px none #ffffff;")
+            %tbody
+              %tr
+                %td(style="border: 0px none #ffffff;")
+                  = image_tag course.avatar_url(:thumb).to_s, :height => "120px", :width => "100px"
+                %td(style="vertical-align: top; border: 0px none #ffffff;")
+                  .course_title
+                    = link_to course.course_name, course
+                  .short_description(style="min-height:85px;")
+                    != course.short_description
+                  .price
+                    - if !course.discount_price.nil? && course.price != course.discount_price
+                      价格:￥
+                      %span.delete= course.price
+                      &nbsp;&nbsp;
+                      %span(style="color:green;font-size:14px;")
+                        优惠价: ￥
+                        %b= course.discount_price
+                    -else
+                      %span(style="color:green;font-size:14px;")
+                        价格:￥
+                        %b= course.price
+
+                  .buttons
+                    = link_to "课程详细", @course
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    = link_to "报名", "#"

@@ -1,11 +1,24 @@
+-#
+  #hot_photos
+    %h5 课间留影
+    %ul
+      - hot_photos().each do |photo|
+        %li
+          = link_to photo.image_url.to_s, :class => "hot_photos", :rel => "hot_photos", :title => "#{photo.description}" do
+            = image_tag photo.image_url(:thumb).to_s
 
-#hot_photos
-  %h5 课间留影
-  %ul
-    - hot_photos().each do |photo|
-      %li
-        = link_to photo.image_url.to_s, :class => "hot_photos", :rel => "hot_photos", :title => "#{photo.description}" do
-          = image_tag photo.image_url(:thumb).to_s
+
+#latest_hot_photos.span-24.last
+  #title.hot_photos_title
+    课间留影
+    &nbsp;&nbsp;
+    = link_to "更多", "/albums"
+  #hot_photos.span-24.last(style="padding:2px; border: 0px solid #E9E9E9; height:155px; background-color: #E9E9E9")
+    %ul
+      - hot_photos().each do |photo|
+        %li
+          = link_to photo.image_url.to_s, :class => "hot_photos", :rel => "hot_photos", :title => "#{photo.description}" do
+            = image_tag photo.image_url().to_s, :width => "230px", :height => "150px"
 
 
 = stylesheet_link_tag '/fancybox/jquery.fancybox-1.3.4.css'

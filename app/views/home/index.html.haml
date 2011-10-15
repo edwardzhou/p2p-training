@@ -1,17 +1,60 @@
 
 = show_msg
+-#
+  - if is_dev?
+    = link_to 'change logs', 'changes_log.txt'
 
-- if is_dev?
-  = link_to 'change logs', 'changes_log.txt'
+  -#= render 'common/ad_01'
 
--#= render 'common/ad_01'
+  = render 'common/hot_photos'
 
-= render 'common/hot_photos'
+  %h1 讲师介绍
+  = render 'company/trainer_edwardzhou'
 
-%h1 讲师介绍
-= render 'company/trainer_edwardzhou'
+  #latest_courses
+    %h1 最新课程
+    %ul
+      = render :partial => 'courses/course_item', :collection => Course.latest_courses
+= render "common/ad_flash"
 
-#latest_courses
-  %h1 最新课程
-  %ul
-    = render :partial => 'courses/course_item', :collection => Course.latest_courses
+.span-24.last.space-6px
+
+= render "common/hot_courses"
+
+.span-24.last.space-6px
+
+= render "common/hot_photos"
+
+//.span-24.last.space-6px
+
+.span-24.last.horz-line(style="background-image:url('/images/978.gif'); height:15px;")
+
+#bottom_panel.span-24.last(style="background-color:#E9E9E9")
+  #catalogs.span-8
+    = show_panel :title => "课程类别" do
+      %ul
+        %li.li_star_orange(style="display: list-item;")= link_to "最新课程", latest_courses_path
+        %li.li_star_orange(style="display: list-item;")= link_to "热门课程", hot_courses_path
+        - Catalog.active_root_catalogs.each do |catalog|
+          %li.li_star_orange(style="display: list-item;")
+            = link_to catalog.name, catalog_path(catalog)
+
+  .span-8
+    = show_panel :title => "标签" do
+      DEF
+  .span-8.last
+    = show_panel :title => "联系我们" do
+      %p(style="padding:5px;")
+        %span(style="color:red;")
+          深圳市良才咨询培训有限公司
+        %br/
+        地址：深圳市福田区福民路良才大厦6楼
+        %br
+        %span
+          电话：86-755-89891680
+          %br/
+          邮件：edward.zhq@gmail.com
+          %br/
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          zhou-hui-qing@163.com
+

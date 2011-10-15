@@ -927,7 +927,7 @@ button:hover {
 a.button:hover {
   background-color: #dff4ff;
   border: 1px solid #c2e1ef;
-  color: #336699; }
+  color: f; }
 a.button:active {
   background-color: #6299c5;
   border: 1px solid #6299c5;
@@ -978,9 +978,6 @@ a.negative:active, button.negative:active {
 /**************************************/
 /*              GLOBALS               */
 /**************************************/
-body {
-  background: url("../images/bg.png") repeat-x scroll left top transparent; }
-
 .align_right, .field_label, .required_field_label {
   text-align: right; }
 
@@ -993,11 +990,23 @@ body {
 /**************************************/
 /*              HEADER                */
 /**************************************/
+.space-4px {
+  min-height: 4px; }
+
+.space-6px {
+  min-height: 6px; }
+
+.space-6px {
+  min-height: 9px; }
+
+.space-13px {
+  min-height: 13px; }
+
 .header {
   -moz-box-shadow: -5px 0 5px black;
   background-color: #1A1A1A;
   border-bottom: 1px solid #999999;
-  color: #ffffff; }
+  color: #000000; }
 
 #inner-header ul {
   margin: 0;
@@ -1030,7 +1039,8 @@ body {
 /*             NAVIGATION             */
 /**************************************/
 div#user_nav {
-  text-align: right; }
+  text-align: right;
+  padding-top: 41px; }
 
 /**************************************/
 /*            MAIN CONTENT            */
@@ -1063,7 +1073,7 @@ div#user_nav {
 .delete {
   text-decoration: line-through; }
 
-.box {
+.box, .panel_content {
   border: 1px solid darkgrey; }
 
 #middle {
@@ -1082,18 +1092,19 @@ div#menu {
   padding-bottom: 6px; }
 
 div#menu div.wrapper {
-  background: url("/images/shadow.png") repeat-x scroll left bottom #6293bb;
-  bottom: 1;
+  background: url("/images/ba00.jpg");
   font-size: 13px;
-  left: 1;
-  padding-bottom: 6px;
+  padding-bottom: 0px;
   position: absolute;
-  width: 100%; }
+  width: 100%;
+  height: 34px; }
 
 div#menu ul {
   margin: 0;
   padding: 0;
-  width: 100%; }
+  width: 100%;
+  font-size: 14px;
+  font-color: white; }
 
 div#menu li {
   background-image: url("/images/line_white.gif");
@@ -1104,10 +1115,10 @@ div#menu li {
   line-height: 1em;
   list-style: none outside none;
   margin: 0;
-  padding: 0 10px; }
+  padding: 0 0px; }
 
 div#menu a:hover, div#menu a.selected {
-  background-color: #3671A5; }
+  background-color: darkgray; }
 
 div#menu a, div#menu a:link, div#menu a:active, div#menu a:visited {
   color: white;
@@ -1149,16 +1160,67 @@ div.inner_box {
   list-style-image: url("/images/star_blue.gif"); }
 
 div#hot_photos {
-  margin-bottom: 10px;
   overflow: hidden;
   padding: 1px;
   position: relative; }
   div#hot_photos ul {
     padding: 0;
-    width: 1600px; }
+    width: 1600px;
+    margin-left: 0em; }
     div#hot_photos ul li {
       display: inline;
-      padding: 5px; }
+      padding: 0px;
+      margin-left: 0.30em; }
+
+.bar_title, .hot_courses_title, .hot_photos_title {
+  background-repeat: no-repeat;
+  height: 28px;
+  padding-left: 60px;
+  padding-top: 8px;
+  font-size: 16px;
+  color: #066188;
+  font-weight: bold; }
+  .bar_title a, .hot_courses_title a, .hot_photos_title a {
+    color: #066188; }
+    .bar_title a:hover, .hot_courses_title a:hover, .hot_photos_title a:hover {
+      color: red; }
+    .bar_title a:visited, .hot_courses_title a:visited, .hot_photos_title a:visited {
+      color: #066188; }
+
+.hot_courses_title {
+  background-image: url("/images/ba001.jpg"); }
+
+.hot_photos_title {
+  background-image: url("/images/ba002.jpg"); }
+
+.course_title {
+  font-size: 16px;
+  text-align: center; }
+
+.panel_left {
+  background: url("../images/zl.gif") repeat-x scroll 0 0 transparent;
+  float: left;
+  height: 35px;
+  width: 10px; }
+
+.panel_middle {
+  background: url("../images/zm.gif") repeat-x scroll 0 0 transparent;
+  color: white;
+  float: left;
+  font-size: 12px;
+  height: 35px;
+  padding-left: 20px;
+  padding-top: 8px;
+  width: 272px; }
+
+.panel_right {
+  background: url("../images/zr.gif") repeat-x scroll 0 0 transparent;
+  float: left;
+  height: 35px;
+  width: 8px; }
+
+.panel_content {
+  margin: 2px; }
 
 /**************************************/
 /*               FOOTER               */

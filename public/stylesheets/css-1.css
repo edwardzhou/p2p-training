@@ -1,0 +1,70 @@
+body {
+
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none;
+}
+a:link {
+	color: #666666;
+	text-decoration: none;
+}
+a:visited {
+	color: #666666;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF6600;
+	text-decoration: none;
+}
+a:active {
+	color: #FF6600;
+	text-decoration: none;
+}
+.lang {
+	 color:#0f0f0f;
+}
+.lang a:link {
+	color: #0f0f0f;
+	text-decoration: none;
+}
+.lang a:visited {
+	color: #0f0f0f;
+	text-decoration: none;
+}
+.lang a:hover {
+	color: #FF6600;
+	text-decoration: none;
+}
+.lang a:active {
+	color: #FF6600;
+	text-decoration: none;
+}
+.bu1 { color:#555555; font-weight:bold;}
+
+.bu1 a:link {
+	color: #555555;
+	text-decoration: none;
+}
+.bu1 a:visited {
+	color: #555555;
+	text-decoration: none;
+}
+.bu1 a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+a:active {
+	color: #FF0000;
+	text-decoration: none;
+}
+
+.bg1 {
+	background-color: #FFFFFF;
+	background-image: url("978.gif"/*tpa=http://www.szmedi.com/images/978.gif*/);
+	background-repeat: no-repeat;
+}

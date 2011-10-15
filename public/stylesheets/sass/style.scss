@@ -22,7 +22,8 @@
 /**************************************/
 
 body {
-  background: url("../images/bg.png") repeat-x scroll left top transparent; }
+  //background: url("../images/bg.png") repeat-x scroll left top transparent;
+  }
 
 .align_right {
   text-align: right; }
@@ -37,12 +38,24 @@ body {
 /**************************************/
 /*              HEADER                */
 /**************************************/
+.space-4px {
+    min-height: 4px;
+}
+.space-6px {
+    min-height: 6px;
+}
+.space-6px {
+    min-height: 9px;
+}
+.space-13px {
+    min-height: 13px;
+}
 
 .header {
     -moz-box-shadow: -5px 0 5px #000000;
     background-color: #1A1A1A;
     border-bottom: 1px solid #999999;
-    color: #ffffff;
+    color: #000000;
 }
 
 #inner-header ul{
@@ -83,7 +96,9 @@ body {
 /**************************************/
 
 div#user_nav {
-  text-align: right; }
+  text-align: right;
+  padding-top: 41px;
+}
 
 /**************************************/
 /*            MAIN CONTENT            */
@@ -152,23 +167,29 @@ div#menu {
 }
 
 div#menu div.wrapper {
-  background: url("/images/shadow.png") repeat-x scroll left bottom #6293BB;
-  bottom: 1;
+  //background: url("/images/ba00.jpg") repeat-x scroll left bottom #6293BB;
+  background: url("/images/ba00.jpg");
+  //bottom: 1;
   font-size: 13px;
-  left: 1;
-  padding-bottom: 6px;
+  //left: 1;
+  padding-bottom: 0px;
   position: absolute;
   width: 100%;
+  height:34px;
 }
 
 div#menu ul {
   margin: 0;
   padding: 0;
   width: 100%;
+  font-size: 14px;
+  font-color: white;
+  //background-image: url("/images/ba-01.jpg");
 }
 
 div#menu li {
   background-image: url("/images/line_white.gif");
+  //bakcground: url("/images/ba02.jpg");
   background-position: right center;
   background-repeat: no-repeat;
   display: inline;
@@ -176,11 +197,12 @@ div#menu li {
   line-height: 1em;
   list-style: none outside none;
   margin: 0;
-  padding: 0 10px;
+  padding: 0 0px;
 }
 
 div#menu a:hover, div#menu a.selected {
-  background-color: #3671A5;
+  //background-color: #3671A5;
+  background-color: darkgray;
 }
 
 div#menu a, div#menu a:link, div#menu a:active, div#menu a:visited {
@@ -239,7 +261,7 @@ div.inner_box{
 
 div#hot_photos{
     //border: 1px solid #A8BACD;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     overflow: hidden;
     padding: 1px;
     position: relative;
@@ -250,17 +272,82 @@ div#hot_photos{
         //margin: 0 0 1.5em;
         padding: 0;
         width: 1600px;
+        margin-left: 0em;
 
         li {
             display: inline;
             //margin: 0 0 0.25em 30px;
-            padding: 5px;
+            padding: 0px;
+            margin-left: 0.30em;
         }
     }
-
-
 }
 
+.bar_title{
+    background-repeat: no-repeat;
+    height:28px;
+    padding-left:60px;
+    padding-top:8px;
+    font-size: 16px;
+    color: #066188;
+    font-weight: bold;
+
+    a {
+        color:#066188;
+        &:hover{
+            color: red;
+        }
+        &:visited {
+            color:#066188;
+        }
+    }
+}
+
+.hot_courses_title {
+    @extend .bar_title;
+    background-image: url("/images/ba001.jpg");
+}
+
+.hot_photos_title {
+    @extend .bar_title;
+    background-image: url("/images/ba002.jpg");
+}
+
+.course_title {
+    font-size: 16px;
+    text-align: center;
+    //color:#066188;
+}
+
+.panel_left {
+    background: url("../images/zl.gif") repeat-x scroll 0 0 transparent;
+    float: left;
+    height: 35px;
+    width: 10px;
+}
+
+.panel_middle {
+    background: url("../images/zm.gif") repeat-x scroll 0 0 transparent;
+    color: white;
+    float: left;
+    font-size: 12px;
+    height: 35px;
+    padding-left: 20px;
+    padding-top: 8px;
+    width: 272px;
+}
+
+.panel_right {
+    background: url("../images/zr.gif") repeat-x scroll 0 0 transparent;
+    float: left;
+    height: 35px;
+    width: 8px;
+}
+
+.panel_content {
+    @extend .box;
+    margin: 2px;
+}
 
 
 /**************************************/

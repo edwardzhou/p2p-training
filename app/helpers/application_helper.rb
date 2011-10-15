@@ -29,6 +29,14 @@ module ApplicationHelper
     Rails.env.development?
   end
 
+  def block_to_partial(partial_name, options = {}, &block)
+    options.merge!(:body => capture(&block))
+    render(:partial => partial_name, :locals => options)
+  end
+
+  def show_panel(options = {}, &block)
+    block_to_partial("common/panel", options, &block)
+  end
 
   
 end
